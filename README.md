@@ -26,7 +26,8 @@ y [`results/`](results/).
 | PR-AUC persistencia | 0,0068 | 0,0027 |
 | PR-AUC climatología | 0,0041 | 0,0063 |
 
-Más detalle en el [model card](MODEL_CARD.md), los
+Más detalle en el [model card](MODEL_CARD.md), el
+[diccionario de datos](DATA_DICTIONARY.md), los
 [reportes de evaluación](results/report_val.md) y las
 [fuentes de datos](DATA_SOURCES.md).
 
@@ -36,39 +37,55 @@ Más detalle en el [model card](MODEL_CARD.md), los
 |---|---|
 | `prep/` | Preprocesamiento FIRMS: hotspots → incendios → eventos, con polígonos y `confidence`. |
 | `pred/` | Predicción de hotspots (CNN+LSTM, parches 32×32 a 1 km) y derivación clásica de incendios/eventos. |
-| `pred/data/models/best.pt` | Modelo entrenado usado en la predicción operativa (9.8 MB). |
-| `pred/predictions/latest_2026-11-13/` | Predicción operativa 2026-11-14 → 2026-11-20 (GeoJSON + Parquet). |
+| `pipeline/` | Descarga de datos crudos: FIRMS, POWER, ONI, FWI de Copernicus y límites IGN. |
 | `docs/` | Mapa interactivo (Leaflet) y dashboard exploratorio para GitHub Pages. |
 | `results/` | Reportes, métricas, curvas y parquets de evaluación (validación y test). |
+| `pred/data/models/best.pt` | Modelo entrenado usado en la predicción operativa (9.8 MB). |
+| `pred/predictions/latest_2026-11-13/` | Predicción operativa 2026-11-14 → 2026-11-20 (GeoJSON + Parquet). |
+| `DATA_DICTIONARY.md` | Esquema y significado de cada columna de los parquets. |
 | `MODEL_CARD.md` | Arquitectura, datos, métricas y limitaciones del modelo. |
 | `DATA_SOURCES.md` | Fuentes, licencias y créditos de los datos. |
+| `Makefile` | Atajos para setup, descargas, pipelines, demo y tests. |
 
 ## Reproducir
+
+### 0. Datos crudos
+
+```bash
+make pipeline-setup
+cp .env.example .env       # completar MAP_KEY de FIRMS
+make download              # límites IGN, FIRMS, POWER y ONI
+make setup                 # crea prep/.venv y pred/.venv
+make data-aux              # áreas protegidas, cobertura de suelo y auxiliares
+```
+
+`make download` no incluye el FWI de Copernicus porque requiere una cuenta CDS.
+Para agregarlo:
+
+```bash
+cd pipeline && ./.venv/bin/python download_copernicus.py
+```
+
+Ver [`pipeline/README.md`](pipeline/README.md) para el detalle de cada script,
+las salidas y las claves necesarias.
 
 ### 1. Preprocesamiento
 
 ```bash
-cd prep
-make setup
-make aux          # auxiliares (AP, boundaries, landcover)
-make all          # corrida completa 2000-2026
+make prep
 make test
 ```
+
+Equivalente a `cd prep && make all`.
 
 ### 2. Predicción
 
 ```bash
-cd pred
-make setup
-make inventory
-make static
-make hotspots
-make patches
-make train
-make eval
-make classic
-make report
+make pred
 ```
+
+Equivalente a `cd pred && make all`. Los pasos individuales están documentados
+en [`pred/README.md`](pred/README.md).
 
 ### 3. Predicción operativa
 
@@ -80,26 +97,27 @@ cd pred
 ### 4. Demo local
 
 ```bash
-python3 -m http.server 8000 --directory docs
+make demo
 # abrir http://localhost:8000
 ```
 
 ## Datos no versionados
 
-Los datos crudos e intermedios (~32 GB) no se suben porque son públicos y
-regenerables:
+Los datos crudos e intermedios (~13 GB, más los entornos virtuales) no se suben
+porque son públicos y regenerables:
 
 - FIRMS (MODIS/VIIRS), NASA POWER, Open-Meteo, MCD12Q1 y límites IGN.
-- `prep/data/` y `pred/data/` se generan con los `make` de cada etapa.
+- `data/`, `prep/data/` y `pred/data/` se generan con `pipeline/` y los `make`
+  de cada etapa.
 - `.venv/` (15.6 GB) se recrea con `make setup`.
 
-Esto mantiene el repositorio liviano (~15 MB) y reproducible.
+Esto mantiene el repositorio liviano (~16 MB) y reproducible.
 
 ## Entorno
 
 - Python 3.12 (`uv`).
 - PyTorch CUDA 12.4 (RTX 4060 Laptop, 8 GB) para `pred/`; RAPIDS opcional para `prep/`.
-- Ver el `requirements.txt` de cada etapa.
+- Ver el `requirements.txt` de cada etapa y de `pipeline/`.
 
 ## Licencia
 

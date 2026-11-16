@@ -36,9 +36,9 @@ make aux       # auxiliares: áreas protegidas, límites y cobertura de suelo
 make all       # pipeline completo FIRMS 2000-2026
 ```
 
-Para los scripts de descarga de FIRMS, POWER y Copernicus, usá las APIs y
-servicios indicados arriba. Las URLs y parámetros principales del pipeline
-están en `prep/config/params.yaml`.
+Los scripts para bajar estos datos están en
+[`pipeline/`](pipeline/README.md). Las URLs y parámetros principales del
+pipeline también están en `prep/config/params.yaml`.
 
 ## Agradecimientos
 
