@@ -1,0 +1,15 @@
+# Stack GPU (RAPIDS 25.04, CUDA 12.x) para Python 3.12.
+# Instalar después de requirements.txt, en el mismo venv:
+#   uv pip install --python prep/.venv/bin/python \
+#     --extra-index-url https://pypi.nvidia.com \
+#     -r prep/requirements-gpu.txt
+#
+# RAPIDS no publica wheels para Python 3.14; por eso el venv usa 3.12.
+# Si CUDA no inicializa con el driver actual, el pipeline sigue en CPU.
+
+--extra-index-url https://pypi.nvidia.com
+
+cuml-cu12==25.4.0
+cudf-cu12==25.4.0
+cugraph-cu12==25.4.1
+cuspatial-cu12==25.4.0

@@ -1,0 +1,36 @@
+# --- Entornos Python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- Sistema operativo / GIS ---
+._*
+.DS_Store
+Thumbs.db
+*.aux.xml
+
+# --- Credenciales ---
+.env
+*.netrc
+.netrc
+/data/raw/landcover/Argentina-request.json
+
+# --- Datos crudos e intermedios (regenerables) ---
+/data/
+/prep/data/
+
+# --- pred/data: solo versionamos el modelo final y sus metricas ---
+pred/data/*
+!pred/data/models/
+pred/data/models/*
+!pred/data/models/best.pt
+!pred/data/models/history.csv
+!pred/data/models/last_metrics.json
+!pred/data/models/last_val_figure.png
+
+# --- Otros artefactos pesados ---
+pred/data/runs/
+pred/data/reports/
+pred/data/inference/

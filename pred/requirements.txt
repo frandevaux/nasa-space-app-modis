@@ -1,0 +1,30 @@
+# Entorno de predicción de hotspots (Córdoba, celdas de 1 km).
+# Instalar con: make setup
+# PyTorch se instala aparte con el índice CUDA de la Makefile.
+
+# Datos y tablas
+numpy>=1.26
+pandas>=2.2
+pyarrow>=16
+duckdb>=1.1
+scipy>=1.13
+
+# Geometría, proyección y rasterización
+shapely>=2.0
+pyproj>=3.6
+geopandas>=1.0
+pyogrio>=0.9
+rasterio>=1.3
+
+# Modelo y métricas
+scikit-learn>=1.5
+matplotlib>=3.8
+tqdm>=4.66
+tensorboard>=2.16
+
+# Pronóstico real
+requests>=2.31
+
+# Configuración y tests
+pyyaml>=6.0
+pytest>=8

@@ -1,0 +1,141 @@
+# Parámetros de la etapa de predicción de hotspots (Córdoba, celdas de 1 km).
+# Todas las rutas son relativas a pred/.
+# No se usan incendios ni eventos como features ni como entidad de entrenamiento.
+
+project:
+  name: nasa-firms-hotspot-pred
+  seed: 20261115
+
+paths:
+  # Insumos del pipeline de preprocesamiento (solo lectura).
+  prep_processed: ../prep/data/processed
+  raw_power: ../data/raw/climate/power
+  boundaries: ../data/boundaries
+  protected_areas: ../prep/data/boundaries/ign_area_protegida.geojson
+  landcover: ../data/raw/landcover/Geotiff
+  oni: ../data/raw/climate/oni.ascii.txt
+
+  # Salidas de esta etapa.
+  data: data
+  static: data/static
+  hotspots: data/hotspots
+  models: data/models
+  runs: data/runs
+  reports: data/reports
+
+region:
+  province_name: "Córdoba"
+  province_in1: "14"
+  crs_grid: "EPSG:6933"
+  cell_size_m: 1000
+
+grid:
+  patch_cells: 32          # 32 x 32 celdas de 1 km = 32 x 32 km
+  history_days: 14
+  horizon_days: 7
+  weather_pad_days: 30     # días previos extra para derivados (precip_30d, days_since_rain)
+
+periods:
+  # Train: 2019-01-01 .. 2025-07-31; se corta el 24/07 para purgar 7 días.
+  train_start: "2019-01-01"
+  train_end: "2025-07-24"
+  # Validación: 2025-08-01 .. 2026-07-31; se corta el 24/07/2026.
+  val_start: "2025-08-01"
+  val_end: "2026-07-24"
+  # Test operativo: 2026-08-01 .. 2026-11-07 (etiquetas completas hasta 14/11).
+  test_start: "2026-08-01"
+  test_end: "2026-11-07"
+
+time:
+  timezone_offset_hours: -3   # POWER LST; hotspots se convierten a UTC-3
+
+weather:
+  # Variables POWER diarias usadas.
+  variables: [T2M, T2M_MAX, RH2M, PRECTOTCORR, WS10M_MAX, GWETTOP]
+  missing_value: -999
+  # Columnas derivadas que se calculan on-the-fly.
+  derived: [vpd, days_since_rain, precip_7d, precip_30d, temp_anomaly]
+
+static:
+  # Se necesitan 2018-2025: para un hotspot de 2019 se usa 2018; para 2026, 2025.
+  landcover_years: [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+  landcover_use_previous_year: true
+  forest_classes: [1, 2, 3, 4, 5]
+  fire_climatology_years: [2019, 2020, 2021, 2022, 2023, 2024]   # solo train
+
+dataset:
+  # Una muestra por hotspot. Si se quiere reducir redundancia, deduplicar por celda-día.
+  dedup_cell_day: true
+  # Número máximo de hotspots por celda-día si dedup_cell_day es true.
+  max_per_cell_day: 1
+  # Normalización: media/desvío calculados solo con train.
+  stats_from_train_only: true
+
+model:
+  # Canales dinámicos de historia y clima futuro.
+  hist_channels: 20
+  future_channels: 7
+  static_channels: 12
+  hidden_lstm: 64
+  dropout: 0.3
+  # Pérdida
+  pos_weight: 75.0
+  lambda_patch: 1.0
+  lambda_count: 0.0
+  focal_gamma: 0.0        # 0 = BCE; >0 = focal (ablación)
+  # Optimización
+  batch_size: 48
+  epochs: 25
+  lr: 0.0002
+  weight_decay: 0.001
+  grad_clip: 1.0
+  patience: 5
+  num_workers: 8
+  amp: true
+  # Augmentation
+  augment: true
+  rot90: true
+  flips: true
+  translate_cells: 2
+
+classic:
+  # Parámetros espejados de prep/config/params.yaml para la derivación clásica
+  # de incendios y eventos a partir de hotspots predichos.
+  fire_radius_km: 1.0          # radio sintético de la celda predicha
+  fire_pass_bin: daily         # daily | daynight
+  event_buffer_km: 1.0
+  event_buffer_protected_forest_km: 5.0
+  event_link_window_days: 5
+  event_inactivity_days: 5
+  event_merge_keep: oldest
+  predicted_frp: 0.0           # sin cabeza de FRP; documentado
+  # Presupuesto operativo para la derivación clásica: umbral y máximo de
+  # hotspots predichos por día (evita decenas de miles de incendios falsos).
+  min_prob: 0.8
+  max_hotspots_per_day: 200
+
+forecast:
+  provider: open-meteo
+  open_meteo_url: "https://api.open-meteo.com/v1/forecast"
+  open_meteo_archive_url: "https://archive-api.open-meteo.com/v1/archive"
+  timezone: "America/Argentina/Buenos_Aires"
+  forecast_days: 7
+  wind_speed_unit: "ms"
+  # Compatibilidad POWER vs Open-Meteo
+  check_days: 60
+  quantile_mapping: true
+  drop_soil_moisture_if_incompatible: true
+
+eval:
+  # Umbrales y presupuestos de evaluación.
+  thresholds: [0.2, 0.3, 0.5, 0.7]
+  top_k_per_anchor: [5, 10, 20, 50]
+  match_distance_km: 1.0
+  match_day_tolerance: 1
+  # Calibración de umbral: holdout de 2015 o mitad de 2016.
+  calibration: "2015_holdout"
+
+run:
+  smoke: false
+  smoke_days: 31
+  log_level: INFO

@@ -1,0 +1,314 @@
+# Parámetros del preprocesamiento FIRMS.
+# Todas las rutas son relativas a prep/.
+# Ningún umbral debe quedar hardcodeado en los scripts.
+
+project:
+  name: nasa-firms-prep
+  seed: 20261115
+
+paths:
+  # Insumos crudos compartidos con el resto del repo (no se modifican).
+  raw_firms: ../data/raw/firms
+  raw_landcover: ../data/raw/landcover/Geotiff
+  boundaries:
+    country: ../data/boundaries/ign_pais.geojson
+    province: ../data/boundaries/ign_provincia.geojson
+    department: ../data/boundaries/ign_departamento.geojson
+  # Capa extraída de la rama RaMarti a prep/data/boundaries/.
+  protected_areas: data/boundaries/ign_area_protegida.geojson
+  interim: data/interim
+  processed: data/processed
+  qgis: data/qgis
+  stats: data/interim/stats
+  duckdb_tmp: data/interim/duckdb_tmp
+  gpkg: data/qgis/fuego.gpkg
+  report: report.md
+
+repo:
+  ap_branch: RaMarti
+  ap_search_glob: "*proteg*"
+
+projection:
+  tmerc: "+proj=tmerc +lat_0=-90 +lon_0=-63 +k=1 +x_0=500000 +y_0=0 +datum=WGS84 +units=m"
+  geographic: "EPSG:4326"
+
+sensors:
+  modis:
+    satellites: [Terra, Aqua]
+    bright_main: brightness
+    bright_aux: bright_t31
+  viirs:
+    satellite_codes:
+      N: SNPP
+      N20: NOAA20
+      N21: NOAA21
+    bright_main: bright_ti4
+    bright_aux: bright_ti5
+
+ingest:
+  exclude_basename_prefixes: ["._"]
+  exclude_suffixes: [".aux.xml"]
+  groups:
+    country_modis:
+      glob: "country/modis/modis_*_Argentina.csv"
+      sensor: MODIS
+      product: archive
+      expected: 26
+    country_snpp:
+      glob: "country/viirs-snpp/viirs-snpp_*_Argentina.csv"
+      sensor: VIIRS
+      product: archive
+      expected: 14
+    country_noaa20:
+      glob: "country/viirs-jpss1/viirs-jpss1_*_Argentina.csv"
+      sensor: VIIRS
+      product: archive
+      expected: 8
+    api_modis_sp:
+      glob: "api/MODIS_SP/*.csv"
+      sensor: MODIS
+      product: SP
+      expected: 49
+    api_modis_nrt:
+      glob: "api/MODIS_NRT/*.csv"
+      sensor: MODIS
+      product: NRT
+      expected: 15
+    api_snpp_sp:
+      glob: "api/VIIRS_SNPP_SP/*.csv"
+      sensor: VIIRS
+      product: SP
+      expected: 43
+    api_snpp_nrt:
+      glob: "api/VIIRS_SNPP_NRT/*.csv"
+      sensor: VIIRS
+      product: NRT
+      expected: 19
+    api_noaa20_sp:
+      glob: "api/VIIRS_NOAA20_SP/*.csv"
+      sensor: VIIRS
+      product: SP
+      expected: 43
+    api_noaa20_nrt:
+      glob: "api/VIIRS_NOAA20_NRT/*.csv"
+      sensor: VIIRS
+      product: NRT
+      expected: 22
+    api_noaa21_nrt:
+      glob: "api/VIIRS_NOAA21_NRT/*.csv"
+      sensor: VIIRS
+      product: NRT
+      expected: 64
+  product_priority:
+    archive: 0
+    SP: 1
+    NRT: 2
+  timestamp_format: "%Y-%m-%d%H%M"
+  strict_file_counts: true
+
+dedup:
+  key: [satellite, latitude, longitude, ts_utc]
+  order: [priority, source_file, source_row]
+
+type_filter:
+  keep: [0]
+  drop: [1, 2, 3]
+
+type_inference:
+  enabled: true
+  reference_products: [archive, SP]
+  reference_types: [1, 2, 3]
+  lookback_days: 365
+  knn_k: 32
+  chunk_size: 100000
+
+conf_class:
+  viirs_values: [l, n, h]
+  modis_bins:
+    - {class: l, min: 0, max_exclusive: 30}
+    - {class: n, min: 30, max_exclusive: 80}
+    - {class: h, min: 80, max_inclusive: 100}
+  invalid_policy: null_probability_zero
+
+pass_bin:
+  utc_offset_hours: -3
+  day_start_hour: 7
+  night_start_hour: 19
+  day_label: D
+  night_label: N
+  validate:
+    enabled: true
+    guard_minutes: 30
+    max_fraction_near_cut: 0.001
+    histogram_minutes: 15
+    drift_eras:
+      - "2000-01-01:2021-12-31"
+      - "2022-01-01:2026-12-31"
+
+clustering:
+  radius_formula: semi_diagonal
+  kdtree_query_factor: 2.0
+  kdtree_leafsize: 16
+  min_samples: 1
+  max_bin_points_dense: 30000
+  max_edges_warn: 20000000
+  gpu_tile_points: 4096
+
+polygon:
+  quad_segs: 8
+  inflation_epsilon_m: 1.0
+  simplify_m: 25.0
+  preserve_topology: true
+  require_single_polygon: true
+  repair_inflation_attempts_m: [0.0, 2.0, 5.0]
+  simplify_fallback_m: [25.0, 10.0, 1.0, 0.0]
+  cascade_union_threshold: 5000
+  on_failure: raise
+
+argentina:
+  predicate: covers
+  keep_single_hotspot: true
+  keep_low_confidence: true
+  filter_fires: true
+  filter_events: true
+  event_linking_includes_non_argentina_fires: true
+
+aux:
+  protected_areas:
+    expected_features: 506
+    id_field: gid
+    name_field: nam
+    full_name_field: fna
+  landcover:
+    year_regex: "doy(\\d{4})001"
+    years_expected: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+                     2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+                     2021, 2022, 2023, 2024, 2025]
+    forest_classes: [1, 2, 3, 4, 5]
+    nodata: 255
+    majority_tie_break: lowest_class
+    fallback_before_first: first_available
+    fallback_after_last: latest_available
+    all_touched_fallback: true
+    centroid_fallback: true
+
+events:
+  buffer_km:
+    default: 1.0
+    protected_forest: 5.0
+  inactivity_days: 5
+  link_window_days: 5
+  merge_keep: oldest
+  max_buffer_km: 5.0
+  query_radius_pad_m: 10.0
+  warn:
+    max_fires: 500
+    max_area_km2: 50000
+  process_order: [bin_start_utc, t_inicio, incendio_id]
+
+confidence:
+  p_class:
+    l: 0.15
+    n: 0.55
+    h: 0.90
+  w_sensor:
+    MODIS: 0.80
+    VIIRS: 1.00
+  rho: 0.20
+  f_size:
+    base: 0.85
+    gain: 0.15
+    scale_km2: 1.0
+  f_miss:
+    default: 1.0
+    modis_aqua_only: 0.70
+    modis_terra_only: 0.85
+  pre_viirs_cap: 72.0
+  pre_viirs_end_exclusive: "2012-01-20"
+  pass_identity: satellite_hour
+  event_weight: area_pixeles_km2
+  exclude_terra_post_standby: false
+  sensitivity:
+    w_modis: [0.70, 0.90]
+    rho: [0.10, 0.30]
+    f_miss: [0.60, 0.80]
+    event_buffer_km: [0.0, 2.0]
+
+operational_periods:
+  viirs_reference_start: "2012-01-20"
+  modis:
+    Terra:
+      start: "2000-02-24"
+      end: "2027-02-01"
+      standby: "2026-03-26"
+    Aqua:
+      start: "2002-05-04"
+      end: "2027-09-01"
+  viirs:
+    SNPP:
+      start: "2012-01-20"
+      end: "2026-11-02"
+      nrt_last: "2026-10-30"
+    NOAA20:
+      start: "2018-04-01"
+    NOAA21:
+      start: "2026-01-01"
+      note: "only API NRT in this dataset"
+
+eras:
+  solo_MODIS:
+    end_before: "2012-01-20"
+  MODIS+VIIRS:
+    start: "2012-01-20"
+    end_before: "2027-02-01"
+  solo_VIIRS:
+    start: "2027-02-01"
+
+ids:
+  hash: blake2b
+  digest_hex_chars: 20
+
+gpu:
+  # Benchmark 2026-11-15 sobre bins reales del smoke 2025:
+  #   CPU 9 ms vs GPU 220-1000 ms por bin (clustering).
+  #   kNN: CPU 0.10 s vs GPU 0.33 s (100k ref / 20k query).
+  #   cuSpatial point-in-polygon: CPU 0.72 s vs GPU 2.39 s (100k puntos / 506 AP).
+  # Por eso el default es CPU. La GPU queda instalada y validada; `--gpu`
+  # la habilita para experimentos. Los umbrales evitan usarla en lotes chicos.
+  enabled: false
+  mode: auto
+  require: false
+  device: 0
+  vram_limit_gb: 6.5
+  min_bin_points: 50000
+  min_type_inference_rows: 1000000
+  knn_k: 32
+  tile_points: 4096
+  use_cuspatial: false
+  benchmark: true
+
+run:
+  mode: full
+  smoke:
+    enabled: false
+    years: [2025]
+    api_window: null
+    max_bins: null
+  duckdb:
+    threads: 8
+    memory_limit: "6GB"
+    temp_directory: data/interim/duckdb_tmp
+    preserve_insertion_order: true
+  batch:
+    read_rows: 200000
+    write_rows: 50000
+    export_rows: 50000
+    polygon_circle_chunk: 100000
+  force: []
+  fail_on_polygon_error: true
+  deterministic: true
+
+report:
+  top_events: 20
+  include_histograms: true
+  include_benchmark: true
