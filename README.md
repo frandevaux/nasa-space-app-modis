@@ -38,6 +38,8 @@ Más detalle en el [model card](MODEL_CARD.md), el
 | `prep/` | Preprocesamiento FIRMS: hotspots → incendios → eventos, con polígonos y `confidence`. |
 | `pred/` | Predicción de hotspots (CNN+LSTM, parches 32×32 a 1 km) y derivación clásica de incendios/eventos. |
 | `pipeline/` | Descarga de datos crudos: FIRMS, POWER, ONI, FWI de Copernicus y límites IGN. |
+| `webtool/` | App web funcional (Next.js 15 + MapLibre) con mapa, calendario y bitácora. |
+| `webtool-idea/` | Prototipo estático de la interfaz (HTML/CSS/JS, datos de ejemplo). |
 | `docs/` | Mapa interactivo (Leaflet) y dashboard exploratorio para GitHub Pages. |
 | `results/` | Reportes, métricas, curvas y parquets de evaluación (validación y test). |
 | `pred/data/models/best.pt` | Modelo entrenado usado en la predicción operativa (9.8 MB). |
@@ -57,6 +59,7 @@ cp .env.example .env       # completar MAP_KEY de FIRMS
 make download              # límites IGN, FIRMS, POWER y ONI
 make setup                 # crea prep/.venv y pred/.venv
 make data-aux              # áreas protegidas, cobertura de suelo y auxiliares
+make raw                   # data/processed/detections_raw.parquet
 ```
 
 `make download` no incluye el FWI de Copernicus porque requiere una cuenta CDS.
@@ -101,6 +104,32 @@ make demo
 # abrir http://localhost:8000
 ```
 
+## Aplicación web
+
+- **`webtool/`**: app funcional Next.js 15 + MapLibre (mapa, calendario y
+  bitácora). Necesita Node.js 20+ y los datos generados por el pipeline
+  (~760 MB en `webtool/public/data/`):
+
+  ```bash
+  make raw
+  make prep
+  make webtool-install
+  make webtool-data
+  make webtool
+  # http://localhost:3000
+  ```
+
+  No corre en GitHub Pages porque usa un API route (`/api/entries`); para
+  publicarla hace falta Vercel o un servidor Node. Ver
+  [`webtool/README.md`](webtool/README.md).
+
+- **`webtool-idea/`**: prototipo navegable sin build, con datos de ejemplo.
+  Abrí `webtool-idea/index.html` o serví la carpeta:
+
+  ```bash
+  npx serve webtool-idea
+  ```
+
 ## Datos no versionados
 
 Los datos crudos e intermedios (~13 GB, más los entornos virtuales) no se suben
@@ -109,9 +138,10 @@ porque son públicos y regenerables:
 - FIRMS (MODIS/VIIRS), NASA POWER, Open-Meteo, MCD12Q1 y límites IGN.
 - `data/`, `prep/data/` y `pred/data/` se generan con `pipeline/` y los `make`
   de cada etapa.
+- `webtool/public/data/` (~760 MB) se genera con `make webtool-data`.
 - `.venv/` (15.6 GB) se recrea con `make setup`.
 
-Esto mantiene el repositorio liviano (~16 MB) y reproducible.
+Esto mantiene el repositorio liviano (~17 MB) y reproducible.
 
 ## Entorno
 

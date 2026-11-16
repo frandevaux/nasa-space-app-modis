@@ -8,6 +8,7 @@ ignorado por git.
 
 - Python 3.11+.
 - `geopandas` (para `download_climate.py`).
+- `duckdb` (para `load_raw.py` y el build de datos de la web).
 - `cdsapi` (solo para `download_copernicus.py`).
 - Una API key de FIRMS para el año en curso (solo `download_api.py`).
 
@@ -50,7 +51,10 @@ cd pipeline
 # 4. POWER diario por departamento + índice ONI
 ./.venv/bin/python download_climate.py
 
-# 5. Opcional: índices FWI de Copernicus (requiere cdsapi)
+# 5. Unir los CSV de FIRMS en un parquet único (lo usa también la web)
+./.venv/bin/python load_raw.py
+
+# 6. Opcional: índices FWI de Copernicus (requiere cdsapi)
 ./.venv/bin/python download_copernicus.py
 ```
 
@@ -65,6 +69,7 @@ permiten refrescar solo lo nuevo.
 | `download_country.py` | `data/raw/firms/country/<producto>/<producto>_<año>_Argentina.csv` |
 | `download_api.py` | `data/raw/firms/api/<SOURCE>/<SOURCE>_<inicio>_<dias>d.csv` |
 | `download_climate.py` | `data/raw/climate/power/power_<lat>_<lon>.csv`, `data/raw/climate/oni.ascii.txt` |
+| `load_raw.py` | `data/processed/detections_raw.parquet` (unión cruda de FIRMS) |
 | `download_copernicus.py` | `data/raw/climate/fwi/fwi_<año>[_intermediate].nc` |
 
 El volumen total ronda los **1–2 GB** según los años descargados. No se
@@ -78,6 +83,9 @@ make setup
 make aux       # áreas protegidas, cobertura de suelo y auxiliares
 make all       # pipeline completo FIRMS 2000-2026
 ```
+
+`load_raw.py` genera `data/processed/detections_raw.parquet`, que también usa
+`webtool/scripts/build_data.py` para la app web.
 
 Ver el [README principal](../README.md) y el
 [diccionario de datos](../DATA_DICTIONARY.md).

@@ -1,7 +1,7 @@
 # Makefile raíz — atajos para el repo completo.
 # Ejecutá 'make help' para ver los atajos disponibles.
 
-.PHONY: help setup setup-prep setup-pred pipeline-setup download data-aux prep pred demo test
+.PHONY: help setup setup-prep setup-pred pipeline-setup download data-aux raw prep pred demo test webtool-install webtool-data webtool
 
 help:
 	@echo "Targets disponibles:"
@@ -9,10 +9,14 @@ help:
 	@echo "  pipeline-setup  Instala pipeline/.venv (scripts de descarga)"
 	@echo "  download        Baja datos crudos (requiere .env con MAP_KEY)"
 	@echo "  data-aux        Baja auxiliares de prep (AP, límites, landcover)"
+	@echo "  raw             Genera data/processed/detections_raw.parquet"
 	@echo "  prep            Corre el pipeline de preprocesamiento"
 	@echo "  pred            Corre el pipeline de predicción"
 	@echo "  demo            Sirve docs/ en http://localhost:8000"
 	@echo "  test            Corre los tests de prep y pred"
+	@echo "  webtool-install Instala dependencias de la app web (npm ci)"
+	@echo "  webtool-data    Genera los datos de webtool/public/data"
+	@echo "  webtool         Levanta la app web en http://localhost:3000"
 
 setup: setup-prep setup-pred
 
@@ -37,6 +41,9 @@ download:
 data-aux:
 	cd prep && make aux
 
+raw:
+	cd pipeline && ./.venv/bin/python load_raw.py
+
 prep:
 	cd prep && make all
 
@@ -49,3 +56,14 @@ demo:
 test:
 	cd prep && make test
 	cd pred && make test
+
+webtool-install:
+	@command -v npm >/dev/null || (echo "Falta npm: instalá Node.js 20+ en este entorno" && exit 1)
+	cd webtool && npm ci
+
+webtool-data:
+	cd pipeline && ./.venv/bin/python ../webtool/scripts/build_data.py
+
+webtool:
+	@command -v npm >/dev/null || (echo "Falta npm: instalá Node.js 20+ en este entorno" && exit 1)
+	cd webtool && npm run dev
