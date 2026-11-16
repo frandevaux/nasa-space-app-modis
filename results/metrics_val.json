@@ -1,0 +1,3899 @@
+{
+  "checkpoint": "pred/data/models/best.pt",
+  "epoch": 5,
+  "hotspot_metrics": {
+    "loss": 1.065371929377806,
+    "pr_auc": 0.012155078085262219,
+    "roc_auc": 0.8559731009882103,
+    "brier": 0.10151945054531097,
+    "pos_rate": 0.001893157372251153,
+    "patch_hit_rate": 0.7686821818351746,
+    "n_patch_pos": 6450,
+    "n_points": 19878432,
+    "precision@0.2": 0.0049160988709819045,
+    "recall@0.2": 0.8956235219089629,
+    "f1@0.2": 0.009778523194944239,
+    "precision@0.3": 0.006029992665936112,
+    "recall@0.3": 0.8240905588180586,
+    "f1@0.3": 0.011972381642296677,
+    "precision@0.5": 0.008464553072294741,
+    "recall@0.5": 0.6454441580527729,
+    "f1@0.5": 0.0167099665078337,
+    "precision@0.7": 0.011749471710704016,
+    "recall@0.7": 0.4323067520527197,
+    "f1@0.7": 0.022877174924118903
+  },
+  "baselines": {
+    "persistence": {
+      "pr_auc": 0.006795346057803592,
+      "roc_auc": 0.5697663458921618,
+      "brier": 0.009251987561583519,
+      "pos_rate": 0.001893157372251153,
+      "precision@0.2": 0.03519954245043213,
+      "recall@0.2": 0.14718465176839476,
+      "f1@0.2": 0.05681229582600401,
+      "precision@0.3": 0.03519954245043213,
+      "recall@0.3": 0.14718465176839476,
+      "f1@0.3": 0.05681229582600401,
+      "precision@0.5": 0.03519954245043213,
+      "recall@0.5": 0.14718465176839476,
+      "f1@0.5": 0.05681229582600401,
+      "precision@0.7": 0.03519954245043213,
+      "recall@0.7": 0.14718465176839476,
+      "f1@0.7": 0.05681229582600401
+    },
+    "climatology": {
+      "pr_auc": 0.004126968934866076,
+      "roc_auc": 0.6073216874952382,
+      "brier": 0.0018909899517893791,
+      "pos_rate": 0.001893157372251153,
+      "precision@0.2": 0.0,
+      "recall@0.2": 0.0,
+      "f1@0.2": 0.0,
+      "precision@0.3": 0.0,
+      "recall@0.3": 0.0,
+      "f1@0.3": 0.0,
+      "precision@0.5": 0.0,
+      "recall@0.5": 0.0,
+      "f1@0.5": 0.0,
+      "precision@0.7": 0.0,
+      "recall@0.7": 0.0,
+      "f1@0.7": 0.0
+    }
+  },
+  "classic": {
+    "fires": {
+      "precision": 0.06038513352880577,
+      "recall": 0.159114637711422,
+      "f1": 0.08754595588235294,
+      "n_pred": 12619,
+      "n_real": 4789,
+      "n_match": 762,
+      "missed_rate": 0.840885362288578
+    },
+    "events": {
+      "precision": 0.44236453201970444,
+      "recall": 0.13431049955130123,
+      "f1": 0.20605782469022488,
+      "n_pred": 1015,
+      "n_real": 3343,
+      "n_match": 449,
+      "missed_rate": 0.8656895004486987
+    },
+    "n_real_fires": 4789,
+    "n_real_events": 3343,
+    "link": {
+      "n_pred_eventos": 1015,
+      "n_matched": 475,
+      "n_continuacion": 4,
+      "n_nuevo": 471,
+      "n_sin_evento_real": 540
+    },
+    "link_matches": [
+      {
+        "pred_evento": "PEVT-d1c8b0af943dd9fb0805",
+        "real_evento": "EVT-9aa8cf3ad78639d04519",
+        "real_inicio": "2025-08-01 00:00:00",
+        "real_fin": "2025-08-01 00:00:00",
+        "t0_issue": "2025-07-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-073ae41e78166ac844e4",
+        "real_evento": "EVT-f40397531576a1fc34c9",
+        "real_inicio": "2025-08-01 00:00:00",
+        "real_fin": "2025-08-01 00:00:00",
+        "t0_issue": "2025-07-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-887f927305badb7da0c7",
+        "real_evento": "EVT-06b627d870029df67f88",
+        "real_inicio": "2025-08-01 00:00:00",
+        "real_fin": "2025-08-01 00:00:00",
+        "t0_issue": "2025-07-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bd1325d1de6ad114674d",
+        "real_evento": "EVT-9d8410d81890e40e53db",
+        "real_inicio": "2025-08-01 00:00:00",
+        "real_fin": "2025-08-01 00:00:00",
+        "t0_issue": "2025-07-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ac744cbaf64ba4177f5a",
+        "real_evento": "EVT-3ab05a506ec38fe24262",
+        "real_inicio": "2025-08-02 00:00:00",
+        "real_fin": "2025-08-02 00:00:00",
+        "t0_issue": "2025-07-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7917f5355852bffe2e40",
+        "real_evento": "EVT-7fa0437423e4769eed52",
+        "real_inicio": "2025-08-02 00:00:00",
+        "real_fin": "2025-08-05 00:00:00",
+        "t0_issue": "2025-07-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-26f81a468e0a3efc9c13",
+        "real_evento": "EVT-880dd209edec4bf09bf2",
+        "real_inicio": "2025-08-02 00:00:00",
+        "real_fin": "2025-08-02 00:00:00",
+        "t0_issue": "2025-07-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5db88cd855ab94d044f6",
+        "real_evento": "EVT-880dd209edec4bf09bf2",
+        "real_inicio": "2025-08-02 00:00:00",
+        "real_fin": "2025-08-02 00:00:00",
+        "t0_issue": "2025-07-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9a0e24ac09ac64014479",
+        "real_evento": "EVT-51700c86d15071eacf6c",
+        "real_inicio": "2025-08-04 00:00:00",
+        "real_fin": "2025-08-04 00:00:00",
+        "t0_issue": "2025-07-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7341fc312a7ad8c66936",
+        "real_evento": "EVT-86f873c610233ffe462a",
+        "real_inicio": "2025-08-05 00:00:00",
+        "real_fin": "2025-08-05 00:00:00",
+        "t0_issue": "2025-07-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9e77565360f633bfed82",
+        "real_evento": "EVT-d658884243d49cff3c16",
+        "real_inicio": "2025-08-05 00:00:00",
+        "real_fin": "2025-08-05 00:00:00",
+        "t0_issue": "2025-07-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4f9ffe9b12989ddda782",
+        "real_evento": "EVT-1a210dc597aeeb06a8dd",
+        "real_inicio": "2025-08-05 00:00:00",
+        "real_fin": "2025-08-05 00:00:00",
+        "t0_issue": "2025-07-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8c3db01c1b5a082bdda1",
+        "real_evento": "EVT-9f4d5ac84591c5e050f2",
+        "real_inicio": "2025-08-05 00:00:00",
+        "real_fin": "2025-08-05 00:00:00",
+        "t0_issue": "2025-07-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-404129e060d76d75566f",
+        "real_evento": "EVT-9b65efdfa8509252f8cb",
+        "real_inicio": "2025-08-06 00:00:00",
+        "real_fin": "2025-08-06 00:00:00",
+        "t0_issue": "2025-07-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cfcf8e3675ce63ae0f45",
+        "real_evento": "EVT-abf5e7c0183caf9568f8",
+        "real_inicio": "2025-08-06 00:00:00",
+        "real_fin": "2025-08-06 00:00:00",
+        "t0_issue": "2025-07-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ba85b82d855af2abc4e8",
+        "real_evento": "EVT-a91afd9b1ad592b236fe",
+        "real_inicio": "2025-08-05 00:00:00",
+        "real_fin": "2025-08-10 00:00:00",
+        "t0_issue": "2025-07-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c9c75f2629f19c91c6ca",
+        "real_evento": "EVT-50b95231aa8fe695ecb7",
+        "real_inicio": "2025-08-08 00:00:00",
+        "real_fin": "2025-08-08 00:00:00",
+        "t0_issue": "2025-08-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0723abd454feedee2237",
+        "real_evento": "EVT-14757c57a9a44bc2f5f0",
+        "real_inicio": "2025-08-09 00:00:00",
+        "real_fin": "2025-08-14 00:00:00",
+        "t0_issue": "2025-08-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b7ddf3c230b40757578d",
+        "real_evento": "EVT-63a0ede1b09b8c542f9f",
+        "real_inicio": "2025-08-12 00:00:00",
+        "real_fin": "2025-08-12 00:00:00",
+        "t0_issue": "2025-08-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-04af65ab81bb26af3ed6",
+        "real_evento": "EVT-ca2d1630118becc26204",
+        "real_inicio": "2025-08-11 00:00:00",
+        "real_fin": "2025-08-13 00:00:00",
+        "t0_issue": "2025-08-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-22e9a1e63e51a8ab18ac",
+        "real_evento": "EVT-ddb27833e212cb8afd5e",
+        "real_inicio": "2025-08-01 00:00:00",
+        "real_fin": "2025-08-01 00:00:00",
+        "t0_issue": "2025-07-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1d22fca8538f333c2f38",
+        "real_evento": "EVT-ddb73d91e46f94dd8269",
+        "real_inicio": "2025-08-01 00:00:00",
+        "real_fin": "2025-08-01 00:00:00",
+        "t0_issue": "2025-07-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-af1fe984dd4bfbd38fda",
+        "real_evento": "EVT-269829191894b1f55d2c",
+        "real_inicio": "2025-08-10 00:00:00",
+        "real_fin": "2025-08-11 00:00:00",
+        "t0_issue": "2025-08-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cf83cf2e4eae31bf6111",
+        "real_evento": "EVT-bb5c85ac12454d583eec",
+        "real_inicio": "2025-08-11 00:00:00",
+        "real_fin": "2025-08-11 00:00:00",
+        "t0_issue": "2025-08-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-56368374a0f3bd776651",
+        "real_evento": "EVT-1034042fc09a5f496199",
+        "real_inicio": "2025-08-13 00:00:00",
+        "real_fin": "2025-08-13 00:00:00",
+        "t0_issue": "2025-08-07 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-de3259bc3915ac5c1a48",
+        "real_evento": "EVT-5ff23c6284e65bd03ea6",
+        "real_inicio": "2025-08-16 00:00:00",
+        "real_fin": "2025-08-16 00:00:00",
+        "t0_issue": "2025-08-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b6e115ad243414aefde0",
+        "real_evento": "EVT-a0e2f1034c9c62b8c062",
+        "real_inicio": "2025-08-17 00:00:00",
+        "real_fin": "2025-08-17 00:00:00",
+        "t0_issue": "2025-08-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5a979746ba6a814253f4",
+        "real_evento": "EVT-b8aba33942215a8ad78d",
+        "real_inicio": "2025-08-17 00:00:00",
+        "real_fin": "2025-08-17 00:00:00",
+        "t0_issue": "2025-08-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-40360e500085b4650ba4",
+        "real_evento": "EVT-7c84b3a9ae18361753b4",
+        "real_inicio": "2025-08-20 00:00:00",
+        "real_fin": "2025-08-20 00:00:00",
+        "t0_issue": "2025-08-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-525eda146256dc59b320",
+        "real_evento": "EVT-f46be8d37c06d73c3590",
+        "real_inicio": "2025-08-20 00:00:00",
+        "real_fin": "2025-08-20 00:00:00",
+        "t0_issue": "2025-08-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-199b930ad898fef06200",
+        "real_evento": "EVT-e20465b098091c2e50e0",
+        "real_inicio": "2025-08-21 00:00:00",
+        "real_fin": "2025-08-23 00:00:00",
+        "t0_issue": "2025-08-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4db47fe200c3b117962c",
+        "real_evento": "EVT-954a3135bc5592ebab88",
+        "real_inicio": "2025-08-21 00:00:00",
+        "real_fin": "2025-08-21 00:00:00",
+        "t0_issue": "2025-08-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2a1ac2b5221ea999f484",
+        "real_evento": "EVT-b45a30337716ae7ce23b",
+        "real_inicio": "2025-08-22 00:00:00",
+        "real_fin": "2025-08-22 00:00:00",
+        "t0_issue": "2025-08-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-15ac0971cb8110c66783",
+        "real_evento": "EVT-69259fc341ab337a8fb7",
+        "real_inicio": "2025-08-23 00:00:00",
+        "real_fin": "2025-08-23 00:00:00",
+        "t0_issue": "2025-08-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6d7016c9df50fb4e57a0",
+        "real_evento": "EVT-5ea9ec0b11a5212d7814",
+        "real_inicio": "2025-08-25 00:00:00",
+        "real_fin": "2025-08-25 00:00:00",
+        "t0_issue": "2025-08-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e4193998352231825d0c",
+        "real_evento": "EVT-359f42a1ad1426267052",
+        "real_inicio": "2025-08-24 00:00:00",
+        "real_fin": "2025-08-24 00:00:00",
+        "t0_issue": "2025-08-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-543c8aa9c4a7fae03bc0",
+        "real_evento": "EVT-e664a7a03104cf42b845",
+        "real_inicio": "2025-08-26 00:00:00",
+        "real_fin": "2025-08-28 00:00:00",
+        "t0_issue": "2025-08-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4bf2c9d9cb98d17dc8ab",
+        "real_evento": "EVT-567c4c841d7f621013fd",
+        "real_inicio": "2025-08-25 00:00:00",
+        "real_fin": "2025-08-25 00:00:00",
+        "t0_issue": "2025-08-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cc622163b46d28deaf43",
+        "real_evento": "EVT-9cb84838b9c76a273e20",
+        "real_inicio": "2025-08-25 00:00:00",
+        "real_fin": "2025-08-26 00:00:00",
+        "t0_issue": "2025-08-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7f027f8af8897f6536bf",
+        "real_evento": "EVT-a8b25507843947877ef3",
+        "real_inicio": "2025-08-26 00:00:00",
+        "real_fin": "2025-08-26 00:00:00",
+        "t0_issue": "2025-08-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-3a3cb0bc0363aa14dbb6",
+        "real_evento": "EVT-16564baa72393731b519",
+        "real_inicio": "2025-08-27 00:00:00",
+        "real_fin": "2025-08-27 00:00:00",
+        "t0_issue": "2025-08-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6ee300da6fdbd2bc9168",
+        "real_evento": "EVT-ce35eeb3b46b40a0a168",
+        "real_inicio": "2025-08-28 00:00:00",
+        "real_fin": "2025-08-28 00:00:00",
+        "t0_issue": "2025-08-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8e587550b70080f3ff9d",
+        "real_evento": "EVT-8a657f3df86122f1669b",
+        "real_inicio": "2025-08-21 00:00:00",
+        "real_fin": "2025-08-27 00:00:00",
+        "t0_issue": "2025-08-21 00:00:00",
+        "continuacion": true
+      },
+      {
+        "pred_evento": "PEVT-ae58d138432d35465bac",
+        "real_evento": "EVT-9e548b2211aa1598a208",
+        "real_inicio": "2025-08-21 00:00:00",
+        "real_fin": "2025-08-28 00:00:00",
+        "t0_issue": "2025-08-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7a079086c9582c0e8595",
+        "real_evento": "EVT-ce35eeb3b46b40a0a168",
+        "real_inicio": "2025-08-28 00:00:00",
+        "real_fin": "2025-08-28 00:00:00",
+        "t0_issue": "2025-08-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-03bb926ed9305e4b7c34",
+        "real_evento": "EVT-4b983d256e5523c80380",
+        "real_inicio": "2025-08-26 00:00:00",
+        "real_fin": "2025-08-28 00:00:00",
+        "t0_issue": "2025-08-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1f6050c3846edd031120",
+        "real_evento": "EVT-f75f9d5faf140560b207",
+        "real_inicio": "2025-08-24 00:00:00",
+        "real_fin": "2025-08-29 00:00:00",
+        "t0_issue": "2025-08-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-72c6ba5b920478d22ed8",
+        "real_evento": "EVT-98c526dd608be18fe4a3",
+        "real_inicio": "2025-09-02 00:00:00",
+        "real_fin": "2025-09-02 00:00:00",
+        "t0_issue": "2025-08-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6159e9e292708a86f0fc",
+        "real_evento": "EVT-30f65a6597521e8d1906",
+        "real_inicio": "2025-09-03 00:00:00",
+        "real_fin": "2025-09-03 00:00:00",
+        "t0_issue": "2025-08-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a9633b7f3805ecc63e15",
+        "real_evento": "EVT-4e8c594ac858da26b1cd",
+        "real_inicio": "2025-09-03 00:00:00",
+        "real_fin": "2025-09-03 00:00:00",
+        "t0_issue": "2025-08-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c4e890fa049568359cf0",
+        "real_evento": "EVT-22ee12e8a2d9d3017e93",
+        "real_inicio": "2025-09-05 00:00:00",
+        "real_fin": "2025-09-05 00:00:00",
+        "t0_issue": "2025-08-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2cb3687156b2d305c6ef",
+        "real_evento": "EVT-afea2407798b1aa7bd8d",
+        "real_inicio": "2025-09-01 00:00:00",
+        "real_fin": "2025-09-01 00:00:00",
+        "t0_issue": "2025-08-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-38e9f3f35c6051d04b6a",
+        "real_evento": "EVT-3fc415015524cd03fc9c",
+        "real_inicio": "2025-09-05 00:00:00",
+        "real_fin": "2025-09-05 00:00:00",
+        "t0_issue": "2025-08-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c7ec04e81a780ba095b4",
+        "real_evento": "EVT-1dc4ada1e45e898aa5df",
+        "real_inicio": "2025-09-05 00:00:00",
+        "real_fin": "2025-09-05 00:00:00",
+        "t0_issue": "2025-08-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-00e20b620dbc0a3162b8",
+        "real_evento": "EVT-399c2e6344f8c2741fe7",
+        "real_inicio": "2025-09-06 00:00:00",
+        "real_fin": "2025-09-06 00:00:00",
+        "t0_issue": "2025-08-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e1fa6dd8b603f3cee922",
+        "real_evento": "EVT-a39c253b65dc47eba28e",
+        "real_inicio": "2025-09-08 00:00:00",
+        "real_fin": "2025-09-08 00:00:00",
+        "t0_issue": "2025-09-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bbd38921a61a882a95f9",
+        "real_evento": "EVT-8d6ecea18f054a40137d",
+        "real_inicio": "2025-09-09 00:00:00",
+        "real_fin": "2025-09-09 00:00:00",
+        "t0_issue": "2025-09-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-64bad7b9b7cd962b3b65",
+        "real_evento": "EVT-1a2b7d363235099c6a0b",
+        "real_inicio": "2025-09-10 00:00:00",
+        "real_fin": "2025-09-10 00:00:00",
+        "t0_issue": "2025-09-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-31af34eec536fff069c1",
+        "real_evento": "EVT-8e52b24087a14a5746f0",
+        "real_inicio": "2025-09-10 00:00:00",
+        "real_fin": "2025-09-10 00:00:00",
+        "t0_issue": "2025-09-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7d4a65ce3e688f972ef8",
+        "real_evento": "EVT-5364ceff8447bd5dc169",
+        "real_inicio": "2025-09-10 00:00:00",
+        "real_fin": "2025-09-10 00:00:00",
+        "t0_issue": "2025-09-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f2caf46b14e86b1b4436",
+        "real_evento": "EVT-e1c58dd52ded6cc77caf",
+        "real_inicio": "2025-09-10 00:00:00",
+        "real_fin": "2025-09-10 00:00:00",
+        "t0_issue": "2025-09-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-339dfd551f03f7381cbf",
+        "real_evento": "EVT-e35e188670fe8ca64252",
+        "real_inicio": "2025-09-11 00:00:00",
+        "real_fin": "2025-09-12 00:00:00",
+        "t0_issue": "2025-09-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-68277b1148051bb12e88",
+        "real_evento": "EVT-358df634cc385cc93c89",
+        "real_inicio": "2025-09-11 00:00:00",
+        "real_fin": "2025-09-11 00:00:00",
+        "t0_issue": "2025-09-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-00c59ab1b1c423f66cda",
+        "real_evento": "EVT-488656bdc16a2be6ad79",
+        "real_inicio": "2025-09-19 00:00:00",
+        "real_fin": "2025-09-19 00:00:00",
+        "t0_issue": "2025-09-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7f704e5c6fec8e8909b6",
+        "real_evento": "EVT-4ac7c0f84612a81bd360",
+        "real_inicio": "2025-09-19 00:00:00",
+        "real_fin": "2025-09-19 00:00:00",
+        "t0_issue": "2025-09-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1e69ace9f199d5b2c798",
+        "real_evento": "EVT-74d7981fb3e699b7ae1d",
+        "real_inicio": "2025-09-19 00:00:00",
+        "real_fin": "2025-09-19 00:00:00",
+        "t0_issue": "2025-09-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-65c6004c254741f1bbcf",
+        "real_evento": "EVT-dc7d6dfee10ccc68d02a",
+        "real_inicio": "2025-09-19 00:00:00",
+        "real_fin": "2025-09-22 00:00:00",
+        "t0_issue": "2025-09-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d6b4cefbc338a482e67e",
+        "real_evento": "EVT-bea73e614977e1c6be43",
+        "real_inicio": "2025-09-19 00:00:00",
+        "real_fin": "2025-10-15 00:00:00",
+        "t0_issue": "2025-09-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-57c1bcbd5a14e011e5e0",
+        "real_evento": "EVT-4008c03fe9f3763ca87d",
+        "real_inicio": "2025-09-23 00:00:00",
+        "real_fin": "2025-09-26 00:00:00",
+        "t0_issue": "2025-09-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9e0fa6dc4a151240017d",
+        "real_evento": "EVT-8b078943ecec6fb4a12d",
+        "real_inicio": "2025-09-23 00:00:00",
+        "real_fin": "2025-09-23 00:00:00",
+        "t0_issue": "2025-09-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-795964897a5c0d10236b",
+        "real_evento": "EVT-3547dedf4d78f94e9681",
+        "real_inicio": "2025-09-25 00:00:00",
+        "real_fin": "2025-09-25 00:00:00",
+        "t0_issue": "2025-09-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c279a3dcd0f04e92edce",
+        "real_evento": "EVT-e591ad0618a2f7fc50e8",
+        "real_inicio": "2025-09-25 00:00:00",
+        "real_fin": "2025-09-25 00:00:00",
+        "t0_issue": "2025-09-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-3231a34c31f1b51920d7",
+        "real_evento": "EVT-bcae7bc8a7ef11f5b03b",
+        "real_inicio": "2025-09-20 00:00:00",
+        "real_fin": "2025-09-24 00:00:00",
+        "t0_issue": "2025-09-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8a96614504bf1bcb796a",
+        "real_evento": "EVT-d4605cf1030f7edc1d0f",
+        "real_inicio": "2025-09-26 00:00:00",
+        "real_fin": "2025-09-26 00:00:00",
+        "t0_issue": "2025-09-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-36f9ed91fa09f6172922",
+        "real_evento": "EVT-3153cceba273893f4e0e",
+        "real_inicio": "2025-09-27 00:00:00",
+        "real_fin": "2025-09-28 00:00:00",
+        "t0_issue": "2025-09-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-47486c0788161aba5f13",
+        "real_evento": "EVT-dee408420b9c7a4a72be",
+        "real_inicio": "2025-09-26 00:00:00",
+        "real_fin": "2025-09-26 00:00:00",
+        "t0_issue": "2025-09-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-481d2d9f46f9f04afcd8",
+        "real_evento": "EVT-889c302d8690003c33ae",
+        "real_inicio": "2025-09-11 00:00:00",
+        "real_fin": "2025-09-11 00:00:00",
+        "t0_issue": "2025-09-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bbc76db91838c399360f",
+        "real_evento": "EVT-e268fcb154b918288644",
+        "real_inicio": "2025-09-27 00:00:00",
+        "real_fin": "2025-09-27 00:00:00",
+        "t0_issue": "2025-09-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5c3365e26cca94135eb5",
+        "real_evento": "EVT-60d66439dd03bf83059b",
+        "real_inicio": "2025-08-14 00:00:00",
+        "real_fin": "2025-08-14 00:00:00",
+        "t0_issue": "2025-08-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-36647d5ac26956408287",
+        "real_evento": "EVT-556dbd0240e6ff819c11",
+        "real_inicio": "2025-09-28 00:00:00",
+        "real_fin": "2025-09-28 00:00:00",
+        "t0_issue": "2025-09-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4177eb5db3cd1ebfb32c",
+        "real_evento": "EVT-ffd35f839e08702c74c8",
+        "real_inicio": "2025-09-28 00:00:00",
+        "real_fin": "2025-09-28 00:00:00",
+        "t0_issue": "2025-09-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d770019f76a07130df9e",
+        "real_evento": "EVT-5bf349a9efa83fd533e9",
+        "real_inicio": "2025-09-27 00:00:00",
+        "real_fin": "2025-09-27 00:00:00",
+        "t0_issue": "2025-09-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5bc8b8f92a91ca24942c",
+        "real_evento": "EVT-339e90c32db9929f7fe0",
+        "real_inicio": "2025-09-29 00:00:00",
+        "real_fin": "2025-09-29 00:00:00",
+        "t0_issue": "2025-09-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b6957697c4394e45674d",
+        "real_evento": "EVT-6517fac47140594b0ae3",
+        "real_inicio": "2025-10-02 00:00:00",
+        "real_fin": "2025-10-02 00:00:00",
+        "t0_issue": "2025-09-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-24c407b7b82e99e977ef",
+        "real_evento": "EVT-8bc95e4a8662cbf3becf",
+        "real_inicio": "2025-10-02 00:00:00",
+        "real_fin": "2025-10-02 00:00:00",
+        "t0_issue": "2025-09-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a6ba302e22ed60a2ad8f",
+        "real_evento": "EVT-fdacafe71a31552130d7",
+        "real_inicio": "2025-10-03 00:00:00",
+        "real_fin": "2025-10-03 00:00:00",
+        "t0_issue": "2025-09-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b5e61bb61c5439e98a73",
+        "real_evento": "EVT-6869cf767543aa1d8369",
+        "real_inicio": "2025-10-03 00:00:00",
+        "real_fin": "2025-10-03 00:00:00",
+        "t0_issue": "2025-09-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-939ae47d0a329b0ed9e8",
+        "real_evento": "EVT-09c6d7840b2c85dcfc96",
+        "real_inicio": "2025-09-16 00:00:00",
+        "real_fin": "2025-09-16 00:00:00",
+        "t0_issue": "2025-09-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e0e6ca277ce78ed7380a",
+        "real_evento": "EVT-434998a4b3ce7bca4423",
+        "real_inicio": "2025-10-05 00:00:00",
+        "real_fin": "2025-10-05 00:00:00",
+        "t0_issue": "2025-09-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b7bf6b239d63d580db79",
+        "real_evento": "EVT-434998a4b3ce7bca4423",
+        "real_inicio": "2025-10-05 00:00:00",
+        "real_fin": "2025-10-05 00:00:00",
+        "t0_issue": "2025-09-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-88165384bd1f4f6b682b",
+        "real_evento": "EVT-145656a96464cf4ba831",
+        "real_inicio": "2025-10-05 00:00:00",
+        "real_fin": "2025-10-05 00:00:00",
+        "t0_issue": "2025-09-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bbb504310250d3574d24",
+        "real_evento": "EVT-84b3d2b4b47177591646",
+        "real_inicio": "2025-10-06 00:00:00",
+        "real_fin": "2025-10-06 00:00:00",
+        "t0_issue": "2025-09-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c40525b837a83e4d670f",
+        "real_evento": "EVT-2a68d8e2893875f8c053",
+        "real_inicio": "2025-10-06 00:00:00",
+        "real_fin": "2025-10-06 00:00:00",
+        "t0_issue": "2025-09-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b85ec5d48ae5f596d62e",
+        "real_evento": "EVT-ad55d7a8d06ae47f2b1b",
+        "real_inicio": "2025-10-06 00:00:00",
+        "real_fin": "2025-10-06 00:00:00",
+        "t0_issue": "2025-09-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-13ad7f81afc170c0ebe4",
+        "real_evento": "EVT-130445e6080e864c99ea",
+        "real_inicio": "2025-10-07 00:00:00",
+        "real_fin": "2025-10-07 00:00:00",
+        "t0_issue": "2025-10-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4e53e50ef29bbef38692",
+        "real_evento": "EVT-421e6c37fc60f7044009",
+        "real_inicio": "2025-10-07 00:00:00",
+        "real_fin": "2025-10-11 00:00:00",
+        "t0_issue": "2025-09-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-29c4e310bd47decfff00",
+        "real_evento": "EVT-8c51a97e9f68ce647d54",
+        "real_inicio": "2025-10-08 00:00:00",
+        "real_fin": "2025-10-08 00:00:00",
+        "t0_issue": "2025-10-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-73aa77791ea2568d0551",
+        "real_evento": "EVT-671392ad9b4e3ae8d64c",
+        "real_inicio": "2025-10-08 00:00:00",
+        "real_fin": "2025-10-08 00:00:00",
+        "t0_issue": "2025-10-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-126b69d82726c7de5df5",
+        "real_evento": "EVT-2255fd75d5256e23de96",
+        "real_inicio": "2025-10-08 00:00:00",
+        "real_fin": "2025-10-08 00:00:00",
+        "t0_issue": "2025-10-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-65155caf13ce70f19823",
+        "real_evento": "EVT-2a20d21d1402adc01c1d",
+        "real_inicio": "2025-10-08 00:00:00",
+        "real_fin": "2025-10-08 00:00:00",
+        "t0_issue": "2025-10-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e32bd132f183a0c07485",
+        "real_evento": "EVT-a61cfa7ac3c3677e285a",
+        "real_inicio": "2025-10-09 00:00:00",
+        "real_fin": "2025-10-10 00:00:00",
+        "t0_issue": "2025-10-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2bc00ea86994bef39947",
+        "real_evento": "EVT-d3ad727aa004430d9744",
+        "real_inicio": "2025-10-04 00:00:00",
+        "real_fin": "2025-10-09 00:00:00",
+        "t0_issue": "2025-10-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-37909cb5d85cbfc8c298",
+        "real_evento": "EVT-b05e24c8d8f3b4eafecc",
+        "real_inicio": "2025-10-10 00:00:00",
+        "real_fin": "2025-10-10 00:00:00",
+        "t0_issue": "2025-10-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-840e9efa11962cd7816c",
+        "real_evento": "EVT-b05e24c8d8f3b4eafecc",
+        "real_inicio": "2025-10-10 00:00:00",
+        "real_fin": "2025-10-10 00:00:00",
+        "t0_issue": "2025-10-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-42b2f59b29276536a7e8",
+        "real_evento": "EVT-23b3bd6341428202e4f4",
+        "real_inicio": "2025-10-10 00:00:00",
+        "real_fin": "2025-10-11 00:00:00",
+        "t0_issue": "2025-10-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bc6466d07630de53b8d6",
+        "real_evento": "EVT-9297a0e6d5c8da8d9944",
+        "real_inicio": "2025-10-11 00:00:00",
+        "real_fin": "2025-10-11 00:00:00",
+        "t0_issue": "2025-10-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2afadb5b975a01a216f6",
+        "real_evento": "EVT-e9cd4486524c91c134ac",
+        "real_inicio": "2025-10-11 00:00:00",
+        "real_fin": "2025-10-12 00:00:00",
+        "t0_issue": "2025-10-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-83103504338efdaf3ec1",
+        "real_evento": "EVT-0d03c62482f662cca04a",
+        "real_inicio": "2025-10-07 00:00:00",
+        "real_fin": "2025-10-07 00:00:00",
+        "t0_issue": "2025-10-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cb8f7f8fb610d0091ddb",
+        "real_evento": "EVT-0877f3fb01ab5beb44fc",
+        "real_inicio": "2025-10-12 00:00:00",
+        "real_fin": "2025-10-12 00:00:00",
+        "t0_issue": "2025-10-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2c85c86795f4d8654bca",
+        "real_evento": "EVT-392088d8e00bc5ceddc3",
+        "real_inicio": "2025-10-12 00:00:00",
+        "real_fin": "2025-10-12 00:00:00",
+        "t0_issue": "2025-10-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-122e51d9ac142e0aad4c",
+        "real_evento": "EVT-d6dedb66d62fa992e2f0",
+        "real_inicio": "2025-10-12 00:00:00",
+        "real_fin": "2025-10-12 00:00:00",
+        "t0_issue": "2025-10-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-584218e4015716b183cb",
+        "real_evento": "EVT-f705b4a98dba8e670f15",
+        "real_inicio": "2025-10-14 00:00:00",
+        "real_fin": "2025-10-14 00:00:00",
+        "t0_issue": "2025-10-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a7a2c3e9dc989d7d0309",
+        "real_evento": "EVT-de26cb13976802044be8",
+        "real_inicio": "2025-10-14 00:00:00",
+        "real_fin": "2025-10-14 00:00:00",
+        "t0_issue": "2025-10-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-82edb32c604474d1ea0f",
+        "real_evento": "EVT-d13df49b484e3c46e97d",
+        "real_inicio": "2025-10-14 00:00:00",
+        "real_fin": "2025-10-14 00:00:00",
+        "t0_issue": "2025-10-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7b7ccbb54a91a3499552",
+        "real_evento": "EVT-8fd062b635e8c0cc8e49",
+        "real_inicio": "2025-10-14 00:00:00",
+        "real_fin": "2025-10-14 00:00:00",
+        "t0_issue": "2025-10-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8b8d24b014013dee567e",
+        "real_evento": "EVT-1717b9f0177147a39a26",
+        "real_inicio": "2025-10-10 00:00:00",
+        "real_fin": "2025-10-17 00:00:00",
+        "t0_issue": "2025-10-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-470b01b771ba3d3bf8fe",
+        "real_evento": "EVT-404e39738fd5d403c0ff",
+        "real_inicio": "2025-10-13 00:00:00",
+        "real_fin": "2025-10-15 00:00:00",
+        "t0_issue": "2025-10-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-404d0a6354e545aff7fa",
+        "real_evento": "EVT-92670bb4c1ab932676bb",
+        "real_inicio": "2025-10-15 00:00:00",
+        "real_fin": "2025-10-15 00:00:00",
+        "t0_issue": "2025-10-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e745bcac40d3c23fd709",
+        "real_evento": "EVT-3844a79c1c91bac1f811",
+        "real_inicio": "2025-10-15 00:00:00",
+        "real_fin": "2025-10-16 00:00:00",
+        "t0_issue": "2025-10-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ce74b3ab4e02635f352c",
+        "real_evento": "EVT-11aeeb2b69b14e6a97ea",
+        "real_inicio": "2025-10-19 00:00:00",
+        "real_fin": "2025-10-19 00:00:00",
+        "t0_issue": "2025-10-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5c702b73f6b7d55e0aa0",
+        "real_evento": "EVT-1c158af0be42807b42be",
+        "real_inicio": "2025-10-19 00:00:00",
+        "real_fin": "2025-10-19 00:00:00",
+        "t0_issue": "2025-10-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-71c470111348216e2b81",
+        "real_evento": "EVT-a831d5345d7c87706213",
+        "real_inicio": "2025-10-06 00:00:00",
+        "real_fin": "2025-10-31 00:00:00",
+        "t0_issue": "2025-10-15 00:00:00",
+        "continuacion": true
+      },
+      {
+        "pred_evento": "PEVT-70a60a19a530cb7c06ae",
+        "real_evento": "EVT-1634f3910fd5451aa1f6",
+        "real_inicio": "2025-10-21 00:00:00",
+        "real_fin": "2025-10-21 00:00:00",
+        "t0_issue": "2025-10-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-19a5050d435da3759b9e",
+        "real_evento": "EVT-f521be9c2992d4660747",
+        "real_inicio": "2025-10-21 00:00:00",
+        "real_fin": "2025-10-21 00:00:00",
+        "t0_issue": "2025-10-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-831d74e4e00b6540365d",
+        "real_evento": "EVT-a0d7bad2db10b06e2cde",
+        "real_inicio": "2025-10-21 00:00:00",
+        "real_fin": "2025-10-21 00:00:00",
+        "t0_issue": "2025-10-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8713cf8a19d954f054d2",
+        "real_evento": "EVT-af651b6b04a8e34b6262",
+        "real_inicio": "2025-10-21 00:00:00",
+        "real_fin": "2025-10-21 00:00:00",
+        "t0_issue": "2025-10-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e5e35099f619e021d953",
+        "real_evento": "EVT-43c24a800e5f835ba6dc",
+        "real_inicio": "2025-10-22 00:00:00",
+        "real_fin": "2025-10-22 00:00:00",
+        "t0_issue": "2025-10-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-915652795f8518d4ae0e",
+        "real_evento": "EVT-4b5a71594da7c8ddba0f",
+        "real_inicio": "2025-10-21 00:00:00",
+        "real_fin": "2025-10-23 00:00:00",
+        "t0_issue": "2025-10-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-250647c3d74e30b32f5f",
+        "real_evento": "EVT-f2df777bb49bb07b6ec0",
+        "real_inicio": "2025-10-23 00:00:00",
+        "real_fin": "2025-10-23 00:00:00",
+        "t0_issue": "2025-10-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-839a04045fe2a3620bcc",
+        "real_evento": "EVT-b217b0b08580b8c450d5",
+        "real_inicio": "2025-10-23 00:00:00",
+        "real_fin": "2025-10-23 00:00:00",
+        "t0_issue": "2025-10-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bbbee86ffe65b38a5984",
+        "real_evento": "EVT-2c516c0357f9c8c500cb",
+        "real_inicio": "2025-10-23 00:00:00",
+        "real_fin": "2025-10-23 00:00:00",
+        "t0_issue": "2025-10-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5c8e7cb2ec73981a599f",
+        "real_evento": "EVT-0b148e5790bdf86fec2e",
+        "real_inicio": "2025-10-23 00:00:00",
+        "real_fin": "2025-10-25 00:00:00",
+        "t0_issue": "2025-10-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a98cbfa79c25773ec277",
+        "real_evento": "EVT-f269ea52ba6a1e94d95a",
+        "real_inicio": "2025-10-26 00:00:00",
+        "real_fin": "2025-10-26 00:00:00",
+        "t0_issue": "2025-10-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-88fcbff568dd91670704",
+        "real_evento": "EVT-03ffa09e3edaad60421a",
+        "real_inicio": "2025-10-26 00:00:00",
+        "real_fin": "2025-10-26 00:00:00",
+        "t0_issue": "2025-10-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-73ddeccdbed6ac1de8b0",
+        "real_evento": "EVT-a831d5345d7c87706213",
+        "real_inicio": "2025-10-06 00:00:00",
+        "real_fin": "2025-10-31 00:00:00",
+        "t0_issue": "2025-10-21 00:00:00",
+        "continuacion": true
+      },
+      {
+        "pred_evento": "PEVT-54a1759cd7c5cff22519",
+        "real_evento": "EVT-81434087268ada80915e",
+        "real_inicio": "2025-10-25 00:00:00",
+        "real_fin": "2025-10-25 00:00:00",
+        "t0_issue": "2025-10-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a844ee5f087d4d2a47fd",
+        "real_evento": "EVT-8534a0984e0a0ad89314",
+        "real_inicio": "2025-10-31 00:00:00",
+        "real_fin": "2025-10-31 00:00:00",
+        "t0_issue": "2025-10-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-88985ac2ed0dba9a7f57",
+        "real_evento": "EVT-4512ebe26052682e7951",
+        "real_inicio": "2025-11-02 00:00:00",
+        "real_fin": "2025-11-02 00:00:00",
+        "t0_issue": "2025-10-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1211fde9e265b4220527",
+        "real_evento": "EVT-d9bd0b77951629d703f1",
+        "real_inicio": "2025-10-31 00:00:00",
+        "real_fin": "2025-10-31 00:00:00",
+        "t0_issue": "2025-10-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-97e21a1856c74fb19d60",
+        "real_evento": "EVT-b2c055589cc1a4e0fc17",
+        "real_inicio": "2025-11-05 00:00:00",
+        "real_fin": "2025-11-05 00:00:00",
+        "t0_issue": "2025-10-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-de13c0f80d9714e45972",
+        "real_evento": "EVT-604cd6404fac76af2039",
+        "real_inicio": "2025-11-08 00:00:00",
+        "real_fin": "2025-11-09 00:00:00",
+        "t0_issue": "2025-11-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c6d2cae84b5876fbbcd4",
+        "real_evento": "EVT-5c1cbd2aad6357ff8aba",
+        "real_inicio": "2025-11-08 00:00:00",
+        "real_fin": "2025-11-08 00:00:00",
+        "t0_issue": "2025-11-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2f3cddff06b72283e660",
+        "real_evento": "EVT-df7aec1995a8276c5c20",
+        "real_inicio": "2025-11-09 00:00:00",
+        "real_fin": "2025-11-09 00:00:00",
+        "t0_issue": "2025-11-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c0391bfd654b8b13a689",
+        "real_evento": "EVT-45c44cc9031ecb2796f7",
+        "real_inicio": "2025-11-09 00:00:00",
+        "real_fin": "2025-11-09 00:00:00",
+        "t0_issue": "2025-11-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-511603df80f3d0e153c2",
+        "real_evento": "EVT-2261ebf1cf1aff2f9b80",
+        "real_inicio": "2025-11-13 00:00:00",
+        "real_fin": "2025-11-13 00:00:00",
+        "t0_issue": "2025-11-07 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2333d87c993276cabb6e",
+        "real_evento": "EVT-d0f60dc37948f7ba885b",
+        "real_inicio": "2025-11-13 00:00:00",
+        "real_fin": "2025-11-13 00:00:00",
+        "t0_issue": "2025-11-07 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a0db003d611aaed721f3",
+        "real_evento": "EVT-016310b169f4fbee2060",
+        "real_inicio": "2025-11-14 00:00:00",
+        "real_fin": "2025-11-14 00:00:00",
+        "t0_issue": "2025-11-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bcc10efa4464dca12ab6",
+        "real_evento": "EVT-642fc5122c47ad02e1d4",
+        "real_inicio": "2025-11-14 00:00:00",
+        "real_fin": "2025-11-14 00:00:00",
+        "t0_issue": "2025-11-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bfab65f027be6270f9a2",
+        "real_evento": "EVT-fa2931b5d262842dcae7",
+        "real_inicio": "2025-11-17 00:00:00",
+        "real_fin": "2025-11-17 00:00:00",
+        "t0_issue": "2025-11-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7e61e3bee0f1b10981a8",
+        "real_evento": "EVT-4e691386b1fb5613371a",
+        "real_inicio": "2025-11-17 00:00:00",
+        "real_fin": "2025-11-17 00:00:00",
+        "t0_issue": "2025-11-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f4253aa54e8594cc68a8",
+        "real_evento": "EVT-46413b91f954273bb28a",
+        "real_inicio": "2025-11-18 00:00:00",
+        "real_fin": "2025-11-18 00:00:00",
+        "t0_issue": "2025-11-12 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-983948125ac453c11333",
+        "real_evento": "EVT-5cfdd8fea805be02ca07",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-19 00:00:00",
+        "t0_issue": "2025-11-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-98a0ad49ecced28709a3",
+        "real_evento": "EVT-2b40f171ac4b1f40b9fc",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-20 00:00:00",
+        "t0_issue": "2025-11-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-eeb7dbac754ca4f3781d",
+        "real_evento": "EVT-234e8f1d8864a6f0da7a",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-19 00:00:00",
+        "t0_issue": "2025-11-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-479bda84710ff1adaa6e",
+        "real_evento": "EVT-b7f91fd3d815c9742e01",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-19 00:00:00",
+        "t0_issue": "2025-11-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cef0d6d6bf91dd35006f",
+        "real_evento": "EVT-9f04b141db0f083ac1db",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-19 00:00:00",
+        "t0_issue": "2025-11-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b87e643f0384dab20648",
+        "real_evento": "EVT-f162b5472e763bd7a72e",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-19 00:00:00",
+        "t0_issue": "2025-11-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-91b0de5f6c1d35877e12",
+        "real_evento": "EVT-2b40f171ac4b1f40b9fc",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-20 00:00:00",
+        "t0_issue": "2025-11-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a1b3f40825ce1a12632f",
+        "real_evento": "EVT-78d89be740eedd4804a4",
+        "real_inicio": "2025-11-22 00:00:00",
+        "real_fin": "2025-11-22 00:00:00",
+        "t0_issue": "2025-11-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2ecb5f57dbe8317c08d6",
+        "real_evento": "EVT-374711dd21f18e978dfa",
+        "real_inicio": "2025-11-20 00:00:00",
+        "real_fin": "2025-11-20 00:00:00",
+        "t0_issue": "2025-11-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b3c0dc1cc74d542815cc",
+        "real_evento": "EVT-f71622352929b6f74bbf",
+        "real_inicio": "2025-11-21 00:00:00",
+        "real_fin": "2025-11-25 00:00:00",
+        "t0_issue": "2025-11-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ea31f059a1ce492b231d",
+        "real_evento": "EVT-7a1dbb7726671af47b90",
+        "real_inicio": "2025-11-23 00:00:00",
+        "real_fin": "2025-11-23 00:00:00",
+        "t0_issue": "2025-11-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6521376f88013a29217a",
+        "real_evento": "EVT-bc719643bc3ce9594576",
+        "real_inicio": "2025-11-24 00:00:00",
+        "real_fin": "2025-11-24 00:00:00",
+        "t0_issue": "2025-11-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0e2239edc1a53539d9e7",
+        "real_evento": "EVT-d49c76d5fc3376469f08",
+        "real_inicio": "2025-11-24 00:00:00",
+        "real_fin": "2025-11-24 00:00:00",
+        "t0_issue": "2025-11-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ea656643958b524ad558",
+        "real_evento": "EVT-0a357a3e6ebf9012ac69",
+        "real_inicio": "2025-11-25 00:00:00",
+        "real_fin": "2025-11-26 00:00:00",
+        "t0_issue": "2025-11-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ae63d6955bc73d1dd419",
+        "real_evento": "EVT-260c791bc52ae3a2a68a",
+        "real_inicio": "2025-11-25 00:00:00",
+        "real_fin": "2025-11-25 00:00:00",
+        "t0_issue": "2025-11-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d1921220da83d1492766",
+        "real_evento": "EVT-463ececc8d97915c501e",
+        "real_inicio": "2025-11-26 00:00:00",
+        "real_fin": "2025-11-26 00:00:00",
+        "t0_issue": "2025-11-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ac254d6428ecccd52c6a",
+        "real_evento": "EVT-cc03cc3447e019350bf8",
+        "real_inicio": "2025-11-26 00:00:00",
+        "real_fin": "2025-11-26 00:00:00",
+        "t0_issue": "2025-11-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5f84c4fd3245e2d2a7a3",
+        "real_evento": "EVT-ed8380dd49e9290ce2bb",
+        "real_inicio": "2025-11-19 00:00:00",
+        "real_fin": "2025-11-19 00:00:00",
+        "t0_issue": "2025-11-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-85c6f9db27030e991ffe",
+        "real_evento": "EVT-f69b00711414010813c9",
+        "real_inicio": "2025-11-26 00:00:00",
+        "real_fin": "2025-11-26 00:00:00",
+        "t0_issue": "2025-11-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-755df52a3ed6d9a80001",
+        "real_evento": "EVT-bf6a579a3bf85b3d402e",
+        "real_inicio": "2025-11-27 00:00:00",
+        "real_fin": "2025-11-27 00:00:00",
+        "t0_issue": "2025-11-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cb8cb7ce8e0a83ae3b9f",
+        "real_evento": "EVT-b27fb8832d42b3074e8c",
+        "real_inicio": "2025-12-02 00:00:00",
+        "real_fin": "2025-12-02 00:00:00",
+        "t0_issue": "2025-11-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-859c3136c4f25272b152",
+        "real_evento": "EVT-fab9abf0811e2d82b1c5",
+        "real_inicio": "2025-12-04 00:00:00",
+        "real_fin": "2025-12-04 00:00:00",
+        "t0_issue": "2025-11-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1503f98a1adad85fa3d8",
+        "real_evento": "EVT-69d511ddfbb33a8af8d2",
+        "real_inicio": "2025-12-04 00:00:00",
+        "real_fin": "2025-12-04 00:00:00",
+        "t0_issue": "2025-11-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2653481172e24d2e8772",
+        "real_evento": "EVT-2e83912ad05f92505924",
+        "real_inicio": "2025-12-04 00:00:00",
+        "real_fin": "2025-12-04 00:00:00",
+        "t0_issue": "2025-11-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-463ca723d4955410e9ae",
+        "real_evento": "EVT-439f8a748d89bd94e3b8",
+        "real_inicio": "2025-12-05 00:00:00",
+        "real_fin": "2025-12-05 00:00:00",
+        "t0_issue": "2025-11-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-70ae67ac0dd8458b30c9",
+        "real_evento": "EVT-cbfd2683049971bb12f9",
+        "real_inicio": "2025-12-05 00:00:00",
+        "real_fin": "2025-12-09 00:00:00",
+        "t0_issue": "2025-11-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1617f8b33f856d6227c1",
+        "real_evento": "EVT-ca05599be76633af26d2",
+        "real_inicio": "2025-12-05 00:00:00",
+        "real_fin": "2025-12-05 00:00:00",
+        "t0_issue": "2025-11-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-939b4e31199bd2b95b4e",
+        "real_evento": "EVT-bb1a172e7830786ff7b2",
+        "real_inicio": "2025-12-05 00:00:00",
+        "real_fin": "2025-12-05 00:00:00",
+        "t0_issue": "2025-11-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1e1236be62d802fab62d",
+        "real_evento": "EVT-7bb2ba54cff40749f435",
+        "real_inicio": "2025-12-09 00:00:00",
+        "real_fin": "2025-12-09 00:00:00",
+        "t0_issue": "2025-12-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5fc82067d4016950a194",
+        "real_evento": "EVT-de7e64cb49a0de0015d4",
+        "real_inicio": "2025-12-09 00:00:00",
+        "real_fin": "2025-12-09 00:00:00",
+        "t0_issue": "2025-12-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-01a386bec6e54473f5cf",
+        "real_evento": "EVT-f9463eeb15c619a0c676",
+        "real_inicio": "2025-12-10 00:00:00",
+        "real_fin": "2025-12-10 00:00:00",
+        "t0_issue": "2025-12-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-aff1b2cedd8e789afdcf",
+        "real_evento": "EVT-81779aa61cb5775ad99d",
+        "real_inicio": "2025-12-10 00:00:00",
+        "real_fin": "2025-12-10 00:00:00",
+        "t0_issue": "2025-12-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7001d5a44fd20b25686d",
+        "real_evento": "EVT-47d35434902c91c9018f",
+        "real_inicio": "2025-12-10 00:00:00",
+        "real_fin": "2025-12-10 00:00:00",
+        "t0_issue": "2025-12-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4b2b4b45ddf934983058",
+        "real_evento": "EVT-50c18c52afbacb8f758a",
+        "real_inicio": "2025-12-10 00:00:00",
+        "real_fin": "2025-12-10 00:00:00",
+        "t0_issue": "2025-12-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-17dafcaea2b360980053",
+        "real_evento": "EVT-083149da41da57b45eb5",
+        "real_inicio": "2025-12-11 00:00:00",
+        "real_fin": "2025-12-11 00:00:00",
+        "t0_issue": "2025-12-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4bf14ae7bcdec43415cd",
+        "real_evento": "EVT-fb8a6d6b7a34a797c692",
+        "real_inicio": "2025-12-12 00:00:00",
+        "real_fin": "2025-12-12 00:00:00",
+        "t0_issue": "2025-12-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-28b17e76830ea8324643",
+        "real_evento": "EVT-5013ef03461d5b90a336",
+        "real_inicio": "2025-12-13 00:00:00",
+        "real_fin": "2025-12-13 00:00:00",
+        "t0_issue": "2025-12-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-122da8c7440bed62debd",
+        "real_evento": "EVT-581ec76d7622162c7c4e",
+        "real_inicio": "2025-12-16 00:00:00",
+        "real_fin": "2025-12-16 00:00:00",
+        "t0_issue": "2025-12-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b7a87abd13b52cef267a",
+        "real_evento": "EVT-f8ec8e201d24ea232fd8",
+        "real_inicio": "2025-12-16 00:00:00",
+        "real_fin": "2025-12-16 00:00:00",
+        "t0_issue": "2025-12-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bd6c0ef1acb845343c1d",
+        "real_evento": "EVT-3029e0de62db621d5ba3",
+        "real_inicio": "2025-12-17 00:00:00",
+        "real_fin": "2025-12-17 00:00:00",
+        "t0_issue": "2025-12-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ca331efc3120fa43938f",
+        "real_evento": "EVT-1a7af064c979a919e677",
+        "real_inicio": "2025-12-17 00:00:00",
+        "real_fin": "2025-12-17 00:00:00",
+        "t0_issue": "2025-12-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2e39007f1fefa761f9b3",
+        "real_evento": "EVT-fe8aa20908a0b7f85383",
+        "real_inicio": "2025-12-17 00:00:00",
+        "real_fin": "2025-12-17 00:00:00",
+        "t0_issue": "2025-12-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a74c9d96ea0165e6dbc3",
+        "real_evento": "EVT-299475ec74a0f6bc29b7",
+        "real_inicio": "2025-12-18 00:00:00",
+        "real_fin": "2025-12-18 00:00:00",
+        "t0_issue": "2025-12-12 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-543d1acb71c5a6c740b1",
+        "real_evento": "EVT-4de045f70961c921afd6",
+        "real_inicio": "2025-12-19 00:00:00",
+        "real_fin": "2025-12-19 00:00:00",
+        "t0_issue": "2025-12-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-abe938ea54b3d92325a7",
+        "real_evento": "EVT-f860b7ef625a35380e7e",
+        "real_inicio": "2025-12-19 00:00:00",
+        "real_fin": "2025-12-19 00:00:00",
+        "t0_issue": "2025-12-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e7a674513ff492cd263d",
+        "real_evento": "EVT-f67a6b363a2b01766efd",
+        "real_inicio": "2025-12-19 00:00:00",
+        "real_fin": "2025-12-19 00:00:00",
+        "t0_issue": "2025-12-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-aa53c05e156a128ee2b1",
+        "real_evento": "EVT-2fbe680eede572ff95bd",
+        "real_inicio": "2025-12-21 00:00:00",
+        "real_fin": "2025-12-21 00:00:00",
+        "t0_issue": "2025-12-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bba931e81b9ad61f4502",
+        "real_evento": "EVT-bdc592e05ee9ef5fa4d2",
+        "real_inicio": "2025-12-19 00:00:00",
+        "real_fin": "2025-12-20 00:00:00",
+        "t0_issue": "2025-12-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-051ccbffea386fdcbf5b",
+        "real_evento": "EVT-51ff89c87000f0a399a6",
+        "real_inicio": "2025-12-18 00:00:00",
+        "real_fin": "2025-12-19 00:00:00",
+        "t0_issue": "2025-12-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-031c2cda5558f55e8ec4",
+        "real_evento": "EVT-5c4f19358dce136f39e5",
+        "real_inicio": "2025-12-22 00:00:00",
+        "real_fin": "2025-12-22 00:00:00",
+        "t0_issue": "2025-12-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cc8e3325029626a54075",
+        "real_evento": "EVT-9b964b5f7b04ea5a7a61",
+        "real_inicio": "2025-12-23 00:00:00",
+        "real_fin": "2025-12-27 00:00:00",
+        "t0_issue": "2025-12-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6e4fd4e92367da3a95d8",
+        "real_evento": "EVT-1056012679a3fc14cf13",
+        "real_inicio": "2025-12-25 00:00:00",
+        "real_fin": "2025-12-25 00:00:00",
+        "t0_issue": "2025-12-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-748e9d633ec3717183d5",
+        "real_evento": "EVT-30951178173497fc5f00",
+        "real_inicio": "2025-12-29 00:00:00",
+        "real_fin": "2025-12-29 00:00:00",
+        "t0_issue": "2025-12-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1e87330fd80ffc145c01",
+        "real_evento": "EVT-a4f33a617bc7302348dc",
+        "real_inicio": "2026-01-01 00:00:00",
+        "real_fin": "2026-01-01 00:00:00",
+        "t0_issue": "2025-12-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-40b37211f3209a1c7ddf",
+        "real_evento": "EVT-58c0c7fa5bc8d47c1f28",
+        "real_inicio": "2025-12-30 00:00:00",
+        "real_fin": "2025-12-30 00:00:00",
+        "t0_issue": "2025-12-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4edb4262278e49aaff5f",
+        "real_evento": "EVT-fbecaff3c142fcb98991",
+        "real_inicio": "2025-12-31 00:00:00",
+        "real_fin": "2025-12-31 00:00:00",
+        "t0_issue": "2025-12-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a75d8803a6cffc64df75",
+        "real_evento": "EVT-86682f8a958ac11cbbb5",
+        "real_inicio": "2026-01-01 00:00:00",
+        "real_fin": "2026-01-01 00:00:00",
+        "t0_issue": "2025-12-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-84f152773cf63ca53006",
+        "real_evento": "EVT-4c1c835fcc0f201f0d7f",
+        "real_inicio": "2026-01-03 00:00:00",
+        "real_fin": "2026-01-07 00:00:00",
+        "t0_issue": "2025-12-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-91992dfa7f37f4e8a3ff",
+        "real_evento": "EVT-145552932e172cb8e451",
+        "real_inicio": "2026-01-01 00:00:00",
+        "real_fin": "2026-01-01 00:00:00",
+        "t0_issue": "2025-12-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f075932d42a473d72fab",
+        "real_evento": "EVT-080d168d0eba24fee0a1",
+        "real_inicio": "2026-01-01 00:00:00",
+        "real_fin": "2026-01-01 00:00:00",
+        "t0_issue": "2025-12-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cd1a55659a4ed56c12d7",
+        "real_evento": "EVT-43aa6392d35003ed33e5",
+        "real_inicio": "2026-01-01 00:00:00",
+        "real_fin": "2026-01-04 00:00:00",
+        "t0_issue": "2025-12-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-45aea33b3c7d399716a0",
+        "real_evento": "EVT-dd16efee74c11db28543",
+        "real_inicio": "2026-01-02 00:00:00",
+        "real_fin": "2026-01-02 00:00:00",
+        "t0_issue": "2025-12-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e4727ec3a0c71b9bc430",
+        "real_evento": "EVT-99bcc78f582f2f905b2f",
+        "real_inicio": "2026-01-04 00:00:00",
+        "real_fin": "2026-01-05 00:00:00",
+        "t0_issue": "2025-12-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-990c655526dca505fe5d",
+        "real_evento": "EVT-e579582bd8f55d95fdaa",
+        "real_inicio": "2026-01-04 00:00:00",
+        "real_fin": "2026-01-04 00:00:00",
+        "t0_issue": "2025-12-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-3c866ff8855f7d4dc2df",
+        "real_evento": "EVT-b30a163fd8b9a6621ea4",
+        "real_inicio": "2026-01-04 00:00:00",
+        "real_fin": "2026-01-04 00:00:00",
+        "t0_issue": "2025-12-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e135c1583700043c452c",
+        "real_evento": "EVT-7de03c0276f8f14dc379",
+        "real_inicio": "2026-01-05 00:00:00",
+        "real_fin": "2026-01-05 00:00:00",
+        "t0_issue": "2025-12-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2dd19e4101714580b6f0",
+        "real_evento": "EVT-f63b293895587ef83a33",
+        "real_inicio": "2026-01-05 00:00:00",
+        "real_fin": "2026-01-05 00:00:00",
+        "t0_issue": "2025-12-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ee924a8c4d398c464e89",
+        "real_evento": "EVT-6c887e923c5a7edb1a6a",
+        "real_inicio": "2026-01-05 00:00:00",
+        "real_fin": "2026-01-05 00:00:00",
+        "t0_issue": "2025-12-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-644133ae3dfa29915211",
+        "real_evento": "EVT-7d6fa186b541b31a42b0",
+        "real_inicio": "2026-01-05 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c230c265929c9fedd1b8",
+        "real_evento": "EVT-350b36daf8438f9e0348",
+        "real_inicio": "2026-01-05 00:00:00",
+        "real_fin": "2026-01-05 00:00:00",
+        "t0_issue": "2025-12-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-097129d170dc80611261",
+        "real_evento": "EVT-d331041f33818b89b1a9",
+        "real_inicio": "2026-01-05 00:00:00",
+        "real_fin": "2026-01-05 00:00:00",
+        "t0_issue": "2025-12-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2401ed511511d5ad82b2",
+        "real_evento": "EVT-97100337c84ecefde027",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-650dbcdb82ab35c9edf1",
+        "real_evento": "EVT-3d3809de3a3b8f95ecd4",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f805f17176d93bc3e7e2",
+        "real_evento": "EVT-1dd31ca505761d63c4c9",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f851201ba8518b7bbdc3",
+        "real_evento": "EVT-dabc85256a8395f1a0cd",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7054e6c6eeaf6eac89d7",
+        "real_evento": "EVT-0e129d5c9e6162050ed1",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a51d4390cb301c8b2318",
+        "real_evento": "EVT-56dcfdba0e5dc62dbcd2",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-873e1b666b4a6b6d8645",
+        "real_evento": "EVT-13dff0d6e7d0850a2392",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bb7a3045124e0e0118b2",
+        "real_evento": "EVT-fc52efc20dbf64425bb3",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b83fc141d5a9ee133249",
+        "real_evento": "EVT-f3d21bf03ecc86bca366",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-afc5f68a9bdd3123d3a9",
+        "real_evento": "EVT-0abc52da5a8b330c2876",
+        "real_inicio": "2026-01-06 00:00:00",
+        "real_fin": "2026-01-06 00:00:00",
+        "t0_issue": "2025-12-31 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b69f1d705e25268723f9",
+        "real_evento": "EVT-909caf4a0b76bdaf1fcf",
+        "real_inicio": "2026-01-07 00:00:00",
+        "real_fin": "2026-01-07 00:00:00",
+        "t0_issue": "2026-01-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8f8fecfd8a9ca1e55499",
+        "real_evento": "EVT-2697fa7410077eb2b6b6",
+        "real_inicio": "2026-01-10 00:00:00",
+        "real_fin": "2026-01-10 00:00:00",
+        "t0_issue": "2026-01-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9a696923aa538571bd21",
+        "real_evento": "EVT-2697fa7410077eb2b6b6",
+        "real_inicio": "2026-01-10 00:00:00",
+        "real_fin": "2026-01-10 00:00:00",
+        "t0_issue": "2026-01-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-06e8f7879dc232cec01f",
+        "real_evento": "EVT-bc550dc2e73cda7b7324",
+        "real_inicio": "2026-01-10 00:00:00",
+        "real_fin": "2026-01-13 00:00:00",
+        "t0_issue": "2026-01-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ab929ec4d2cf7a8f395a",
+        "real_evento": "EVT-5e3d642bd7a44b6b85e2",
+        "real_inicio": "2026-01-10 00:00:00",
+        "real_fin": "2026-01-10 00:00:00",
+        "t0_issue": "2026-01-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-07637ba838dae08670e6",
+        "real_evento": "EVT-b40ccfabf28614c95438",
+        "real_inicio": "2026-01-11 00:00:00",
+        "real_fin": "2026-01-11 00:00:00",
+        "t0_issue": "2026-01-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-267b396e59dba62b8a57",
+        "real_evento": "EVT-413bab5ed3603dfb6386",
+        "real_inicio": "2026-01-11 00:00:00",
+        "real_fin": "2026-01-11 00:00:00",
+        "t0_issue": "2026-01-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-debe597d0309a55fd283",
+        "real_evento": "EVT-5c67960f4da2f4ecc954",
+        "real_inicio": "2026-01-11 00:00:00",
+        "real_fin": "2026-01-11 00:00:00",
+        "t0_issue": "2026-01-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-251e2263733e7e23d304",
+        "real_evento": "EVT-4eaa2fb3f18fb903759a",
+        "real_inicio": "2026-01-12 00:00:00",
+        "real_fin": "2026-01-16 00:00:00",
+        "t0_issue": "2026-01-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-efc6167f3ececbf53b09",
+        "real_evento": "EVT-0e3ae6da27094480d7ff",
+        "real_inicio": "2026-01-12 00:00:00",
+        "real_fin": "2026-01-12 00:00:00",
+        "t0_issue": "2026-01-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-948dbff2fd820a82055f",
+        "real_evento": "EVT-4fab24fb7c890457a349",
+        "real_inicio": "2026-01-12 00:00:00",
+        "real_fin": "2026-01-12 00:00:00",
+        "t0_issue": "2026-01-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ff380bc34ab687eaceca",
+        "real_evento": "EVT-56adbe41dedc3f6c1ad4",
+        "real_inicio": "2026-01-13 00:00:00",
+        "real_fin": "2026-01-13 00:00:00",
+        "t0_issue": "2026-01-07 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-081ecdbb5653d60a432c",
+        "real_evento": "EVT-2528d26f99ee4b630e28",
+        "real_inicio": "2026-01-14 00:00:00",
+        "real_fin": "2026-01-14 00:00:00",
+        "t0_issue": "2026-01-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e165ef24a5e58e991b4b",
+        "real_evento": "EVT-945dbd68b533c88a1af0",
+        "real_inicio": "2026-01-14 00:00:00",
+        "real_fin": "2026-01-14 00:00:00",
+        "t0_issue": "2026-01-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0aa32334d35279550e3d",
+        "real_evento": "EVT-11675aef258d8c6a257e",
+        "real_inicio": "2026-01-15 00:00:00",
+        "real_fin": "2026-01-15 00:00:00",
+        "t0_issue": "2026-01-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f70718b81ae3b24c33b2",
+        "real_evento": "EVT-b6638b0fd93fc50df457",
+        "real_inicio": "2026-01-18 00:00:00",
+        "real_fin": "2026-01-18 00:00:00",
+        "t0_issue": "2026-01-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2a6d8d4b9fbd293fa054",
+        "real_evento": "EVT-0645fe4b5828d74177bf",
+        "real_inicio": "2026-01-16 00:00:00",
+        "real_fin": "2026-01-16 00:00:00",
+        "t0_issue": "2026-01-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e5ca6eb8a0cf1e22b12a",
+        "real_evento": "EVT-773d2ac2f7d1fac42672",
+        "real_inicio": "2026-01-16 00:00:00",
+        "real_fin": "2026-01-16 00:00:00",
+        "t0_issue": "2026-01-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-54b9c9127f559c0a2215",
+        "real_evento": "EVT-a10a2e84a45ff5757ef6",
+        "real_inicio": "2026-01-16 00:00:00",
+        "real_fin": "2026-01-16 00:00:00",
+        "t0_issue": "2026-01-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-94bcb1772ab90bc9d42d",
+        "real_evento": "EVT-8cca7666c9e880e062f6",
+        "real_inicio": "2026-01-17 00:00:00",
+        "real_fin": "2026-01-17 00:00:00",
+        "t0_issue": "2026-01-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d3cee7ea8bd2e5968f7a",
+        "real_evento": "EVT-093ea2f30018be24f6ed",
+        "real_inicio": "2026-01-18 00:00:00",
+        "real_fin": "2026-01-18 00:00:00",
+        "t0_issue": "2026-01-12 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-64c79fb14b7ca680c7bb",
+        "real_evento": "EVT-a6d76bd44a2312bcedd0",
+        "real_inicio": "2026-01-19 00:00:00",
+        "real_fin": "2026-01-19 00:00:00",
+        "t0_issue": "2026-01-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8fb930e612d62af18134",
+        "real_evento": "EVT-828047997617b087c6cb",
+        "real_inicio": "2026-01-19 00:00:00",
+        "real_fin": "2026-01-19 00:00:00",
+        "t0_issue": "2026-01-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b6661d7e676840153837",
+        "real_evento": "EVT-d74088cf4a0b13dbcdbb",
+        "real_inicio": "2026-01-20 00:00:00",
+        "real_fin": "2026-01-20 00:00:00",
+        "t0_issue": "2026-01-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7a435b5e0259fba99223",
+        "real_evento": "EVT-b1552c289249ad31d286",
+        "real_inicio": "2026-01-20 00:00:00",
+        "real_fin": "2026-01-20 00:00:00",
+        "t0_issue": "2026-01-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7858eaad0895857d8a50",
+        "real_evento": "EVT-b4e376f6c769bdad2158",
+        "real_inicio": "2026-01-21 00:00:00",
+        "real_fin": "2026-01-21 00:00:00",
+        "t0_issue": "2026-01-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4dd72af2c540ead8af91",
+        "real_evento": "EVT-ef05ce7726c9ff4fdd58",
+        "real_inicio": "2026-01-21 00:00:00",
+        "real_fin": "2026-01-21 00:00:00",
+        "t0_issue": "2026-01-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-59baee5eb1110d3d404f",
+        "real_evento": "EVT-51e17fde274b6d55875f",
+        "real_inicio": "2026-01-21 00:00:00",
+        "real_fin": "2026-01-21 00:00:00",
+        "t0_issue": "2026-01-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5d8b68d6e9442dd0250f",
+        "real_evento": "EVT-bd8067520b7f7f0974f0",
+        "real_inicio": "2026-01-19 00:00:00",
+        "real_fin": "2026-01-23 00:00:00",
+        "t0_issue": "2026-01-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ed3076d9d48705772e6b",
+        "real_evento": "EVT-91cd19f5e9fd14813564",
+        "real_inicio": "2026-01-25 00:00:00",
+        "real_fin": "2026-01-25 00:00:00",
+        "t0_issue": "2026-01-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-afd8dcfbdac66141ffbf",
+        "real_evento": "EVT-095d7ec0f2ed3b42cbf2",
+        "real_inicio": "2026-01-26 00:00:00",
+        "real_fin": "2026-01-26 00:00:00",
+        "t0_issue": "2026-01-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c5e3b1cd76b729399a79",
+        "real_evento": "EVT-635a7884db7a30f4c2ea",
+        "real_inicio": "2026-01-27 00:00:00",
+        "real_fin": "2026-01-27 00:00:00",
+        "t0_issue": "2026-01-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2880fd64ab0ece1e9f09",
+        "real_evento": "EVT-00c8d9c342ee53762245",
+        "real_inicio": "2026-01-28 00:00:00",
+        "real_fin": "2026-01-28 00:00:00",
+        "t0_issue": "2026-01-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-936e47b78d36eaaaa85f",
+        "real_evento": "EVT-304806ada30fc7957149",
+        "real_inicio": "2026-01-28 00:00:00",
+        "real_fin": "2026-01-29 00:00:00",
+        "t0_issue": "2026-01-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e932cc86a9b8da485cff",
+        "real_evento": "EVT-bf49024400929acb9d96",
+        "real_inicio": "2026-01-28 00:00:00",
+        "real_fin": "2026-01-28 00:00:00",
+        "t0_issue": "2026-01-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7fa4cd1ff052e2c50e45",
+        "real_evento": "EVT-54397911dbb5f5bdb20b",
+        "real_inicio": "2026-01-30 00:00:00",
+        "real_fin": "2026-02-04 00:00:00",
+        "t0_issue": "2026-01-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d8fa7b1dcc54f3d3c48f",
+        "real_evento": "EVT-9c4294592c5ebc7401aa",
+        "real_inicio": "2026-01-30 00:00:00",
+        "real_fin": "2026-01-30 00:00:00",
+        "t0_issue": "2026-01-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8531e2c4979dfc4d2d01",
+        "real_evento": "EVT-082c6a8a6858b6dd3733",
+        "real_inicio": "2026-01-29 00:00:00",
+        "real_fin": "2026-01-29 00:00:00",
+        "t0_issue": "2026-01-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4bb8f8ca4688d6dbcebd",
+        "real_evento": "EVT-afdec3b41afd41a4fbf3",
+        "real_inicio": "2026-01-29 00:00:00",
+        "real_fin": "2026-01-29 00:00:00",
+        "t0_issue": "2026-01-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a6436eb227b189517819",
+        "real_evento": "EVT-7d529f46a6fa0af3323e",
+        "real_inicio": "2026-01-30 00:00:00",
+        "real_fin": "2026-01-30 00:00:00",
+        "t0_issue": "2026-01-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-da1b137f37eac278de67",
+        "real_evento": "EVT-c87b449f5232c512b564",
+        "real_inicio": "2026-01-30 00:00:00",
+        "real_fin": "2026-01-30 00:00:00",
+        "t0_issue": "2026-01-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ef132c3bc8446163bd58",
+        "real_evento": "EVT-f789fe76f27959558af8",
+        "real_inicio": "2026-01-30 00:00:00",
+        "real_fin": "2026-01-30 00:00:00",
+        "t0_issue": "2026-01-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-80bb9411f357a8e49ad0",
+        "real_evento": "EVT-002d025960c2c9ae93cc",
+        "real_inicio": "2026-01-31 00:00:00",
+        "real_fin": "2026-01-31 00:00:00",
+        "t0_issue": "2026-01-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-afb59c3448a250290605",
+        "real_evento": "EVT-e59305e45947f4146eb1",
+        "real_inicio": "2026-02-01 00:00:00",
+        "real_fin": "2026-02-01 00:00:00",
+        "t0_issue": "2026-01-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-56812018f0f737970082",
+        "real_evento": "EVT-51b1b705ca86ce9477f4",
+        "real_inicio": "2026-02-02 00:00:00",
+        "real_fin": "2026-02-04 00:00:00",
+        "t0_issue": "2026-01-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-65e02bd4d4527f1b12a4",
+        "real_evento": "EVT-5728111c9436b1cd178e",
+        "real_inicio": "2026-02-03 00:00:00",
+        "real_fin": "2026-02-05 00:00:00",
+        "t0_issue": "2026-01-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-85c90960a9cfdcb228cb",
+        "real_evento": "EVT-78dfed300a0194fe9059",
+        "real_inicio": "2026-02-03 00:00:00",
+        "real_fin": "2026-02-03 00:00:00",
+        "t0_issue": "2026-01-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-93876c00904ec4bc1b01",
+        "real_evento": "EVT-b5f253c27d972d1ffc6a",
+        "real_inicio": "2026-02-04 00:00:00",
+        "real_fin": "2026-02-04 00:00:00",
+        "t0_issue": "2026-01-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-62b8afbfe696d1f1e693",
+        "real_evento": "EVT-101eca2bbb924fcc2f9e",
+        "real_inicio": "2026-02-04 00:00:00",
+        "real_fin": "2026-02-04 00:00:00",
+        "t0_issue": "2026-01-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9e3ae413285423fd33a6",
+        "real_evento": "EVT-e2e4d518a813a1678eef",
+        "real_inicio": "2026-02-07 00:00:00",
+        "real_fin": "2026-02-07 00:00:00",
+        "t0_issue": "2026-02-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-38851c983256c91484f7",
+        "real_evento": "EVT-4677802915e468eca2ed",
+        "real_inicio": "2026-02-07 00:00:00",
+        "real_fin": "2026-02-07 00:00:00",
+        "t0_issue": "2026-02-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0a0777f5dd7dad1ea14f",
+        "real_evento": "EVT-ec738dcb2ab720edb9a3",
+        "real_inicio": "2026-02-07 00:00:00",
+        "real_fin": "2026-02-07 00:00:00",
+        "t0_issue": "2026-02-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0424b6bfd801405a081c",
+        "real_evento": "EVT-26927c56ba4209f4dd38",
+        "real_inicio": "2026-02-07 00:00:00",
+        "real_fin": "2026-02-07 00:00:00",
+        "t0_issue": "2026-02-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2bdd849da7d43b1f31cf",
+        "real_evento": "EVT-31d6c35a63ffe51dd82c",
+        "real_inicio": "2026-02-08 00:00:00",
+        "real_fin": "2026-02-08 00:00:00",
+        "t0_issue": "2026-02-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-895efd4ecf071b56382e",
+        "real_evento": "EVT-c389816281046b8e3535",
+        "real_inicio": "2026-02-08 00:00:00",
+        "real_fin": "2026-02-08 00:00:00",
+        "t0_issue": "2026-02-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-00f4b22c7d5403f8bd44",
+        "real_evento": "EVT-8a78efa32cdd680917e0",
+        "real_inicio": "2026-02-10 00:00:00",
+        "real_fin": "2026-02-10 00:00:00",
+        "t0_issue": "2026-02-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2b5a5a5071da34e2bd6a",
+        "real_evento": "EVT-825b98a3d03b70cb47ef",
+        "real_inicio": "2026-02-10 00:00:00",
+        "real_fin": "2026-02-10 00:00:00",
+        "t0_issue": "2026-02-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-11170b4398b2ef86a313",
+        "real_evento": "EVT-0bfe576d9ee0ebb6b827",
+        "real_inicio": "2026-02-10 00:00:00",
+        "real_fin": "2026-02-10 00:00:00",
+        "t0_issue": "2026-02-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8e22c2a996e3d45cdd43",
+        "real_evento": "EVT-dff16bf48b5312838def",
+        "real_inicio": "2026-02-10 00:00:00",
+        "real_fin": "2026-02-10 00:00:00",
+        "t0_issue": "2026-02-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-904d1407788a4d06a610",
+        "real_evento": "EVT-1a80bb83a52a410f27bf",
+        "real_inicio": "2026-02-10 00:00:00",
+        "real_fin": "2026-02-10 00:00:00",
+        "t0_issue": "2026-02-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-08b31c9bc0223fefec7e",
+        "real_evento": "EVT-e4b95cf6e3b28a8377d8",
+        "real_inicio": "2026-02-12 00:00:00",
+        "real_fin": "2026-02-12 00:00:00",
+        "t0_issue": "2026-02-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e8e25f75642fed29601d",
+        "real_evento": "EVT-c07fde6e234d22fb1586",
+        "real_inicio": "2026-02-16 00:00:00",
+        "real_fin": "2026-02-16 00:00:00",
+        "t0_issue": "2026-02-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c81260f49850f2c57e94",
+        "real_evento": "EVT-714a19a5d4d8309ce6f3",
+        "real_inicio": "2026-02-17 00:00:00",
+        "real_fin": "2026-02-17 00:00:00",
+        "t0_issue": "2026-02-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-083af74f5d6a9e2572e2",
+        "real_evento": "EVT-47deb7e45b8fd23c10ed",
+        "real_inicio": "2026-02-20 00:00:00",
+        "real_fin": "2026-02-20 00:00:00",
+        "t0_issue": "2026-02-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b64c262b5c41006b6fe7",
+        "real_evento": "EVT-4dd6acee324e5024017c",
+        "real_inicio": "2026-02-20 00:00:00",
+        "real_fin": "2026-02-20 00:00:00",
+        "t0_issue": "2026-02-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0da4066648c9d3c21669",
+        "real_evento": "EVT-47deb7e45b8fd23c10ed",
+        "real_inicio": "2026-02-20 00:00:00",
+        "real_fin": "2026-02-20 00:00:00",
+        "t0_issue": "2026-02-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-29276057e08c3e06bc9f",
+        "real_evento": "EVT-33f36295f3e53bad709d",
+        "real_inicio": "2026-02-20 00:00:00",
+        "real_fin": "2026-02-20 00:00:00",
+        "t0_issue": "2026-02-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2825bc0838b9b8a3dc5a",
+        "real_evento": "EVT-4d044144e723148ca1b7",
+        "real_inicio": "2026-02-20 00:00:00",
+        "real_fin": "2026-02-21 00:00:00",
+        "t0_issue": "2026-02-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ccdd2143a5275d598571",
+        "real_evento": "EVT-5024ceead43efe475229",
+        "real_inicio": "2026-02-20 00:00:00",
+        "real_fin": "2026-02-20 00:00:00",
+        "t0_issue": "2026-02-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-32b363aaca2306c9e5c6",
+        "real_evento": "EVT-d5e4245e9586e7ce7486",
+        "real_inicio": "2026-02-22 00:00:00",
+        "real_fin": "2026-02-22 00:00:00",
+        "t0_issue": "2026-02-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9547d488577781e53be3",
+        "real_evento": "EVT-7222c9e44f7b61db8e40",
+        "real_inicio": "2026-02-23 00:00:00",
+        "real_fin": "2026-02-23 00:00:00",
+        "t0_issue": "2026-02-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-71965dd43ab4bf6b0c1a",
+        "real_evento": "EVT-7d1871b2d7165651957d",
+        "real_inicio": "2026-02-23 00:00:00",
+        "real_fin": "2026-02-23 00:00:00",
+        "t0_issue": "2026-02-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4fc3d39c14fb3490cbfa",
+        "real_evento": "EVT-c9845bfcbb06952846d9",
+        "real_inicio": "2026-02-24 00:00:00",
+        "real_fin": "2026-02-24 00:00:00",
+        "t0_issue": "2026-02-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-746c8d43fcae860efa7e",
+        "real_evento": "EVT-86118592c8e914dce978",
+        "real_inicio": "2026-02-24 00:00:00",
+        "real_fin": "2026-02-24 00:00:00",
+        "t0_issue": "2026-02-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-243c5d3d0d7a25b7d857",
+        "real_evento": "EVT-c208ebd87920c974f868",
+        "real_inicio": "2026-02-25 00:00:00",
+        "real_fin": "2026-02-25 00:00:00",
+        "t0_issue": "2026-02-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0b486817ca19a8bfa775",
+        "real_evento": "EVT-05f9b923f87bf5a7f89d",
+        "real_inicio": "2026-02-27 00:00:00",
+        "real_fin": "2026-02-27 00:00:00",
+        "t0_issue": "2026-02-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-15fe122cdee900dba71a",
+        "real_evento": "EVT-fd557351b1c6143d2ece",
+        "real_inicio": "2026-02-27 00:00:00",
+        "real_fin": "2026-02-27 00:00:00",
+        "t0_issue": "2026-02-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4511facfa0be783a5a26",
+        "real_evento": "EVT-c9b338045269bc40e5d1",
+        "real_inicio": "2026-02-27 00:00:00",
+        "real_fin": "2026-03-01 00:00:00",
+        "t0_issue": "2026-02-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6bf77df1e88e32be0015",
+        "real_evento": "EVT-3dcfecefedf379c174cf",
+        "real_inicio": "2026-02-28 00:00:00",
+        "real_fin": "2026-02-28 00:00:00",
+        "t0_issue": "2026-02-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-194b600089ce38865340",
+        "real_evento": "EVT-442098ee6c9b3e0870c2",
+        "real_inicio": "2026-02-28 00:00:00",
+        "real_fin": "2026-03-01 00:00:00",
+        "t0_issue": "2026-02-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f6d8fc52feeb96211f57",
+        "real_evento": "EVT-b120ad49388369d7fe6f",
+        "real_inicio": "2026-03-01 00:00:00",
+        "real_fin": "2026-03-01 00:00:00",
+        "t0_issue": "2026-02-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d4ab2b28485b9377e385",
+        "real_evento": "EVT-b77a8237a6ee6de59325",
+        "real_inicio": "2026-03-01 00:00:00",
+        "real_fin": "2026-03-01 00:00:00",
+        "t0_issue": "2026-02-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b16a2ef94a01f86bfca0",
+        "real_evento": "EVT-7140d19b095a04c6b8ff",
+        "real_inicio": "2026-03-01 00:00:00",
+        "real_fin": "2026-03-01 00:00:00",
+        "t0_issue": "2026-02-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6afd0548bbf066c9c8ab",
+        "real_evento": "EVT-872baa4b6ecd40c62137",
+        "real_inicio": "2026-03-02 00:00:00",
+        "real_fin": "2026-03-02 00:00:00",
+        "t0_issue": "2026-02-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-828485e674ecaacf1f22",
+        "real_evento": "EVT-32cf401165b652009039",
+        "real_inicio": "2026-03-02 00:00:00",
+        "real_fin": "2026-03-02 00:00:00",
+        "t0_issue": "2026-02-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-40055c09dea102ffceae",
+        "real_evento": "EVT-ce49e9f9726d2c545749",
+        "real_inicio": "2026-03-02 00:00:00",
+        "real_fin": "2026-03-02 00:00:00",
+        "t0_issue": "2026-02-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a1d97349f2d0edb87b59",
+        "real_evento": "EVT-98efceca6ae308b419fe",
+        "real_inicio": "2026-03-04 00:00:00",
+        "real_fin": "2026-03-04 00:00:00",
+        "t0_issue": "2026-02-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8b5ea8aec6c9048dac71",
+        "real_evento": "EVT-4fb43ea9f6434b5cc48d",
+        "real_inicio": "2026-03-04 00:00:00",
+        "real_fin": "2026-03-04 00:00:00",
+        "t0_issue": "2026-02-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-29caac9fe2b987afa8b6",
+        "real_evento": "EVT-498a71537f10c51590e7",
+        "real_inicio": "2026-03-04 00:00:00",
+        "real_fin": "2026-03-04 00:00:00",
+        "t0_issue": "2026-02-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-113b3f7d48a7493a2290",
+        "real_evento": "EVT-c90c81add50127f65373",
+        "real_inicio": "2026-03-04 00:00:00",
+        "real_fin": "2026-03-04 00:00:00",
+        "t0_issue": "2026-02-26 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2a477eb842254b9850f4",
+        "real_evento": "EVT-6a05082faab0a881e2fa",
+        "real_inicio": "2026-03-02 00:00:00",
+        "real_fin": "2026-03-02 00:00:00",
+        "t0_issue": "2026-02-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bbafde9dad04cd7862bf",
+        "real_evento": "EVT-57c7818106e7a467c474",
+        "real_inicio": "2026-03-10 00:00:00",
+        "real_fin": "2026-03-10 00:00:00",
+        "t0_issue": "2026-03-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5ec4b9926b3e6afc99e1",
+        "real_evento": "EVT-57c7818106e7a467c474",
+        "real_inicio": "2026-03-10 00:00:00",
+        "real_fin": "2026-03-10 00:00:00",
+        "t0_issue": "2026-03-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-573541e7cd237e22c898",
+        "real_evento": "EVT-23713158beb2f6cdd8a0",
+        "real_inicio": "2026-03-10 00:00:00",
+        "real_fin": "2026-03-10 00:00:00",
+        "t0_issue": "2026-03-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-34bed0cb79045089fa05",
+        "real_evento": "EVT-102c3922b1ba73a1a85b",
+        "real_inicio": "2026-03-11 00:00:00",
+        "real_fin": "2026-03-11 00:00:00",
+        "t0_issue": "2026-03-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-05ca7a611797fba03444",
+        "real_evento": "EVT-30e8fbe740ee4f478c7f",
+        "real_inicio": "2026-03-11 00:00:00",
+        "real_fin": "2026-03-11 00:00:00",
+        "t0_issue": "2026-03-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-38eb84c1c2463be90ad9",
+        "real_evento": "EVT-183ec45f7d99d21784a2",
+        "real_inicio": "2026-03-11 00:00:00",
+        "real_fin": "2026-03-12 00:00:00",
+        "t0_issue": "2026-03-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-359d5c7cccf05c1fc6e0",
+        "real_evento": "EVT-49eee3ea3bb5696f4773",
+        "real_inicio": "2026-03-12 00:00:00",
+        "real_fin": "2026-03-12 00:00:00",
+        "t0_issue": "2026-03-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b5ee1fb87d4ddcc738ef",
+        "real_evento": "EVT-de4dceaabe093455f83c",
+        "real_inicio": "2026-03-12 00:00:00",
+        "real_fin": "2026-03-13 00:00:00",
+        "t0_issue": "2026-03-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d75c08354ff7b3919253",
+        "real_evento": "EVT-08ed1da51a3195d6112f",
+        "real_inicio": "2026-03-14 00:00:00",
+        "real_fin": "2026-03-14 00:00:00",
+        "t0_issue": "2026-03-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-784d18e381d16dca35bc",
+        "real_evento": "EVT-a0fe5c199cfb2d1f08ce",
+        "real_inicio": "2026-03-15 00:00:00",
+        "real_fin": "2026-03-15 00:00:00",
+        "t0_issue": "2026-03-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e361a06c24f833c86977",
+        "real_evento": "EVT-03082dd5bb76d1d6699d",
+        "real_inicio": "2026-03-15 00:00:00",
+        "real_fin": "2026-03-20 00:00:00",
+        "t0_issue": "2026-03-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-83043fac548343ba71df",
+        "real_evento": "EVT-689980602d72d3bb1864",
+        "real_inicio": "2026-03-15 00:00:00",
+        "real_fin": "2026-03-15 00:00:00",
+        "t0_issue": "2026-03-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1298ece8d18bdbbdec42",
+        "real_evento": "EVT-306d01ed73ad744c46d3",
+        "real_inicio": "2026-03-19 00:00:00",
+        "real_fin": "2026-03-19 00:00:00",
+        "t0_issue": "2026-03-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-773bf5606326961c1b2d",
+        "real_evento": "EVT-876682319ac10667b5a2",
+        "real_inicio": "2026-03-17 00:00:00",
+        "real_fin": "2026-03-20 00:00:00",
+        "t0_issue": "2026-03-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7f985804189ae88f7869",
+        "real_evento": "EVT-c6f74d6dca98ca05fabf",
+        "real_inicio": "2026-03-18 00:00:00",
+        "real_fin": "2026-03-18 00:00:00",
+        "t0_issue": "2026-03-12 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-381738fb0efeb40a9fe4",
+        "real_evento": "EVT-18ef47a377612da8316e",
+        "real_inicio": "2026-03-18 00:00:00",
+        "real_fin": "2026-03-18 00:00:00",
+        "t0_issue": "2026-03-12 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-44a2c730ac4ad8979f0a",
+        "real_evento": "EVT-52997eaafd9d6fada715",
+        "real_inicio": "2026-03-19 00:00:00",
+        "real_fin": "2026-03-19 00:00:00",
+        "t0_issue": "2026-03-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ab6eaf7004e58093794d",
+        "real_evento": "EVT-063e111ac937f96c41ce",
+        "real_inicio": "2026-03-20 00:00:00",
+        "real_fin": "2026-03-20 00:00:00",
+        "t0_issue": "2026-03-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d8737bc3a2ced8929b52",
+        "real_evento": "EVT-b87eceba458cb42d87f9",
+        "real_inicio": "2026-03-23 00:00:00",
+        "real_fin": "2026-03-24 00:00:00",
+        "t0_issue": "2026-03-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bfa883976bdf34b1c225",
+        "real_evento": "EVT-9e4f6ba481081ba94b0c",
+        "real_inicio": "2026-03-24 00:00:00",
+        "real_fin": "2026-03-24 00:00:00",
+        "t0_issue": "2026-03-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-249ee4fc7b3e442ef6e9",
+        "real_evento": "EVT-cdfaba43ab2d2b96d2a8",
+        "real_inicio": "2026-03-24 00:00:00",
+        "real_fin": "2026-03-24 00:00:00",
+        "t0_issue": "2026-03-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a2d26b9134ff48412165",
+        "real_evento": "EVT-24e3bb682597c4841d21",
+        "real_inicio": "2026-03-24 00:00:00",
+        "real_fin": "2026-03-24 00:00:00",
+        "t0_issue": "2026-03-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d58d66b39e43441e34a0",
+        "real_evento": "EVT-1f27cdbde782d75aa023",
+        "real_inicio": "2026-03-25 00:00:00",
+        "real_fin": "2026-03-25 00:00:00",
+        "t0_issue": "2026-03-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-630629492061bc5b7dd8",
+        "real_evento": "EVT-1f27cdbde782d75aa023",
+        "real_inicio": "2026-03-25 00:00:00",
+        "real_fin": "2026-03-25 00:00:00",
+        "t0_issue": "2026-03-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9389a777f392742cc0a6",
+        "real_evento": "EVT-ba981cca0953d9c08e7a",
+        "real_inicio": "2026-03-25 00:00:00",
+        "real_fin": "2026-03-25 00:00:00",
+        "t0_issue": "2026-03-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8d6160d491df602513c9",
+        "real_evento": "EVT-a2a9c3a9d8bcb35115b3",
+        "real_inicio": "2026-03-25 00:00:00",
+        "real_fin": "2026-03-25 00:00:00",
+        "t0_issue": "2026-03-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0115c11ae4b4da13415c",
+        "real_evento": "EVT-05f52ca1c4a271bb896a",
+        "real_inicio": "2026-03-25 00:00:00",
+        "real_fin": "2026-03-25 00:00:00",
+        "t0_issue": "2026-03-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-eaaf2b7261cd74cdcef4",
+        "real_evento": "EVT-c1ec87bbed2a92f7bc03",
+        "real_inicio": "2026-03-25 00:00:00",
+        "real_fin": "2026-03-25 00:00:00",
+        "t0_issue": "2026-03-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1e869da9a7dd1073bf4e",
+        "real_evento": "EVT-4a494993faf1eec69017",
+        "real_inicio": "2026-03-26 00:00:00",
+        "real_fin": "2026-03-26 00:00:00",
+        "t0_issue": "2026-03-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-76fcdd9add1be08fa14c",
+        "real_evento": "EVT-112bc93a6bc6d6581327",
+        "real_inicio": "2026-03-23 00:00:00",
+        "real_fin": "2026-03-31 00:00:00",
+        "t0_issue": "2026-03-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4f94d1efb781db544355",
+        "real_evento": "EVT-7d2410eb1a9384b74c4f",
+        "real_inicio": "2026-03-27 00:00:00",
+        "real_fin": "2026-03-27 00:00:00",
+        "t0_issue": "2026-03-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-254ac30a9c9fa12d0053",
+        "real_evento": "EVT-82e5c0afb2382ccecfaa",
+        "real_inicio": "2026-03-28 00:00:00",
+        "real_fin": "2026-03-28 00:00:00",
+        "t0_issue": "2026-03-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-13f1f2d71dfeb1fca5fd",
+        "real_evento": "EVT-299a52f7ca24b7c58c77",
+        "real_inicio": "2026-03-17 00:00:00",
+        "real_fin": "2026-03-17 00:00:00",
+        "t0_issue": "2026-03-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1ab515254753cc4220aa",
+        "real_evento": "EVT-3d7f30e2f289a92955ce",
+        "real_inicio": "2026-03-29 00:00:00",
+        "real_fin": "2026-03-29 00:00:00",
+        "t0_issue": "2026-03-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1f80064b8a9fec216838",
+        "real_evento": "EVT-8f82767d07e843737a2f",
+        "real_inicio": "2026-03-30 00:00:00",
+        "real_fin": "2026-03-30 00:00:00",
+        "t0_issue": "2026-03-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-3705d126846b6240e527",
+        "real_evento": "EVT-9967d4f9c54e92aa4eb5",
+        "real_inicio": "2026-03-30 00:00:00",
+        "real_fin": "2026-03-30 00:00:00",
+        "t0_issue": "2026-03-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-43e8b929d2bcef988630",
+        "real_evento": "EVT-4000a9802ba88d6a8c61",
+        "real_inicio": "2026-03-31 00:00:00",
+        "real_fin": "2026-03-31 00:00:00",
+        "t0_issue": "2026-03-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5870ebfde31cec9521ab",
+        "real_evento": "EVT-4b8b13395bfabd4b9150",
+        "real_inicio": "2026-03-31 00:00:00",
+        "real_fin": "2026-04-02 00:00:00",
+        "t0_issue": "2026-03-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6a40365a4d3803d55437",
+        "real_evento": "EVT-c13fa1d62444ee37a8df",
+        "real_inicio": "2026-03-31 00:00:00",
+        "real_fin": "2026-03-31 00:00:00",
+        "t0_issue": "2026-03-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e096ebaeb8025d649951",
+        "real_evento": "EVT-bc293b7294e5d1f41f6e",
+        "real_inicio": "2026-04-08 00:00:00",
+        "real_fin": "2026-04-08 00:00:00",
+        "t0_issue": "2026-04-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5b4abdf5ecd3b454a444",
+        "real_evento": "EVT-64e86a16aba916481797",
+        "real_inicio": "2026-04-09 00:00:00",
+        "real_fin": "2026-04-09 00:00:00",
+        "t0_issue": "2026-04-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a4a2be607fc8e7f40b32",
+        "real_evento": "EVT-ccc09f8c3b9e64acb07c",
+        "real_inicio": "2026-04-09 00:00:00",
+        "real_fin": "2026-04-09 00:00:00",
+        "t0_issue": "2026-04-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-66626820c66688f99e87",
+        "real_evento": "EVT-5c16f2eed5b412d43acc",
+        "real_inicio": "2026-04-09 00:00:00",
+        "real_fin": "2026-04-09 00:00:00",
+        "t0_issue": "2026-04-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-84771cedc7feff9972c7",
+        "real_evento": "EVT-4c284ee9767433f94816",
+        "real_inicio": "2026-04-10 00:00:00",
+        "real_fin": "2026-04-10 00:00:00",
+        "t0_issue": "2026-04-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-526f2a6e52811d675f1b",
+        "real_evento": "EVT-805cb0382fb5b311d438",
+        "real_inicio": "2026-04-03 00:00:00",
+        "real_fin": "2026-04-03 00:00:00",
+        "t0_issue": "2026-03-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-47c944983cf1799e49ef",
+        "real_evento": "EVT-8780b27d59f99a4f56e2",
+        "real_inicio": "2026-04-16 00:00:00",
+        "real_fin": "2026-04-16 00:00:00",
+        "t0_issue": "2026-04-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d76bf0f144d67496c3bd",
+        "real_evento": "EVT-89d37445db2ad28bfc3a",
+        "real_inicio": "2026-04-24 00:00:00",
+        "real_fin": "2026-04-24 00:00:00",
+        "t0_issue": "2026-04-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-bc7b44aa9e8858c82d2d",
+        "real_evento": "EVT-e677b43ee1ceedf85570",
+        "real_inicio": "2026-04-24 00:00:00",
+        "real_fin": "2026-04-25 00:00:00",
+        "t0_issue": "2026-04-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-07c0d8301503c289451f",
+        "real_evento": "EVT-fc7df472793a3cfb7384",
+        "real_inicio": "2026-04-26 00:00:00",
+        "real_fin": "2026-04-26 00:00:00",
+        "t0_issue": "2026-04-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-3d205b1f9aa1b06fa9d6",
+        "real_evento": "EVT-2fe1fdef592744759536",
+        "real_inicio": "2026-04-28 00:00:00",
+        "real_fin": "2026-04-28 00:00:00",
+        "t0_issue": "2026-04-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a0d41bdefab2af498e8f",
+        "real_evento": "EVT-d2ba352748f23621266f",
+        "real_inicio": "2026-04-28 00:00:00",
+        "real_fin": "2026-04-28 00:00:00",
+        "t0_issue": "2026-04-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b4806339a7997c1182c1",
+        "real_evento": "EVT-b6413b0ec2749d126248",
+        "real_inicio": "2026-04-28 00:00:00",
+        "real_fin": "2026-04-28 00:00:00",
+        "t0_issue": "2026-04-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a0f6609ebfdcd65c1d61",
+        "real_evento": "EVT-0422baeed6644498c358",
+        "real_inicio": "2026-04-29 00:00:00",
+        "real_fin": "2026-04-29 00:00:00",
+        "t0_issue": "2026-04-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-104a67739c20292827e3",
+        "real_evento": "EVT-40d65f113c8ae484364a",
+        "real_inicio": "2026-04-29 00:00:00",
+        "real_fin": "2026-04-29 00:00:00",
+        "t0_issue": "2026-04-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-65610579d94ae3585ea8",
+        "real_evento": "EVT-60aa16ca8c81105f83e4",
+        "real_inicio": "2026-04-30 00:00:00",
+        "real_fin": "2026-04-30 00:00:00",
+        "t0_issue": "2026-04-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6b4a31e29e3a88b41ea6",
+        "real_evento": "EVT-9c14baa7218123741ee6",
+        "real_inicio": "2026-05-01 00:00:00",
+        "real_fin": "2026-05-01 00:00:00",
+        "t0_issue": "2026-04-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9fb9329c7b502a667f6a",
+        "real_evento": "EVT-d2e59ba52d11533c3602",
+        "real_inicio": "2026-05-03 00:00:00",
+        "real_fin": "2026-05-03 00:00:00",
+        "t0_issue": "2026-04-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-54b856c6cb2197503701",
+        "real_evento": "EVT-d210f16db6b5f424b5e4",
+        "real_inicio": "2026-05-04 00:00:00",
+        "real_fin": "2026-05-04 00:00:00",
+        "t0_issue": "2026-04-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-42979fc4a58deeb9c49c",
+        "real_evento": "EVT-e6489e3805a77f108680",
+        "real_inicio": "2026-05-04 00:00:00",
+        "real_fin": "2026-05-04 00:00:00",
+        "t0_issue": "2026-04-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7e2717bfe2a3c9125980",
+        "real_evento": "EVT-c15a8e1a426235fe1f6d",
+        "real_inicio": "2026-05-05 00:00:00",
+        "real_fin": "2026-05-11 00:00:00",
+        "t0_issue": "2026-04-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-76813557843e15ff3b29",
+        "real_evento": "EVT-6075d1a528c1bbc6b7e9",
+        "real_inicio": "2026-05-05 00:00:00",
+        "real_fin": "2026-05-05 00:00:00",
+        "t0_issue": "2026-04-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-629a7d1dc89bbfd6d939",
+        "real_evento": "EVT-5cc0a5cd9d2048029caf",
+        "real_inicio": "2026-05-05 00:00:00",
+        "real_fin": "2026-05-05 00:00:00",
+        "t0_issue": "2026-04-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-57ff0e5a9bbf5d8c56fd",
+        "real_evento": "EVT-b8fe606f1ffaa34d3e66",
+        "real_inicio": "2026-05-05 00:00:00",
+        "real_fin": "2026-05-05 00:00:00",
+        "t0_issue": "2026-04-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2d18e0d93e46f2788fd2",
+        "real_evento": "EVT-6592ad0608f73b1fd246",
+        "real_inicio": "2026-05-06 00:00:00",
+        "real_fin": "2026-05-12 00:00:00",
+        "t0_issue": "2026-04-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c52a044facaa6494b5b6",
+        "real_evento": "EVT-75302f88be749b78719a",
+        "real_inicio": "2026-05-06 00:00:00",
+        "real_fin": "2026-05-06 00:00:00",
+        "t0_issue": "2026-04-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-327129eda6639275896b",
+        "real_evento": "EVT-7b2b45df0467aa9827c3",
+        "real_inicio": "2026-05-06 00:00:00",
+        "real_fin": "2026-05-06 00:00:00",
+        "t0_issue": "2026-04-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-637fb1864c18736779a6",
+        "real_evento": "EVT-89bfdec0341ae6c2116b",
+        "real_inicio": "2026-05-07 00:00:00",
+        "real_fin": "2026-05-07 00:00:00",
+        "t0_issue": "2026-05-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0ce043f6fd309ad3e5c3",
+        "real_evento": "EVT-60cb7a1f16fc0922b405",
+        "real_inicio": "2026-05-08 00:00:00",
+        "real_fin": "2026-05-08 00:00:00",
+        "t0_issue": "2026-05-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-48f7855e021df712f55d",
+        "real_evento": "EVT-872fafcfdce1baf8d93e",
+        "real_inicio": "2026-05-09 00:00:00",
+        "real_fin": "2026-05-09 00:00:00",
+        "t0_issue": "2026-05-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-726897bec95ed4abd9e6",
+        "real_evento": "EVT-211373526e48056f7064",
+        "real_inicio": "2026-05-10 00:00:00",
+        "real_fin": "2026-05-10 00:00:00",
+        "t0_issue": "2026-05-04 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8793eb4dde7da87d9691",
+        "real_evento": "EVT-fdab6e0ba5cb1c489d43",
+        "real_inicio": "2026-05-11 00:00:00",
+        "real_fin": "2026-05-11 00:00:00",
+        "t0_issue": "2026-05-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-637ba64824685ab16a5a",
+        "real_evento": "EVT-7fa1303f708cb97cfd1c",
+        "real_inicio": "2026-05-11 00:00:00",
+        "real_fin": "2026-05-11 00:00:00",
+        "t0_issue": "2026-05-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-584a6aeda3c222b2d7c1",
+        "real_evento": "EVT-6707ae5242ae323138fd",
+        "real_inicio": "2026-05-11 00:00:00",
+        "real_fin": "2026-05-11 00:00:00",
+        "t0_issue": "2026-05-05 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6be07c273b7ef33a7e4f",
+        "real_evento": "EVT-6fd1fc2f196d57792880",
+        "real_inicio": "2026-05-12 00:00:00",
+        "real_fin": "2026-05-12 00:00:00",
+        "t0_issue": "2026-05-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8cc439363bf65823fdbf",
+        "real_evento": "EVT-7e0e37c11594d8f6bc92",
+        "real_inicio": "2026-05-12 00:00:00",
+        "real_fin": "2026-05-13 00:00:00",
+        "t0_issue": "2026-05-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b737eb81202928fc0890",
+        "real_evento": "EVT-0c3119aad600f39477ec",
+        "real_inicio": "2026-05-12 00:00:00",
+        "real_fin": "2026-05-12 00:00:00",
+        "t0_issue": "2026-05-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9254d9a8883cdad63195",
+        "real_evento": "EVT-e899c29d767f482ac423",
+        "real_inicio": "2026-05-12 00:00:00",
+        "real_fin": "2026-05-12 00:00:00",
+        "t0_issue": "2026-05-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1d5248b3653d2201639c",
+        "real_evento": "EVT-cc7b9c0428331febbfae",
+        "real_inicio": "2026-05-15 00:00:00",
+        "real_fin": "2026-05-15 00:00:00",
+        "t0_issue": "2026-05-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-cadcbbf52f2dc6d8f9d4",
+        "real_evento": "EVT-9f88366f9d9dc7cf6898",
+        "real_inicio": "2026-05-18 00:00:00",
+        "real_fin": "2026-05-18 00:00:00",
+        "t0_issue": "2026-05-12 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f442932245aee1ae6da3",
+        "real_evento": "EVT-39db2058f56ff2671a4f",
+        "real_inicio": "2026-05-18 00:00:00",
+        "real_fin": "2026-05-18 00:00:00",
+        "t0_issue": "2026-05-12 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-dd94201b8c1ebbb48b6c",
+        "real_evento": "EVT-e3bffb08844a556d9fb5",
+        "real_inicio": "2026-05-19 00:00:00",
+        "real_fin": "2026-05-19 00:00:00",
+        "t0_issue": "2026-05-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-31a8df0311ce0b4cb43c",
+        "real_evento": "EVT-8b048a29e9e28be4f5bb",
+        "real_inicio": "2026-05-19 00:00:00",
+        "real_fin": "2026-05-19 00:00:00",
+        "t0_issue": "2026-05-13 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4c4dacfb1e633525adcb",
+        "real_evento": "EVT-1e3b091e0e5de660efe5",
+        "real_inicio": "2026-05-20 00:00:00",
+        "real_fin": "2026-05-20 00:00:00",
+        "t0_issue": "2026-05-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5e0b313d97d6977a99b2",
+        "real_evento": "EVT-8869346e6fd3a813b05c",
+        "real_inicio": "2026-05-14 00:00:00",
+        "real_fin": "2026-05-20 00:00:00",
+        "t0_issue": "2026-05-14 00:00:00",
+        "continuacion": true
+      },
+      {
+        "pred_evento": "PEVT-61cf59cae0ed031069e9",
+        "real_evento": "EVT-cc6a2bdac76e5eb6b5a1",
+        "real_inicio": "2026-05-21 00:00:00",
+        "real_fin": "2026-05-21 00:00:00",
+        "t0_issue": "2026-05-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-3b7a033867295c4fca64",
+        "real_evento": "EVT-7d67067e6c2271ff5e48",
+        "real_inicio": "2026-05-21 00:00:00",
+        "real_fin": "2026-05-22 00:00:00",
+        "t0_issue": "2026-05-15 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-11496b9e254db55fbfe0",
+        "real_evento": "EVT-eaad295f899435a7563e",
+        "real_inicio": "2026-05-04 00:00:00",
+        "real_fin": "2026-05-04 00:00:00",
+        "t0_issue": "2026-04-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8bffa719bf2bf6b9d925",
+        "real_evento": "EVT-d4d34a2b19d93e5b45e3",
+        "real_inicio": "2026-05-22 00:00:00",
+        "real_fin": "2026-05-22 00:00:00",
+        "t0_issue": "2026-05-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c7c220a0c071d3b6df67",
+        "real_evento": "EVT-0d38af255d9023be7829",
+        "real_inicio": "2026-05-23 00:00:00",
+        "real_fin": "2026-05-24 00:00:00",
+        "t0_issue": "2026-05-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-072861e86f0e91b0e1e5",
+        "real_evento": "EVT-2b29a0ac12c12793fcbf",
+        "real_inicio": "2026-05-23 00:00:00",
+        "real_fin": "2026-05-23 00:00:00",
+        "t0_issue": "2026-05-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-acff6a6c6504b3870f5c",
+        "real_evento": "EVT-b7e4226d022c3eeaad32",
+        "real_inicio": "2026-05-26 00:00:00",
+        "real_fin": "2026-05-26 00:00:00",
+        "t0_issue": "2026-05-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-69b1a96c4c92ba9e7143",
+        "real_evento": "EVT-50a9663e1e3cdeb207b2",
+        "real_inicio": "2026-05-26 00:00:00",
+        "real_fin": "2026-05-26 00:00:00",
+        "t0_issue": "2026-05-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-10320f60e646301d775f",
+        "real_evento": "EVT-c24bbe1a9ed0e171ce51",
+        "real_inicio": "2026-05-26 00:00:00",
+        "real_fin": "2026-05-26 00:00:00",
+        "t0_issue": "2026-05-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-335e8857f3e72688e44b",
+        "real_evento": "EVT-38fe6181d1925a0e4170",
+        "real_inicio": "2026-05-26 00:00:00",
+        "real_fin": "2026-05-26 00:00:00",
+        "t0_issue": "2026-05-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-c46a636fe9a696cdfd64",
+        "real_evento": "EVT-61ab14131aa5aeaabd6a",
+        "real_inicio": "2026-05-26 00:00:00",
+        "real_fin": "2026-05-26 00:00:00",
+        "t0_issue": "2026-05-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-216be97a952f25dab830",
+        "real_evento": "EVT-b2578d33f2c7546ab8ac",
+        "real_inicio": "2026-05-26 00:00:00",
+        "real_fin": "2026-05-26 00:00:00",
+        "t0_issue": "2026-05-20 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f6f565db65554372889e",
+        "real_evento": "EVT-28725e29c5b86319367f",
+        "real_inicio": "2026-05-27 00:00:00",
+        "real_fin": "2026-05-27 00:00:00",
+        "t0_issue": "2026-05-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-7098b2839e4230d89cd6",
+        "real_evento": "EVT-21f216abae4dfdd750c8",
+        "real_inicio": "2026-05-27 00:00:00",
+        "real_fin": "2026-05-27 00:00:00",
+        "t0_issue": "2026-05-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-2889ed801ebc1c46e245",
+        "real_evento": "EVT-cf3cc10c80054736f36c",
+        "real_inicio": "2026-05-27 00:00:00",
+        "real_fin": "2026-05-27 00:00:00",
+        "t0_issue": "2026-05-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a58e847bc50f6312cfb0",
+        "real_evento": "EVT-4ac57aa16f66c2134a31",
+        "real_inicio": "2026-05-30 00:00:00",
+        "real_fin": "2026-05-30 00:00:00",
+        "t0_issue": "2026-05-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9b6a5011dd24e863081a",
+        "real_evento": "EVT-ebb82ed6e8caac5db139",
+        "real_inicio": "2026-05-30 00:00:00",
+        "real_fin": "2026-05-30 00:00:00",
+        "t0_issue": "2026-05-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-f5f790b409ecfe85fc16",
+        "real_evento": "EVT-d9f9d324b71d2efeb630",
+        "real_inicio": "2026-05-30 00:00:00",
+        "real_fin": "2026-05-30 00:00:00",
+        "t0_issue": "2026-05-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-d3e633c2417cd54dce0d",
+        "real_evento": "EVT-ef5b6ee837b66dfc34f3",
+        "real_inicio": "2026-05-31 00:00:00",
+        "real_fin": "2026-05-31 00:00:00",
+        "t0_issue": "2026-05-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-86b985836750289aa253",
+        "real_evento": "EVT-7854f1565bf0cb7a12ad",
+        "real_inicio": "2026-05-31 00:00:00",
+        "real_fin": "2026-05-31 00:00:00",
+        "t0_issue": "2026-05-25 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ceea6023c94e1f9e11a8",
+        "real_evento": "EVT-0f6908c6b23a00b3f8f0",
+        "real_inicio": "2026-06-02 00:00:00",
+        "real_fin": "2026-06-05 00:00:00",
+        "t0_issue": "2026-05-27 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5033eff1c20cb7b817cf",
+        "real_evento": "EVT-7016fbc0d8249b5dd034",
+        "real_inicio": "2026-06-12 00:00:00",
+        "real_fin": "2026-06-12 00:00:00",
+        "t0_issue": "2026-06-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8010a8f08f5ee3c8f6fb",
+        "real_evento": "EVT-2739d9e984f6ac942915",
+        "real_inicio": "2026-06-12 00:00:00",
+        "real_fin": "2026-06-12 00:00:00",
+        "t0_issue": "2026-06-06 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-21e3c332e41d7cc9a288",
+        "real_evento": "EVT-608a601ad54362a3ed7c",
+        "real_inicio": "2026-06-15 00:00:00",
+        "real_fin": "2026-06-16 00:00:00",
+        "t0_issue": "2026-06-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-fb9d21dd3ba5fe54a5bd",
+        "real_evento": "EVT-14627c820c89abeb638e",
+        "real_inicio": "2026-06-16 00:00:00",
+        "real_fin": "2026-06-16 00:00:00",
+        "t0_issue": "2026-06-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-6e872dcfb57d70756f4d",
+        "real_evento": "EVT-9a6db592d4512e4b9d82",
+        "real_inicio": "2026-06-17 00:00:00",
+        "real_fin": "2026-06-17 00:00:00",
+        "t0_issue": "2026-06-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b2e9ac97f40613fad305",
+        "real_evento": "EVT-ce8c4c3f920a22628f6c",
+        "real_inicio": "2026-06-17 00:00:00",
+        "real_fin": "2026-06-17 00:00:00",
+        "t0_issue": "2026-06-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-deb1d9aabf8000abd8a4",
+        "real_evento": "EVT-bf80c900d7912ac59347",
+        "real_inicio": "2026-06-20 00:00:00",
+        "real_fin": "2026-06-20 00:00:00",
+        "t0_issue": "2026-06-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-dd0a881ea58cb25b00d0",
+        "real_evento": "EVT-ebdddb12c64dfa0986e0",
+        "real_inicio": "2026-06-23 00:00:00",
+        "real_fin": "2026-06-28 00:00:00",
+        "t0_issue": "2026-06-16 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-078b43f3facadaa93933",
+        "real_evento": "EVT-8b1692778387577c1966",
+        "real_inicio": "2026-06-23 00:00:00",
+        "real_fin": "2026-06-23 00:00:00",
+        "t0_issue": "2026-06-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-45d3fbb3e63caadbe081",
+        "real_evento": "EVT-504b89d750348d39fc65",
+        "real_inicio": "2026-06-24 00:00:00",
+        "real_fin": "2026-06-24 00:00:00",
+        "t0_issue": "2026-06-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5e30d31460a284181c69",
+        "real_evento": "EVT-9eece3f95b0db0be6891",
+        "real_inicio": "2026-06-25 00:00:00",
+        "real_fin": "2026-06-25 00:00:00",
+        "t0_issue": "2026-06-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4ff81d3cd6f3114726d0",
+        "real_evento": "EVT-075c41a75f951d7494d6",
+        "real_inicio": "2026-06-25 00:00:00",
+        "real_fin": "2026-06-25 00:00:00",
+        "t0_issue": "2026-06-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-deb395228aa56951854f",
+        "real_evento": "EVT-fabb35e987e9e7bb3181",
+        "real_inicio": "2026-06-25 00:00:00",
+        "real_fin": "2026-06-25 00:00:00",
+        "t0_issue": "2026-06-19 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-06d2f2fcfa1c572d7ace",
+        "real_evento": "EVT-b6693c194b9485b5d3a1",
+        "real_inicio": "2026-06-27 00:00:00",
+        "real_fin": "2026-06-27 00:00:00",
+        "t0_issue": "2026-06-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9e0e9fb537525b9672b7",
+        "real_evento": "EVT-c1faf91b4f6805365d8e",
+        "real_inicio": "2026-06-27 00:00:00",
+        "real_fin": "2026-06-27 00:00:00",
+        "t0_issue": "2026-06-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a9cff23d372d2ea8bb28",
+        "real_evento": "EVT-3daa4ffc4bc6a732d5b4",
+        "real_inicio": "2026-06-27 00:00:00",
+        "real_fin": "2026-06-27 00:00:00",
+        "t0_issue": "2026-06-21 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9fbbf58da24d9a7dca3e",
+        "real_evento": "EVT-def9f2dd6e1eaef15b4c",
+        "real_inicio": "2026-06-29 00:00:00",
+        "real_fin": "2026-06-29 00:00:00",
+        "t0_issue": "2026-06-22 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5d52d1bd7f951af6c047",
+        "real_evento": "EVT-a03d7ddd388f1c629425",
+        "real_inicio": "2026-06-29 00:00:00",
+        "real_fin": "2026-06-29 00:00:00",
+        "t0_issue": "2026-06-23 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-55acfb10cb48274a84c1",
+        "real_evento": "EVT-0d869798b82a3f92a6e2",
+        "real_inicio": "2026-06-30 00:00:00",
+        "real_fin": "2026-06-30 00:00:00",
+        "t0_issue": "2026-06-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-05c72b73703bbc236988",
+        "real_evento": "EVT-03c607304934f11cec48",
+        "real_inicio": "2026-06-30 00:00:00",
+        "real_fin": "2026-06-30 00:00:00",
+        "t0_issue": "2026-06-24 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5ef207f772968a2fdd07",
+        "real_evento": "EVT-67ce372d5904f333ef91",
+        "real_inicio": "2026-07-04 00:00:00",
+        "real_fin": "2026-07-04 00:00:00",
+        "t0_issue": "2026-06-28 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-fc018599a78784d18d9a",
+        "real_evento": "EVT-430a8a4b11ac43285f44",
+        "real_inicio": "2026-07-05 00:00:00",
+        "real_fin": "2026-07-05 00:00:00",
+        "t0_issue": "2026-06-29 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-35c287e5c8b65ca7b696",
+        "real_evento": "EVT-a3d8b91f9e41c7c506a8",
+        "real_inicio": "2026-07-06 00:00:00",
+        "real_fin": "2026-07-06 00:00:00",
+        "t0_issue": "2026-06-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-582c5ac731474fb751aa",
+        "real_evento": "EVT-10efc390fb8713d409e7",
+        "real_inicio": "2026-07-06 00:00:00",
+        "real_fin": "2026-07-06 00:00:00",
+        "t0_issue": "2026-06-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-623d6899a65f372a18df",
+        "real_evento": "EVT-4a2c943a90fabcb91a63",
+        "real_inicio": "2026-07-06 00:00:00",
+        "real_fin": "2026-07-06 00:00:00",
+        "t0_issue": "2026-06-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-9970fdca613635d89739",
+        "real_evento": "EVT-b93dae20f561a4072f2c",
+        "real_inicio": "2026-07-06 00:00:00",
+        "real_fin": "2026-07-06 00:00:00",
+        "t0_issue": "2026-06-30 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-48ae9f92f55b9232c132",
+        "real_evento": "EVT-9fd7c965f2dff0020d48",
+        "real_inicio": "2026-07-07 00:00:00",
+        "real_fin": "2026-07-07 00:00:00",
+        "t0_issue": "2026-07-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-a6b58cebd9d834fddb77",
+        "real_evento": "EVT-3f66a5b24ecd9f59d966",
+        "real_inicio": "2026-07-07 00:00:00",
+        "real_fin": "2026-07-07 00:00:00",
+        "t0_issue": "2026-07-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-05f29b7e5fe4e32e86dc",
+        "real_evento": "EVT-84309409f985817e2951",
+        "real_inicio": "2026-07-06 00:00:00",
+        "real_fin": "2026-07-07 00:00:00",
+        "t0_issue": "2026-07-01 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-ce20766f430e9c6cc8ce",
+        "real_evento": "EVT-9deeaa2d63e3fed1dff3",
+        "real_inicio": "2026-07-08 00:00:00",
+        "real_fin": "2026-07-08 00:00:00",
+        "t0_issue": "2026-07-02 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-339a21b61f93611ae873",
+        "real_evento": "EVT-287b573d3870d7b4d063",
+        "real_inicio": "2026-07-09 00:00:00",
+        "real_fin": "2026-07-09 00:00:00",
+        "t0_issue": "2026-07-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-632fcd0cd3ce2fbb3688",
+        "real_evento": "EVT-9a59847af83c8cdcf93b",
+        "real_inicio": "2026-07-09 00:00:00",
+        "real_fin": "2026-07-09 00:00:00",
+        "t0_issue": "2026-07-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-0d5e8f7fd59b152d8eeb",
+        "real_evento": "EVT-a91b52cb786e08368508",
+        "real_inicio": "2026-07-09 00:00:00",
+        "real_fin": "2026-07-09 00:00:00",
+        "t0_issue": "2026-07-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8b4a3a12f83cf394fa34",
+        "real_evento": "EVT-c51c4a02cfe50eaca3ba",
+        "real_inicio": "2026-06-23 00:00:00",
+        "real_fin": "2026-06-23 00:00:00",
+        "t0_issue": "2026-06-17 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-e3c310ccd463e4d22497",
+        "real_evento": "EVT-b023015c882b6bd48773",
+        "real_inicio": "2026-07-09 00:00:00",
+        "real_fin": "2026-07-10 00:00:00",
+        "t0_issue": "2026-07-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-951d828830d065278b64",
+        "real_evento": "EVT-600265201354d8ecbbe2",
+        "real_inicio": "2026-07-09 00:00:00",
+        "real_fin": "2026-07-14 00:00:00",
+        "t0_issue": "2026-07-03 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-4c6c6d833135e7b30398",
+        "real_evento": "EVT-a5ab729ff319d86e05c8",
+        "real_inicio": "2026-07-14 00:00:00",
+        "real_fin": "2026-07-14 00:00:00",
+        "t0_issue": "2026-07-08 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1f394d2749528e5d911b",
+        "real_evento": "EVT-e484ee9d537116a44329",
+        "real_inicio": "2026-07-15 00:00:00",
+        "real_fin": "2026-07-15 00:00:00",
+        "t0_issue": "2026-07-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1063bc3416aa122097ca",
+        "real_evento": "EVT-3ca9f9baf8aa55fb68df",
+        "real_inicio": "2026-07-15 00:00:00",
+        "real_fin": "2026-07-15 00:00:00",
+        "t0_issue": "2026-07-09 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-86b1258a8cbf790abc37",
+        "real_evento": "EVT-7dd0e8636562b2ce793a",
+        "real_inicio": "2026-07-16 00:00:00",
+        "real_fin": "2026-07-16 00:00:00",
+        "t0_issue": "2026-07-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-b2a59f502cc77ff507c6",
+        "real_evento": "EVT-ebbca635fc94bd0baa79",
+        "real_inicio": "2026-07-16 00:00:00",
+        "real_fin": "2026-07-16 00:00:00",
+        "t0_issue": "2026-07-10 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-1d1ab5da8e2bc2fa427c",
+        "real_evento": "EVT-c942441a489ae4d1d8d2",
+        "real_inicio": "2026-07-17 00:00:00",
+        "real_fin": "2026-07-17 00:00:00",
+        "t0_issue": "2026-07-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-94a15c06831bdfc33260",
+        "real_evento": "EVT-ed42dabaa75f4bfada93",
+        "real_inicio": "2026-07-17 00:00:00",
+        "real_fin": "2026-07-17 00:00:00",
+        "t0_issue": "2026-07-11 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8849b4cc41e4213063e3",
+        "real_evento": "EVT-03179ec5e6d60f8c32fa",
+        "real_inicio": "2026-07-20 00:00:00",
+        "real_fin": "2026-07-20 00:00:00",
+        "t0_issue": "2026-07-14 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-929501402104c2727256",
+        "real_evento": "EVT-dc14846203a47bea93ec",
+        "real_inicio": "2026-07-24 00:00:00",
+        "real_fin": "2026-07-24 00:00:00",
+        "t0_issue": "2026-07-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-8a1b3c7fce6416e760a4",
+        "real_evento": "EVT-141c8cc2f69c1d61d0b1",
+        "real_inicio": "2026-07-24 00:00:00",
+        "real_fin": "2026-07-24 00:00:00",
+        "t0_issue": "2026-07-18 00:00:00",
+        "continuacion": false
+      },
+      {
+        "pred_evento": "PEVT-5d7b5ec72adfa5cd6973",
+        "real_evento": "EVT-81b653aebe8ecaf7bfac",
+        "real_inicio": "2026-06-16 00:00:00",
+        "real_fin": "2026-06-16 00:00:00",
+        "t0_issue": "2026-06-10 00:00:00",
+        "continuacion": false
+      }
+    ]
+  },
+  "n_predicted_hotspots": 54572,
+  "n_topk_before_budget": 458989,
+  "n_predicted_fires": 12619,
+  "n_predicted_events": 1015
+}

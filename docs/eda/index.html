@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuegos en Chaco / Formosa · NASA FIRMS</title>
+<style>
+:root {
+  --surface: #fcfcfb; --page: #f9f9f7; --ink: #0b0b0b; --ink2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --border: rgba(11,11,11,.10);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+main { max-width: 1080px; margin: 0 auto; padding: 36px 24px 64px; }
+h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -.02em; }
+.sub { color: var(--ink2); margin: 0 0 26px; }
+.tiles {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px; margin: 24px 0;
+}
+.tile {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px;
+}
+.tile .value { font-size: 1.85rem; font-weight: 600; letter-spacing: -.02em; }
+.tile .label { color: var(--muted); font-size: .85rem; }
+section {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 22px; margin: 18px 0;
+}
+section h2 { font-size: 1.15rem; margin: 0 0 2px; }
+section p.caption { color: var(--ink2); font-size: .92rem; margin: 4px 0 14px; }
+img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: .86rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--grid); }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--muted); font-weight: 500; }
+.note { color: var(--muted); font-size: .82rem; margin-top: 10px; }
+</style>
+</head>
+<body>
+<main>
+<p style="margin:0 0 16px"><a href="../" style="font-size:.88rem">← Volver al mapa de predicciones</a></p>
+<h1>Fuegos en Chaco / Formosa</h1>
+<p class="sub">Detecciones de la API Area de NASA FIRMS · 10–14 nov 2026 ·
+área consultada: oeste −62,5 · sur −27,0 · este −58,0 · norte −23,0</p>
+
+<div class="tiles"><div class="tile"><div class="value">6.092</div><div class="label">Detecciones</div></div>
+<div class="tile"><div class="value">3</div><div class="label">Sensores con datos</div></div>
+<div class="tile"><div class="value">1.961 MW</div><div class="label">FRP máxima</div></div>
+<div class="tile"><div class="value">8,1 MW</div><div class="label">Mediana de FRP</div></div></div>
+
+<section>
+<h2>Resumen por sensor</h2>
+<p class="caption">Los conteos son píxeles detectados, no número de incendios. La FRP total
+suma la energía radiativa de todas las detecciones y depende del tiempo de sobrevuelo.
+Esta tabla incluye todas las detecciones descargadas; los gráficos temporales y de
+distribución usan solo días completos.</p>
+<table class="dataframe tabla">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Fuente</th>
+      <th>Detecciones</th>
+      <th>Participación</th>
+      <th>Mediana FRP (MW)</th>
+      <th>P90 FRP (MW)</th>
+      <th>FRP máx. (MW)</th>
+      <th>FRP total (MW)</th>
+      <th>Confianza alta</th>
+      <th>Día</th>
+      <th>Noche</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MODIS (Terra + Aqua)</td>
+      <td>890</td>
+      <td>14.6%</td>
+      <td>18,5</td>
+      <td>99,8</td>
+      <td>1.960,7</td>
+      <td>48.827</td>
+      <td>41%</td>
+      <td>61%</td>
+      <td>39%</td>
+    </tr>
+    <tr>
+      <td>VIIRS NOAA-20</td>
+      <td>2.634</td>
+      <td>43.2%</td>
+      <td>6,2</td>
+      <td>34,9</td>
+      <td>478,7</td>
+      <td>43.142</td>
+      <td>7%</td>
+      <td>65%</td>
+      <td>35%</td>
+    </tr>
+    <tr>
+      <td>VIIRS NOAA-21</td>
+      <td>2.568</td>
+      <td>42.2%</td>
+      <td>7,5</td>
+      <td>45,7</td>
+      <td>809,1</td>
+      <td>49.679</td>
+      <td>10%</td>
+      <td>67%</td>
+      <td>33%</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Detalle diario</h2>
+<p class="caption">Detecciones y FRP por día y sensor. El 14 de noviembre está incompleto
+porque la descarga se hizo durante esa jornada.</p>
+<table class="dataframe tabla">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Día</th>
+      <th>Fuente</th>
+      <th>Detecciones</th>
+      <th>FRP total (MW)</th>
+      <th>FRP mediana (MW)</th>
+      <th>FRP máx. (MW)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10 nov</td>
+      <td>MODIS (Terra + Aqua)</td>
+      <td>299</td>
+      <td>23.067,0</td>
+      <td>22,7</td>
+      <td>1.547,8</td>
+    </tr>
+    <tr>
+      <td>10 nov</td>
+      <td>VIIRS NOAA-20</td>
+      <td>855</td>
+      <td>10.939,5</td>
+      <td>5,9</td>
+      <td>238,6</td>
+    </tr>
+    <tr>
+      <td>10 nov</td>
+      <td>VIIRS NOAA-21</td>
+      <td>959</td>
+      <td>21.502,4</td>
+      <td>9,8</td>
+      <td>369,6</td>
+    </tr>
+    <tr>
+      <td>11 nov</td>
+      <td>MODIS (Terra + Aqua)</td>
+      <td>150</td>
+      <td>9.182,6</td>
+      <td>14,9</td>
+      <td>1.960,7</td>
+    </tr>
+    <tr>
+      <td>11 nov</td>
+      <td>VIIRS NOAA-20</td>
+      <td>417</td>
+      <td>8.777,9</td>
+      <td>5,6</td>
+      <td>478,7</td>
+    </tr>
+    <tr>
+      <td>11 nov</td>
+      <td>VIIRS NOAA-21</td>
+      <td>308</td>
+      <td>6.147,6</td>
+      <td>10,3</td>
+      <td>269,7</td>
+    </tr>
+    <tr>
+      <td>12 nov</td>
+      <td>MODIS (Terra + Aqua)</td>
+      <td>123</td>
+      <td>5.823,1</td>
+      <td>16,8</td>
+      <td>612,7</td>
+    </tr>
+    <tr>
+      <td>12 nov</td>
+      <td>VIIRS NOAA-20</td>
+      <td>458</td>
+      <td>9.319,4</td>
+      <td>5,3</td>
+      <td>271,9</td>
+    </tr>
+    <tr>
+      <td>12 nov</td>
+      <td>VIIRS NOAA-21</td>
+      <td>424</td>
+      <td>11.149,6</td>
+      <td>6,6</td>
+      <td>809,1</td>
+    </tr>
+    <tr>
+      <td>13 nov</td>
+      <td>MODIS (Terra + Aqua)</td>
+      <td>239</td>
+      <td>9.162,1</td>
+      <td>19,8</td>
+      <td>595,7</td>
+    </tr>
+    <tr>
+      <td>13 nov</td>
+      <td>VIIRS NOAA-20</td>
+      <td>858</td>
+      <td>13.960,7</td>
+      <td>7,9</td>
+      <td>252,4</td>
+    </tr>
+    <tr>
+      <td>13 nov</td>
+      <td>VIIRS NOAA-21</td>
+      <td>711</td>
+      <td>10.443,9</td>
+      <td>5,9</td>
+      <td>403,3</td>
+    </tr>
+    <tr>
+      <td>14 nov</td>
+      <td>MODIS (Terra + Aqua)</td>
+      <td>79</td>
+      <td>1.592,0</td>
+      <td>13,3</td>
+      <td>93,2</td>
+    </tr>
+    <tr>
+      <td>14 nov</td>
+      <td>VIIRS NOAA-20</td>
+      <td>46</td>
+      <td>144,6</td>
+      <td>2,9</td>
+      <td>9,2</td>
+    </tr>
+    <tr>
+      <td>14 nov</td>
+      <td>VIIRS NOAA-21</td>
+      <td>166</td>
+      <td>435,7</td>
+      <td>2,1</td>
+      <td>10,2</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+
+<section><h2>Actividad diaria</h2><p class="caption">Detecciones y energía total por día. El último día descargado se excluye por estar incompleto.</p><img src="01_detecciones_y_frp_por_dia.png" alt="Actividad diaria"></section>
+<section><h2>Horario de los sobrevuelos</h2><p class="caption">Cada fila muestra en qué horas UTC detectó fuegos cada sensor. Los máximos corresponden a los sobrevuelos.</p><img src="02_perfil_horario.png" alt="Horario de los sobrevuelos"></section>
+<section><h2>Intensidad de los fuegos</h2><p class="caption">Distribución de FRP por sensor en escala logarítmica. La caja es el rango intercuartílico y la línea central, la mediana.</p><img src="03_frp_por_sensor.png" alt="Intensidad de los fuegos"></section>
+<section><h2>Confianza</h2><p class="caption">Mezcla de clases de confianza. En MODIS las clases se derivan del porcentaje 0–100; en VIIRS son categorías nativas.</p><img src="04_confianza.png" alt="Confianza"></section>
+<section><h2>Mapa de detecciones</h2><p class="caption">Puntos coloreados por sensor y escalados por la raíz cuadrada de FRP. El máximo se anota en el mapa.</p><img src="05_mapa.png" alt="Mapa de detecciones"></section>
+<section><h2>FRP y temperatura de brillo</h2><p class="caption">Relación entre la temperatura del canal de 4 µm y la energía radiativa del fuego. Cada punto es una detección. La banda vertical cerca de 365 K corresponde a píxeles saturados de VIIRS.</p><img src="06_frp_vs_brillo.png" alt="FRP y temperatura de brillo"></section>
+
+<section>
+<h2>Datos y método</h2>
+<p class="caption">Endpoint usado: <code>/api/area/csv/[MAP_KEY]/[SOURCE]/[AREA_COORDINATES]/[DAY_RANGE]</code>.
+Fuentes: MODIS NRT (Terra/Aqua), VIIRS Suomi NPP, VIIRS NOAA-20 y VIIRS NOAA-21.
+Ventana: últimos 5 días. Suomi NPP devolvió 0 detecciones en esta consulta, por eso no
+aparece en los gráficos. Los límites administrativos provienen de GADM 4.1.</p>
+<p class="note">Limitaciones: una detección es un píxel caliente, no un perímetro ni un área
+quemada; los satélites pasan pocas veces por día; nubes y humo generan falsos negativos;
+industrias y reflejos generan falsos positivos; la confianza de MODIS es numérica y la de
+VIIRS categórica.</p>
+</section>
+</main>
+</body>
+</html>

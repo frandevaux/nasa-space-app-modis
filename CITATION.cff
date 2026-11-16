@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Si usás este proyecto, citá esta ficha."
+title: "NASA Space Apps — Predicción de hotspots MODIS/VIIRS (Córdoba)"
+abstract: >-
+  Pipeline de preprocesamiento y predicción de hotspots de incendios a 7 días
+  para Córdoba, Argentina, con un modelo CNN+LSTM sobre datos NASA FIRMS,
+  NASA POWER y Open-Meteo.
+version: 0.1.0
+date-released: 2026-11-15
+authors:
+  - name: "nasa-space-app-modis contributors"
+repository-code: "https://github.com/frandevaux/nasa-space-app-modis"
+url: "https://frandevaux.github.io/nasa-space-app-modis/"
+license: MIT
+keywords:
+  - wildfire
+  - hotspots
+  - NASA FIRMS
+  - remote sensing
+  - deep learning
+  - Córdoba
+  - Argentina
