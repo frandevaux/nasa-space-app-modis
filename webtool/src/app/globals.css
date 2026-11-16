@@ -402,3 +402,60 @@ a:hover { color: var(--accent); }
 .date-card__fires { display: flex; align-items: baseline; gap: 8px; background: var(--surface-2); border-radius: 12px; padding: 12px; font-size: 14px; color: var(--muted); }
 .date-card__fires .loc-card__big { color: var(--ink); }
 .dash-menu .layers-box { padding: 4px 12px; }
+
+/* Map ↔ calendar link: place picker, incendio list and field-log link */
+.loc-card__wide { grid-column: 1 / -1; }
+.loc-card__wide dd { font-size: 14px; font-weight: 400; color: var(--ink-2); }
+.place-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; font-size: 13px; }
+.place-actions--map { justify-content: flex-start; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; }
+.place-pick { display: flex; flex-direction: column; gap: 8px; }
+.place-pick select { font-size: 14px; padding: 8px 10px; border: 1px solid var(--line-2); border-radius: 10px; background: #fff; color: var(--ink); }
+.place-pick select:disabled { color: var(--muted); background: var(--surface-2); }
+.incidents { display: flex; flex-direction: column; gap: 6px; }
+.incident-list { margin: 0; padding: 0; list-style: none; max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+.incident-list button { width: 100%; text-align: left; padding: 8px 10px; border: 1px solid var(--surface-2); border-radius: 10px; background: var(--surface-2); display: flex; flex-direction: column; gap: 2px; }
+.incident-list button:hover { border-color: var(--line-2); }
+.incident-list__dates { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; font-weight: 500; }
+.incident-list__coords { font-size: 12px; color: var(--muted); }
+.entry__incident { align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: #FBD9C2; color: #7C2D12; font-size: 12px; font-weight: 500; }
+.entry-form__incident { margin: 0; padding: 8px 12px; border-radius: 10px; background: #FDF1E8; color: #7C2D12; font-size: 14px; }
+
+/* Calendar: month calendar on top (scrolls inside), eight-season strip fixed at the bottom; menus on the left */
+.cal__center { overflow: hidden; }
+.card--month { flex: 1 1 auto; min-height: 0; }
+.card--month .card__scroll { flex: 1; min-height: 0; overflow-y: auto; }
+.card--seasons { flex: none; }
+.cal__side.is-open { overflow-y: auto; padding: 0 12px 24px 0; margin-right: -12px; box-sizing: content-box; }
+.cal__side .log-menu { flex: none; }
+
+/* ============ Forecast (yellow = estimates; orange = historical record) ============ */
+:root { --pred-1: #F9EB9C; --pred-2: #F5DA55; --pred-3: #EBC21F; --pred-4: #C99A06; --pred-ink: #6B5200; }
+.forecast-alert { position: absolute; z-index: 5; left: 50%; bottom: 142px; transform: translateX(-50%); width: 560px; max-width: calc(100% - 2 * var(--gut) - 2 * var(--btn) - 24px); display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border-radius: 12px; background: var(--warn); box-shadow: 0 8px 24px rgba(23,25,28,.12); }
+.forecast-alert p { margin: 0; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
+.forecast-alert strong { font-weight: 600; }
+.forecast-alert .note__bang { margin-top: 1px; }
+.loc-card--forecast { border-color: var(--pred-3); box-shadow: 0 0 0 2px var(--warn), 0 8px 24px rgba(23,25,28,.10); }
+.loc-card--forecast .loc-card__grid { background: #FDF8DC; }
+.map__tip--forecast { background: #FFFBE0; border-color: var(--pred-3); }
+.legend-box--forecast { border-color: var(--pred-3); background: #FFFDF0; }
+.tl-cell.is-forecast { background-image: none; box-shadow: inset 0 0 0 1px rgba(201,154,6,.45); }
+.tl-cell.is-forecast.is-empty { box-shadow: none; }
+.day.is-forecast .day__km2 { color: var(--pred-ink); font-weight: 500; }
+.day__pred-tag { padding: 1px 6px; border-radius: 999px; background: rgba(255,255,255,.7); color: var(--pred-ink) !important; font-size: 10.5px !important; font-weight: 600; }
+.date-card__fires--forecast { background: #FDF8DC; }
+.incident-list__kind { align-self: flex-start; padding: 1px 7px; border-radius: 999px; background: var(--chip); font-size: 11px; font-weight: 500; color: var(--ink-2); }
+.incident-list__kind.is-wave { background: #FBD9C2; color: #7C2D12; }
+
+/* Legend + data credits (bottom-right, above the timeline) */
+.legend { bottom: 140px; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; pointer-events: none; }
+.legend > * { pointer-events: auto; }
+.legend .legend-box { width: 100%; }
+.credits { display: flex; align-items: center; gap: 6px; }
+.credits__btn { width: 22px; height: 22px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: #fff; font: italic 600 12px/1 Georgia, serif; color: var(--ink-2); display: flex; align-items: center; justify-content: center; }
+.credits__btn[aria-expanded="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.credits__text { max-width: 330px; padding: 4px 10px; border-radius: 8px; background: #fff; border: 1px solid var(--line); font-size: 11px; line-height: 1.35; color: var(--ink-2); }
+.map--legend .log-menu { max-height: calc(100vh - var(--below-nav) - 280px); }
+.legend-box__steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; text-align: center; }
+.loc-card__big small { font-size: 16px; margin-left: 2px; letter-spacing: 0; }
+.legend-box__wave { order: 9; display: flex; align-items: center; gap: 8px; color: var(--ink-2); }
+.legend-box__wave span { width: 22px; border-top: 1.5px dashed var(--ink); }

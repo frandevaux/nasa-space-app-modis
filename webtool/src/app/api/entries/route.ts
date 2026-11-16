@@ -32,6 +32,16 @@ export async function GET() {
 }
 
 const str = (v: unknown, max: number) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
+const STAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
+
+/** Optional link to a fire event: { id, start, end } or nothing. */
+function eventRef(v: unknown): LogEntry['event'] {
+  if (!v || typeof v !== 'object') { return undefined; }
+  const { id, start, end } = v as Record<string, unknown>;
+  if (typeof id !== 'string' || !/^[0-9a-z]{4,32}$/.test(id)) { return undefined; }
+  if (typeof start !== 'string' || !STAMP.test(start) || typeof end !== 'string' || !STAMP.test(end)) { return undefined; }
+  return { id, start, end };
+}
 
 export async function POST(req: Request) {
   let body: Record<string, unknown>;
@@ -41,14 +51,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 });
   }
   const date = str(body.date, 10);
-  const kind = body.kind as EntryKind;
+  const kind = body.kind === undefined ? undefined : (body.kind as EntryKind);
   const title = str(body.title, 120);
   const text = str(body.text, 2000);
   const lat = Number(body.lat);
   const lon = Number(body.lon);
   const errors: string[] = [];
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) { errors.push('fecha'); }
-  if (!KINDS.includes(kind)) { errors.push('tipo'); }
+  if (kind !== undefined && !KINDS.includes(kind)) { errors.push('tipo'); }
   if (!title) { errors.push('título'); }
   if (!text) { errors.push('texto'); }
   if (!(lat >= -56 && lat <= -21 && lon >= -74 && lon <= -53)) { errors.push('ubicación'); }
@@ -67,6 +77,7 @@ export async function POST(req: Request) {
     lon: Math.round(lon * 1e5) / 1e5,
     department: str(body.department, 10) || undefined,
     province: str(body.province, 4) || undefined,
+    event: eventRef(body.event),
     createdAt: new Date().toISOString(),
   };
   // Serialize writes so concurrent posts don't overwrite each other.

@@ -4,19 +4,33 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { getEntries, getMeta, getPrediction, getRegions, getSeries } from './data';
 import { analyze, type RegionSeries } from './series';
-import { indexFromYm, ym } from './time';
-import type { LogEntry, Meta, Prediction, Region } from './types';
+import { dayFromIso, indexFromYm, ym } from './time';
+import { buildForecast, type Forecast } from './forecast';
+import type { LogEntry, Meta, Region } from './types';
 import type { Scale } from './timescale';
 
 export type Sensor = 'both' | 'modis' | 'viirs';
+export interface Point { lat: number; lon: number }
+/** A fire event (the UI calls it "incendio") by id, plus the monthly fire file where it was found. */
+export interface IncidentRef { month: string; id: string }
+
+const parsePoint = (v: string | null): Point | null => {
+  const [lat, lon] = (v ?? '').split(',').map(Number);
+  return v && Number.isFinite(lat) && Number.isFinite(lon) ? { lat, lon } : null;
+};
+const parseIncident = (v: string | null): IncidentRef | null => {
+  const m = /^(\d{4}-\d{2}):([0-9a-z]+)$/.exec(v ?? '');
+  return m ? { month: m[1], id: m[2] } : null;
+};
+export const incidentParam = (r: IncidentRef) => `${r.month}:${r.id}`;
+export const pointParam = (p: Point) => `${p.lat.toFixed(4)},${p.lon.toFixed(4)}`;
 
 export const DEFAULT_REGION = 'AR';
-/** Months shown after "now" when no forecast file is loaded yet. */
-export const DEFAULT_FORECAST_HORIZON = 7;
 
 /**
  * Region (?r=), month (?m=YYYY-MM), day of month (?d=), timeline scale (?z=day|week|month) and map view
- * (?v=fires|hotspots) and hotspot sensor (?s=modis|viirs, default both) live in the URL so that
+ * (?v=fires|hotspots), hotspot sensor (?s=modis|viirs, default both), the selected point (?pt=lat,lon) and
+ * the fire event at that point (?ev=YYYY-MM:id) live in the URL so that
  * the Map and Calendar views share the same selection and links can be shared.
  */
 export function useUrlState(lastMonth: number | null) {
@@ -33,14 +47,24 @@ export function useUrlState(lastMonth: number | null) {
   const view: 'fires' | 'hotspots' = params.get('v') === 'hotspots' ? 'hotspots' : 'fires';
   const sp = params.get('s');
   const sensor: Sensor = sp === 'modis' || sp === 'viirs' ? sp : 'both';
+  const ptParam = params.get('pt');
+  const evParam = params.get('ev');
+  const point = useMemo(() => parsePoint(ptParam), [ptParam]);
+  const incident = useMemo(() => parseIncident(evParam), [evParam]);
 
   const update = useCallback(
-    (patch: { r?: string; m?: number; d?: number | null; z?: Scale; v?: 'fires' | 'hotspots'; s?: Sensor }) => {
+    (patch: { r?: string; m?: number; d?: number | null; z?: Scale; v?: 'fires' | 'hotspots'; s?: Sensor; pt?: Point | null; ev?: IncidentRef | null }) => {
       const next = new URLSearchParams(params.toString());
       if (patch.r !== undefined) { next.set('r', patch.r); }
       if (patch.m !== undefined) { next.set('m', ym(patch.m)); }
       if (patch.z !== undefined) { next.set('z', patch.z); }
       if (patch.v !== undefined) { next.set('v', patch.v); }
+      if (patch.pt !== undefined) {
+        if (patch.pt === null) { next.delete('pt'); } else { next.set('pt', pointParam(patch.pt)); }
+      }
+      if (patch.ev !== undefined) {
+        if (patch.ev === null) { next.delete('ev'); } else { next.set('ev', incidentParam(patch.ev)); }
+      }
       if (patch.s !== undefined) {
         if (patch.s === 'both') { next.delete('s'); } else { next.set('s', patch.s); }
       }
@@ -52,7 +76,7 @@ export function useUrlState(lastMonth: number | null) {
     [params, pathname, router],
   );
 
-  return { regionId, month, day, scale, view, sensor, hasMonth: m !== null, update, query: params.toString() };
+  return { regionId, month, day, scale, view, sensor, point, incident, hasMonth: m !== null, update, query: params.toString() };
 }
 
 export interface BaseData {
@@ -60,9 +84,8 @@ export interface BaseData {
   regions: Region[];
   regionById: Map<string, Region>;
   lastMonth: number;
-  prediction: Prediction | null;
-  /** Forecast month indices after lastMonth (from the prediction file, or a placeholder horizon). */
-  forecastMonths: number[];
+  /** Daily forecast after the last observed day (null if there is none). */
+  forecast: Forecast | null;
 }
 
 export function useBaseData(): BaseData | null {
@@ -72,11 +95,8 @@ export function useBaseData(): BaseData | null {
     Promise.all([getMeta(), getRegions(), getPrediction()]).then(([meta, regions, prediction]) => {
       if (!alive) { return; }
       const lastMonth = indexFromYm(meta.lastDate.slice(0, 7));
-      const fromFile = (prediction?.months ?? []).map(indexFromYm).filter((i) => i > lastMonth);
-      const forecastMonths = fromFile.length
-        ? fromFile
-        : Array.from({ length: DEFAULT_FORECAST_HORIZON }, (_, k) => lastMonth + 1 + k);
-      setData({ meta, regions, regionById: new Map(regions.map((r) => [r.id, r])), lastMonth, prediction, forecastMonths });
+      const forecast = buildForecast(prediction, dayFromIso(meta.lastDate));
+      setData({ meta, regions, regionById: new Map(regions.map((r) => [r.id, r])), lastMonth, forecast });
     });
     return () => { alive = false; };
   }, []);

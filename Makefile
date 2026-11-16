@@ -1,7 +1,7 @@
 # Makefile raíz — atajos para el repo completo.
 # Ejecutá 'make help' para ver los atajos disponibles.
 
-.PHONY: help setup setup-prep setup-pred pipeline-setup download data-aux raw prep pred demo test webtool-install webtool-data webtool
+.PHONY: help setup setup-prep setup-pred pipeline-setup download data-aux raw prep pred test webtool-install webtool-data webtool
 
 help:
 	@echo "Targets disponibles:"
@@ -12,7 +12,6 @@ help:
 	@echo "  raw             Genera data/processed/detections_raw.parquet"
 	@echo "  prep            Corre el pipeline de preprocesamiento"
 	@echo "  pred            Corre el pipeline de predicción"
-	@echo "  demo            Sirve docs/ en http://localhost:8000"
 	@echo "  test            Corre los tests de prep y pred"
 	@echo "  webtool-install Instala dependencias de la app web (npm ci)"
 	@echo "  webtool-data    Genera los datos de webtool/public/data"
@@ -49,9 +48,6 @@ prep:
 
 pred:
 	cd pred && make all
-
-demo:
-	python3 -m http.server 8000 --directory docs
 
 test:
 	cd prep && make test

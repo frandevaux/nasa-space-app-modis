@@ -1,6 +1,6 @@
 /* Lightweight client-side geometry: fire / hotspot windows, spatial indexes, point readings and point-in-polygon. */
 import type { EventInfo, FireInfo, MonthFires, MonthHotspots } from './types';
-import { dayIndex } from './time';
+import { dayIndex, spansDays } from './time';
 
 const CELL = 0.1;            // degrees, spatial index cell
 const COORD_SCALE = 10_000;  // fire rings are stored in 1e-4° integers
@@ -102,7 +102,7 @@ function bandOf(pr: number) {
 
 /**
  * Fires view: confidence at a point = 1 − Π(1 − c_i · f_i) over the fires whose polygon contains it
- * (c = fire confidence, métrica de confidence; f = fade of older days). Nothing outside the polygons.
+ * (c = fire confidence, PLAN §4.8; f = fade of older days). Nothing outside the polygons.
  */
 export function readFires(idx: FireIndex | null, lat: number, lon: number): Reading {
   let q = 1;
@@ -178,9 +178,9 @@ export function buildIndex(h: WindowHotspots): HotspotIndex {
 }
 
 /**
- * Hotspots view: only the pixels that cover the point (circle of radius r_i, radio de píxel) count.
+ * Hotspots view: only the pixels that cover the point (circle of radius r_i, PLAN T11) count.
  * Each hotspot carries the confidence of its fire; hotspots of the same fire are not independent
- * evidence (métrica de confidence), so each fire counts once and distinct fires / unlinked hotspots combine with 1 − Π(1 − c·f).
+ * evidence (PLAN §4.8), so each fire counts once and distinct fires / unlinked hotspots combine with 1 − Π(1 − c·f).
  */
 export function readPoint(idx: HotspotIndex | null, lat: number, lon: number): Reading {
   let q = 1;
@@ -229,7 +229,9 @@ export function firesToGeoJSON(win: FireWindow | null): { polygons: GeoJSON.Feat
   const polygons: GeoJSON.Feature[] = [];
   const points: GeoJSON.Feature[] = [];
   win?.fires.forEach((fire, i) => {
-    const properties = { id: fire.id, conf: fire.conf, f: win.f[i], km2: fire.km2 };
+    // ev = id of its event, only when it is an "ola de incendios" (several days): used to outline the whole wave.
+    const ev = fire.event && spansDays(fire.event.start, fire.event.end) ? fire.event.id : '';
+    const properties = { id: fire.id, conf: fire.conf, n: fire.n, f: win.f[i], km2: fire.km2, ev };
     if (fire.ring.length >= 4) {
       polygons.push({ type: 'Feature', properties, geometry: { type: 'Polygon', coordinates: [fire.ring] } });
     }
@@ -263,7 +265,7 @@ function inRing(x: number, y: number, ring: number[][]): boolean {
   return inside;
 }
 
-function inPolygon(x: number, y: number, poly: number[][][]): boolean {
+export function inPolygon(x: number, y: number, poly: number[][][]): boolean {
   if (!inRing(x, y, poly[0])) { return false; }
   for (let k = 1; k < poly.length; k++) { if (inRing(x, y, poly[k])) { return false; } }
   return true;

@@ -3,19 +3,21 @@
 import { useEffect, useState } from 'react';
 import { createEntry, getGeo } from '@/lib/data';
 import { locate } from '@/lib/geo';
-import type { EntryKind, LogEntry } from '@/lib/types';
-import { KIND_LABEL } from './FieldLog';
+import { eventNoun } from '@/lib/incidents';
+import { localDate } from '@/lib/time';
+import type { LogEntry } from '@/lib/types';
 
 interface Props {
   point: { lat: number; lon: number } | null;
+  /** Fire event ("fire") the entry will be linked to. */
+  incident?: LogEntry['event'] | null;
   defaultDate: string;
   onClose: () => void;
   onSaved: (e: LogEntry) => void;
 }
 
-export default function EntryForm({ point, defaultDate, onClose, onSaved }: Props) {
+export default function EntryForm({ point, incident, defaultDate, onClose, onSaved }: Props) {
   const [date, setDate] = useState(defaultDate);
-  const [kind, setKind] = useState<EntryKind>('procedure');
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [lesson, setLesson] = useState('');
@@ -41,8 +43,8 @@ export default function EntryForm({ point, defaultDate, onClose, onSaved }: Prop
       const depts = await getGeo('departments');
       const where = locate<{ id: string; province: string }>(depts, lo, la);
       const saved = await createEntry({
-        date, kind, title, text, lesson: lesson || undefined, author: author || undefined,
-        lat: la, lon: lo, department: where?.id, province: where?.province,
+        date, title, text, lesson: lesson || undefined, author: author || undefined,
+        lat: la, lon: lo, department: where?.id, province: where?.province, event: incident ?? undefined,
       });
       onSaved(saved);
     } catch (e) {
@@ -59,16 +61,14 @@ export default function EntryForm({ point, defaultDate, onClose, onSaved }: Prop
         <p className="hint" style={{ margin: 0 }}>
           El registro queda anclado al punto marcado en el mapa. Contá qué pasó en el terreno: lo que el satélite no ve.
         </p>
-        <div className="form-grid">
-          <label className="form-row">Fecha del hecho
-            <input type="date" required value={date} min="2000-11-01" onChange={(e) => setDate(e.target.value)} />
-          </label>
-          <label className="form-row">Tipo
-            <select value={kind} onChange={(e) => setKind(e.target.value as EntryKind)}>
-              {(Object.keys(KIND_LABEL) as EntryKind[]).map((k) => <option key={k} value={k}>{KIND_LABEL[k]}</option>)}
-            </select>
-          </label>
-        </div>
+        {incident && (
+          <p className="entry-form__incident">
+            Corresponde a{eventNoun(incident.start, incident.end).of === 'del' ? 'l' : ' la'} {eventNoun(incident.start, incident.end).noun} del {localDate(incident.start)} al {localDate(incident.end)}.
+          </p>
+        )}
+        <label className="form-row">Fecha del hecho
+          <input type="date" required value={date} min="2000-11-01" onChange={(e) => setDate(e.target.value)} />
+        </label>
         <label className="form-row">Título
           <input required maxLength={120} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Ej.: Cortafuego en camino vecinal" />
         </label>

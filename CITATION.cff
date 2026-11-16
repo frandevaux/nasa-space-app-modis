@@ -10,7 +10,7 @@ date-released: 2026-11-15
 authors:
   - name: "nasa-space-app-modis contributors"
 repository-code: "https://github.com/frandevaux/nasa-space-app-modis"
-url: "https://frandevaux.github.io/nasa-space-app-modis/"
+url: "https://github.com/frandevaux/nasa-space-app-modis"
 license: MIT
 keywords:
   - wildfire

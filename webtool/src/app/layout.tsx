@@ -7,7 +7,7 @@ const interTight = Inter_Tight({ subsets: ['latin'], weight: ['400', '500', '600
 
 export const metadata: Metadata = {
   title: 'Mente Fría',
-  description: 'Historial armonizado de focos MODIS + VIIRS, pronóstico y bitácora de campo. NASA Space Apps 2026 · Equipo Firewall.',
+  description: 'Historial armonizado de hotspots MODIS + VIIRS, fires y firewaves, pronóstico y bitácora de campo. NASA Space Apps 2026 · Equipo Firewall.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

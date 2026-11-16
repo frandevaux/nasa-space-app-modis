@@ -21,7 +21,7 @@ export interface Meta {
   hotspots: number;
   months: Record<string, number>;
   source: string;
-  /** Days covered by the preprocessing pipeline (fires / events with métrica de confidence confidence). */
+  /** Days covered by the preprocessing pipeline (fires / events with PLAN §4.8 confidence). */
   pipeline: { source: string; from: string; to: string; fires: number; events: number } | null;
   provisional: boolean;
 }
@@ -42,21 +42,21 @@ export interface MonthHotspots {
   lat: number[];
   lon: number[];
   s: number[];   // 0 MODIS, 1 VIIRS
-  p: number[];   // confidence 0–100 (métrica de confidence: p(class)·w_sensor)
-  r: number[];   // radius in m (pixel half-diagonal, radio de píxel)
+  p: number[];   // confidence 0–100 (PLAN §4.8: p(class)·w_sensor)
+  r: number[];   // radius in m (pixel half-diagonal, PLAN T11)
   d: number[];   // day of month
   /** Row of each hotspot's fire in fires/<same month>.json (-1 = none, or the fire started the month before). */
   fire?: number[];
 }
 
-/** fires/<YYYY-MM>.json — fires (incendios, incendios) that started in the month, column-oriented. */
+/** fires/<YYYY-MM>.json — fires (incendios, PLAN §4.6) that started in the month, column-oriented. */
 export interface MonthFires {
   month: string;
   n: number;
   id: string[];          // short id (12 hex of incendio_id)
   start: string[];       // UTC, YYYY-MM-DDTHH:MM
   d: number[];           // day of month (UTC)
-  conf: number[];        // confidence 0–100 (métrica de confidence)
+  conf: number[];        // confidence 0–100 (PLAN §4.8)
   nh: number[];          // hotspots
   nM: number[];
   nV: number[];
@@ -74,7 +74,7 @@ export interface MonthFires {
   events: EventTable;
 }
 
-/** Events (eventos, eventos) referenced by the fires of a month. */
+/** Events (eventos, PLAN §4.7) referenced by the fires of a month. */
 export interface EventTable {
   id: string[];
   start: string[];
@@ -110,7 +110,7 @@ export type EntryKind = 'alert' | 'evacuation' | 'procedure' | 'control' | 'less
 export interface LogEntry {
   id: string;
   date: string;          // YYYY-MM-DD of the event (not of the upload)
-  kind: EntryKind;
+  kind?: EntryKind;      // older entries only: the form no longer asks for a type
   title: string;
   text: string;
   lesson?: string;
@@ -119,29 +119,29 @@ export interface LogEntry {
   lon: number;
   department?: string;
   province?: string;
+  /** Fire event ("incendio" in the UI) the entry is about, if any. start / end: UTC 'YYYY-MM-DDTHH:MM'. */
+  event?: { id: string; start: string; end: string };
   createdAt: string;     // ISO
 }
 
 /**
- * Precomputed forecast (delivered by the modelling team).
- * public/data/prediction/index.json
+ * Daily forecast of the hotspot model (branch pred-hotspots, pred/PLAN.md), built by
+ * scripts/build_prediction.py → public/data/prediction/index.json.
  */
 export interface Prediction {
   model: string;
-  generated: string;
-  /** Forecast months, YYYY-MM, in order. */
-  months: string[];
-  /** Per region and month: expected burning area (km², VIIRS scale) and interval. */
-  regions: Record<string, Record<string, { km2: number; lo?: number; hi?: number; prob?: number }>>;
-  /** Optional probability grid per month for the map → public/data/prediction/<YYYY-MM>.json */
-  grid?: boolean;
-}
-
-/** public/data/prediction/<YYYY-MM>.json */
-export interface PredictionGrid {
-  month: string;
-  step: number;          // cell size in degrees
-  lat: number[];         // cell centers
-  lon: number[];
-  p: number[];           // probability 0–100
+  /** Last observed day used by the model (YYYY-MM-DD). */
+  t0: string;
+  /** Forecast days, YYYY-MM-DD, in order. */
+  dates: string[];
+  /** Regions the model covers (province ids) and their names. */
+  coverage: { regions: string[]; name: string };
+  /** Predicted hotspots (1 km cells): d = index into dates, p = probability 0–100, ev / fire = index into events / fires (-1 = none). */
+  hotspots: { d: number[]; lat: number[]; lon: number[]; p: number[]; ev: number[]; fire: number[] };
+  /** Predicted fires with their outline (union of the cell circles, rebuilt like the historical fires). */
+  fires: { id: string[]; d: number[]; ev: number[]; n: number[]; km2: number[]; polyKm2: number[]; conf: number[]; lat: number[]; lon: number[]; ring: [number, number][][] };
+  /** Predicted events ("olas de incendios" when they span several days). start / end: 'YYYY-MM-DDTHH:MM'. */
+  events: { id: string[]; start: string[]; end: string[]; nFires: number[]; km2: number[]; conf: number[]; lat: number[]; lon: number[] };
+  /** Per region: predicted fires and hotspots per forecast day. */
+  counts: Record<string, { fires: number[]; hotspots: number[] }>;
 }

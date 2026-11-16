@@ -96,3 +96,9 @@ export function localDateTime(isoUtc: string): string {
 export function localDate(isoUtc: string): string {
   return localDateTime(isoUtc).split(',')[0];
 }
+
+/** Does an event span several local (UTC−3) days? Those are "olas de incendios". start / end: UTC 'YYYY-MM-DDTHH:MM'. */
+export function spansDays(start: string, end: string): boolean {
+  const day = (s: string) => new Date(Date.parse(`${s}:00Z`) - 3 * 3600000).toISOString().slice(0, 10);
+  return day(start) !== day(end);
+}

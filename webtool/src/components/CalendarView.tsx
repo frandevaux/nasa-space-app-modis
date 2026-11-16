@@ -1,23 +1,25 @@
 'use client';
 /*
  * Calendar view ("Calendario"): eight fire seasons week by week, plus a week / month / season calendar.
- * Same dashboard system as the map: stacked square buttons on the left (selected date, filters) and the
- * field log on the right. Everything is centered on the clicked date.
+ * Same dashboard system as the map: stacked square buttons on the left (place, selected date, field log). Everything is centered on the clicked date and on the place / fire picked
+ * here or on the map (?pt=, ?ev=), so field-log entries can be linked to that fire.
  */
 import { useCallback, useMemo, useState } from 'react';
 import Header from './Header';
 import FieldLog, { KIND_LABEL } from './FieldLog';
 import DashMenu from './Dash';
 import EntryForm from './EntryForm';
+import PlaceMenu, { useIncident } from './PlaceMenu';
 import { Icon } from './icons';
 import { entryInRegion } from '@/lib/data';
+import { forecastFires, PRED_BG, predLevel } from '@/lib/forecast';
 import { useBaseData, useEntries, useRegionSeries, useUrlState } from '@/lib/hooks';
 import { level, thresholds, type DayValue } from '@/lib/series';
 import {
   dayFromIso, dayIndex, daysInMonth, fmtInt, fmtKm2, isoFromDay, monthFromIndex, monthIndex, monthOfDay,
   MONTH_NAMES, monthTitle, shortDate, weekdayMonFirst,
 } from '@/lib/time';
-import type { EntryKind, LogEntry, Region } from '@/lib/types';
+import type { LogEntry, Region } from '@/lib/types';
 
 const LVL = ['var(--lvl-0)', 'var(--lvl-1)', 'var(--lvl-2)', 'var(--lvl-3)', 'var(--lvl-4)'];
 const DAY_BG = ['var(--day-0)', 'var(--day-1)', 'var(--day-2)', 'var(--day-3)', 'var(--day-4)'];
@@ -26,36 +28,26 @@ const SEASON_MONTHS = ['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene', 'Feb', '
 const N_SEASONS = 8;
 
 type Scale = 'week' | 'month' | 'season';
-type Layer = 'hotspots' | 'alert' | 'evacuation' | 'procedure' | 'controlLesson';
-const LAYERS: { id: Layer; label: string; kinds: EntryKind[] }[] = [
-  { id: 'hotspots', label: 'Focos satelitales', kinds: [] },
-  { id: 'alert', label: 'Alertas', kinds: ['alert'] },
-  { id: 'evacuation', label: 'Evacuaciones', kinds: ['evacuation'] },
-  { id: 'procedure', label: 'Procedimientos', kinds: ['procedure'] },
-  { id: 'controlLesson', label: 'Controles y lecciones', kinds: ['control', 'lesson'] },
-];
 
 
 export default function CalendarView() {
   const base = useBaseData();
-  const { regionId, month: urlMonth, day: urlDay, update, query } = useUrlState(base?.lastMonth ?? null);
+  const { regionId, month: urlMonth, day: urlDay, point, incident: incidentRef, update, query } = useUrlState(base?.lastMonth ?? null);
   const region: Region | null = base?.regionById.get(regionId) ?? base?.regionById.get('AR') ?? null;
   const series = useRegionSeries(region?.id ?? 'AR', base?.lastMonth ?? null);
   const { entries, add } = useEntries();
+  const incident = useIncident(incidentRef);
 
   const [scale, setScale] = useState<Scale>('month');
-  const [layers, setLayers] = useState<Set<Layer>>(new Set(LAYERS.map((l) => l.id)));
-  const [seasonsOnTop, setSeasonsOnTop] = useState(true);
-  const [dragging, setDragging] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
+  const [placeOpen, setPlaceOpen] = useState(true);
   const [dateOpen, setDateOpen] = useState(true);
-  const [filtersOpen, setFiltersOpen] = useState(false);
   const [logOpen, setLogOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
 
   const lastMonth = base?.lastMonth ?? 0;
   const lastDay = base ? dayFromIso(base.meta.lastDate) : 0;
-  // Days processed by the pipeline have fires (incendios); the rest only raw hotspot counts.
+  // Days processed by the pipeline have fires (fires); the rest only raw hotspot counts.
   const pipeFrom = base?.meta.pipeline ? dayFromIso(base.meta.pipeline.from) : Infinity;
   const pipeTo = base?.meta.pipeline ? dayFromIso(base.meta.pipeline.to) : -Infinity;
   const month = Math.max(0, Math.min(lastMonth, urlMonth ?? lastMonth));
@@ -63,17 +55,15 @@ export default function CalendarView() {
   const nDays = daysInMonth(month);
   const dom = urlDay && urlDay <= nDays ? urlDay : null;
 
-  const kindsOn = useMemo(() => new Set(LAYERS.filter((l) => layers.has(l.id)).flatMap((l) => l.kinds)), [layers]);
   const regionEntries = useMemo(() => (region ? entries.filter((e) => entryInRegion(e, region)) : []), [entries, region]);
   const entriesByDay = useMemo(() => {
     const m = new Map<number, LogEntry[]>();
     for (const e of regionEntries) {
-      if (!kindsOn.has(e.kind)) { continue; }
       const d = dayFromIso(e.date);
       m.set(d, [...(m.get(d) ?? []), e]);
     }
     return m;
-  }, [regionEntries, kindsOn]);
+  }, [regionEntries]);
 
   const dayValue = useCallback((d: number): DayValue => series?.byDay.get(d) ?? { nM: 0, nV: 0, km2: 0, nF: d >= pipeFrom && d <= pipeTo ? 0 : -1 }, [series, pipeFrom, pipeTo]);
   const goDay = useCallback((d: number) => {
@@ -106,12 +96,17 @@ export default function CalendarView() {
   const years = Array.from({ length: monthFromIndex(lastMonth).year - 2000 + 1 }, (_, k) => monthFromIndex(lastMonth).year - k);
   // Selected date: the clicked day, else the latest day with data (current month) or the 1st of the month.
   const selDay = dom ? monthD0 + dom - 1 : month === lastMonth ? lastDay : monthD0;
-  const showTint = layers.has('hotspots');
+  const forecast = base.forecast;
+  const predMax = Math.max(1, ...(forecast?.p.counts[region.id]?.fires ?? [0]));
 
   function dayCell(d: number, big = false) {
     const v = dayValue(d);
-    const out = d > lastDay;
-    const lvl = showTint && !out ? level(v.km2, series?.dayThresholds ?? []) : 0;
+    // Forecast days (after the last observed day): yellow, with the model's estimate.
+    const pred = d > lastDay ? forecastFires(forecast, region!, d) : null;
+    const isPred = d > lastDay && !!forecast && d <= forecast.to;
+    const out = d > lastDay && !isPred;
+    const lvl = d <= lastDay ? level(v.km2, series?.dayThresholds ?? []) : 0;
+    const bg = isPred ? (pred === null ? 'var(--surface)' : PRED_BG[predLevel(pred, predMax)]) : DAY_BG[lvl];
     const evs = entriesByDay.get(d) ?? [];
     const f = new Date(Date.parse(isoFromDay(d)));
     const n = v.nM + v.nV;
@@ -121,29 +116,33 @@ export default function CalendarView() {
         key={d}
         role="button"
         tabIndex={out ? -1 : 0}
-        className={`day ${isSel ? 'is-selected' : ''} ${out ? 'is-out' : ''}`}
-        style={{ background: DAY_BG[lvl], borderColor: lvl === 0 ? 'var(--line)' : DAY_BG[lvl], opacity: out ? 0.45 : 1 }}
-        aria-label={`${f.getUTCDate()} de ${MONTH_NAMES[f.getUTCMonth()].toLowerCase()}: ${n} focos, ${fmtKm2(v.km2)} km²`}
+        className={`day ${isSel ? 'is-selected' : ''} ${out ? 'is-out' : ''} ${isPred ? 'is-forecast' : ''}`}
+        style={{ background: bg, borderColor: isPred ? '#E5CF6A' : lvl === 0 ? 'var(--line)' : DAY_BG[lvl], opacity: out ? 0.45 : 1 }}
+        aria-label={isPred
+          ? `${f.getUTCDate()} de ${MONTH_NAMES[f.getUTCMonth()].toLowerCase()}: ${pred === null ? 'sin pronóstico' : `${pred} ${pred === 1 ? 'fire estimado' : 'fires estimados'}`}`
+          : `${f.getUTCDate()} de ${MONTH_NAMES[f.getUTCMonth()].toLowerCase()}: ${v.nF >= 0 ? `${v.nF} fires` : `${n} hotspots`}, ${fmtKm2(v.km2)} km²`}
         onClick={() => { if (!out) { goDay(d); } }}
         onKeyDown={(e) => { if (!out && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); goDay(d); } }}
       >
         <div>
           <div className="day__top">
             <span>{big ? `${WEEKDAYS[weekdayMonFirst(f.getUTCFullYear(), f.getUTCMonth(), f.getUTCDate())]} ${f.getUTCDate()}` : f.getUTCDate()}</span>
-            {showTint && !out && v.km2 > 0 && <span>{fmtKm2(v.km2)} km²</span>}
+            {d <= lastDay && v.km2 > 0 && <span>{fmtKm2(v.km2)} km²</span>}
+            {isPred && <span className="day__pred-tag">Estimado</span>}
           </div>
-          {showTint && !out && (v.nF > 0 || (v.nF < 0 && n > 0)) && (
-            <div className="day__km2">{v.nF >= 0 ? (v.nF === 1 ? '1 incendio' : `${fmtInt(v.nF)} incendios`) : (n === 1 ? '1 foco' : `${fmtInt(n)} focos`)}</div>
+          {isPred && <div className="day__km2">{pred === null ? 'Sin pronóstico' : `≈ ${fmtInt(pred)} ${pred === 1 ? 'fire' : 'fires'}`}</div>}
+          {d <= lastDay && (v.nF > 0 || (v.nF < 0 && n > 0)) && (
+            <div className="day__km2">{v.nF >= 0 ? (v.nF === 1 ? '1 fire' : `${fmtInt(v.nF)} fires`) : (n === 1 ? '1 hotspot' : `${fmtInt(n)} hotspots`)}</div>
           )}
-          {big && showTint && !out && (
-            <div className="day__sensors">{v.nF >= 0 && <span>Incendios: {fmtInt(v.nF)}</span>}<span>Focos MODIS: {fmtInt(v.nM)}</span><span>Focos VIIRS: {fmtInt(v.nV)}</span></div>
+          {big && d <= lastDay && (
+            <div className="day__sensors">{v.nF >= 0 && <span>Fires: {fmtInt(v.nF)}</span>}<span>Hotspots MODIS: {fmtInt(v.nM)}</span><span>Hotspots VIIRS: {fmtInt(v.nV)}</span></div>
           )}
         </div>
         <div className="day__events">
           {evs.slice(0, big ? 6 : 2).map((e) => (
-            <button key={e.id} type="button" className="event" aria-pressed={selected === e.id} aria-label={`${KIND_LABEL[e.kind]}: ${e.title}`}
+            <button key={e.id} type="button" className="event" aria-pressed={selected === e.id} aria-label={e.kind ? `${KIND_LABEL[e.kind]}: ${e.title}` : e.title}
               onClick={(ev) => { ev.stopPropagation(); setSelected(e.id); setLogOpen(true); }}>
-              {big ? e.title : KIND_LABEL[e.kind]}
+              {big || !e.kind ? e.title : KIND_LABEL[e.kind]}
             </button>
           ))}
           {evs.length > (big ? 6 : 2) && <span className="hint">+{evs.length - (big ? 6 : 2)} más</span>}
@@ -197,7 +196,7 @@ export default function CalendarView() {
   function shift(dir: -1 | 1) {
     if (scale === 'week') {
       const ref = (dom ? monthD0 + dom - 1 : monthD0) + 7 * dir;
-      if (ref >= 0 && ref <= lastDay) { goDay(ref); }
+      if (ref >= 0 && ref <= (forecast?.to ?? lastDay)) { goDay(ref); }
     } else if (scale === 'season') {
       update({ m: Math.max(0, Math.min(lastMonth, month + 12 * dir)), d: null });
     } else {
@@ -206,6 +205,7 @@ export default function CalendarView() {
   }
 
   const selValue = dayValue(selDay);
+  const selPred = forecastFires(forecast, region, selDay);
   const selDate = new Date(Date.parse(isoFromDay(selDay)));
   // Location breadcrumb: País › Provincia › Departamento; the selected one is the title.
   const ancestors: Region[] = region.kind === 'country' ? []
@@ -213,12 +213,9 @@ export default function CalendarView() {
       : [base.regionById.get('AR')!, base.regionById.get(region.province ?? '')!].filter(Boolean);
 
   const monthCard = (
-    <div key="month" className="panel card" draggable onDragStart={() => setDragging('month')}
-      onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); if (dragging && dragging !== 'month') { setSeasonsOnTop(!seasonsOnTop); } setDragging(null); }}
-      style={{ order: seasonsOnTop ? 2 : 1 }}>
+    <div className="panel card card--month">
       <div className="card__head">
         <div>
-          <span className="grip" title="Arrastrá para reordenar" aria-hidden="true"><Icon.grip /></span>
           <button type="button" className="nav-btn" aria-label="Anterior" onClick={() => shift(-1)}><span><Icon.left /></span></button>
           <button type="button" className="nav-btn" aria-label="Siguiente" onClick={() => shift(1)}><span><Icon.right /></span></button>
           <h2 className="month">{title}</h2>
@@ -229,20 +226,17 @@ export default function CalendarView() {
               <button key={s} type="button" aria-pressed={scale === s} onClick={() => setScale(s)}>{{ week: 'Semana', month: 'Mes', season: 'Temporada' }[s]}</button>
             ))}
           </div>
-          <button type="button" className="nav-btn" onClick={() => setSeasonsOnTop(!seasonsOnTop)} aria-label={seasonsOnTop ? 'Mover el mes arriba' : 'Mover el mes abajo'}><span><Icon.swap /></span></button>
         </div>
       </div>
-      {series ? body : <p className="loading">Cargando serie…</p>}
+      <div className="card__scroll">{series ? body : <p className="loading">Cargando serie…</p>}</div>
     </div>
   );
 
   const seasonsCard = (
-    <div key="seasons" className="panel card" draggable onDragStart={() => setDragging('seasons')}
-      onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); if (dragging && dragging !== 'seasons') { setSeasonsOnTop(!seasonsOnTop); } setDragging(null); }}
-      style={{ order: seasonsOnTop ? 1 : 2 }}>
+    <div className="panel card card--seasons">
       <div className="card__head">
-        <div><span className="grip" title="Arrastrá para reordenar" aria-hidden="true"><Icon.grip /></span><h2>Ocho temporadas, semana por semana</h2></div>
-        <div><span className="hint">De julio a junio · km² con fuego</span><button type="button" className="nav-btn" onClick={() => setSeasonsOnTop(!seasonsOnTop)} aria-label={seasonsOnTop ? 'Mover las temporadas abajo' : 'Mover las temporadas arriba'}><span><Icon.swap /></span></button></div>
+        <div><h2>Ocho temporadas, semana por semana</h2></div>
+        <div><span className="hint">De julio a junio · km² con fuego</span></div>
       </div>
       <div className="seasons" aria-label={`Actividad de fuego por semana en ${region.name}, temporadas ${seasonStart - N_SEASONS + 1} a ${seasonStart}. ${monthTitle(month)} está resaltado.`}>
         <div className="seasons__row"><div className="seasons__label" /><div className="seasons__months">{SEASON_MONTHS.map((m) => <span key={m}>{m}</span>)}</div></div>
@@ -277,11 +271,30 @@ export default function CalendarView() {
         year={year}
         years={years}
         query={query}
-        onRegion={(id) => update({ r: id })}
+        onRegion={(id) => update({ r: id, pt: null, ev: null })}
         onYear={(y) => update({ m: Math.max(0, Math.min(lastMonth, monthIndex(y, month0))), d: null })}
       />
       <main className="cal__main">
-        <div className={`cal__side ${dateOpen || filtersOpen ? 'is-open' : ''}`}>
+        <div className={`cal__side ${placeOpen || dateOpen || logOpen ? 'is-open' : ''}`}>
+          <DashMenu label="Ubicación" icon={<Icon.pin />} corner="top-left" open={placeOpen} onOpen={() => setPlaceOpen(true)} onClose={() => setPlaceOpen(false)} className="place-menu">
+            <PlaceMenu
+              regions={base.regions}
+              regionById={base.regionById}
+              region={region}
+              month={month}
+              point={point}
+              incident={incident}
+              hasIncident={incidentRef !== null}
+              mapHref={`/?${query}`}
+              onRegion={(id) => update({ r: id, pt: null, ev: null })}
+              onPick={(i) => {
+                const d = i.day;
+                update({ pt: { lat: i.lat, lon: i.lon }, ev: { month: i.month, id: i.event.id }, m: monthOfDay(d), d: new Date(Date.parse(isoFromDay(d))).getUTCDate() });
+              }}
+              onClear={() => update({ pt: null, ev: null })}
+              onReport={() => setFormOpen(true)}
+            />
+          </DashMenu>
           <DashMenu label="Fecha" icon={<Icon.calendar />} corner="top-left" open={dateOpen} onOpen={() => setDateOpen(true)} onClose={() => setDateOpen(false)} className="date-card">
             <h1 className="date-card__date">{selDate.getUTCDate()} de {MONTH_NAMES[selDate.getUTCMonth()].toLowerCase()} de {selDate.getUTCFullYear()}</h1>
             <div className="date-card__place">
@@ -294,37 +307,38 @@ export default function CalendarView() {
               )}
               <h2>{region.name}</h2>
             </div>
-            <div className="date-card__fires">
-              <span className="loc-card__big">{selDay > lastDay || selValue.nF < 0 ? '—' : fmtInt(selValue.nF)}</span>
-              <span>{selValue.nF === 1 ? 'incendio' : 'incendios'}</span>
-            </div>
+            {selDay > lastDay ? (
+              <>
+                <div className="date-card__fires date-card__fires--forecast">
+                  <span className="loc-card__big">{selPred === null ? '—' : fmtInt(selPred)}</span>
+                  <span>{selPred === null ? 'sin pronóstico para esta zona' : `${selPred === 1 ? 'fire estimado' : 'fires estimados'}`}</span>
+                </div>
+                <div className="note note--warn" role="alert">
+                  <div className="note__head"><strong>Cuidado.</strong><span className="note__bang" aria-hidden="true">!</span></div>
+                  <p>
+                    Es una estimación del modelo para {forecast?.p.coverage.name}, no un registro satelital: predice dónde puede haber fuego
+                    a partir de los hotspots recientes y el pronóstico del tiempo. Puede haber fallas.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="date-card__fires">
+                <span className="loc-card__big">{selValue.nF < 0 ? '—' : fmtInt(selValue.nF)}</span>
+                <span>{selValue.nF === 1 ? 'fire' : 'fires'}</span>
+              </div>
+            )}
           </DashMenu>
-          <DashMenu label="Filtros" icon={<Icon.filter />} corner="top-left" open={filtersOpen} onOpen={() => setFiltersOpen(true)} onClose={() => setFiltersOpen(false)}>
-            <fieldset className="layers-box">
-              <legend className="sr-only">Capas del calendario</legend>
-              {LAYERS.map((l) => (
-                <label key={l.id}>
-                  <input type="checkbox" checked={layers.has(l.id)} onChange={() => {
-                    const next = new Set(layers);
-                    if (next.has(l.id)) { next.delete(l.id); } else { next.add(l.id); }
-                    setLayers(next);
-                  }} />
-                  {l.label}
-                </label>
-              ))}
-            </fieldset>
-          </DashMenu>
-        </div>
-        <section className="cal__center">{seasonsCard}{monthCard}</section>
-        <div className={`cal__side cal__side--right ${logOpen ? 'is-open' : ''}`}>
-          <DashMenu label="Bitácora" icon={<Icon.log />} corner="top-right" open={logOpen} onOpen={() => setLogOpen(true)} onClose={() => setLogOpen(false)} className="log-menu">
-            <FieldLog entries={regionEntries} selected={selected} regionName={region.name} onSelect={(e) => { setSelected(e.id); goDay(dayFromIso(e.date)); }} onNew={() => setFormOpen(true)} />
+          <DashMenu label="Bitácora" icon={<Icon.log />} corner="top-left" open={logOpen} onOpen={() => setLogOpen(true)} onClose={() => setLogOpen(false)} className="log-menu">
+            <FieldLog entries={regionEntries} selected={selected} regionName={region.name} onSelect={(e) => { setSelected(e.id); goDay(dayFromIso(e.date)); }} />
           </DashMenu>
         </div>
+        {/* Calendar on top (scrolls), the eight-season strip always visible at the bottom. */}
+        <section className="cal__center">{monthCard}{seasonsCard}</section>
       </main>
       {formOpen && (
         <EntryForm
-          point={{ lat: (region.bbox[1] + region.bbox[3]) / 2, lon: (region.bbox[0] + region.bbox[2]) / 2 }}
+          point={point ?? { lat: (region.bbox[1] + region.bbox[3]) / 2, lon: (region.bbox[0] + region.bbox[2]) / 2 }}
+          incident={incident ? { id: incident.event.id, start: incident.event.start, end: incident.event.end } : null}
           defaultDate={isoFromDay(Math.min(selDay, lastDay))}
           onClose={() => setFormOpen(false)}
           onSaved={(e) => { add(e); setFormOpen(false); setSelected(e.id); }}

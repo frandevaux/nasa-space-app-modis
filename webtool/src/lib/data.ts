@@ -1,5 +1,5 @@
 /* Loading (with in-memory cache) of the files in public/data, plus the field-log API client. */
-import type { LogEntry, Meta, MonthFires, MonthHotspots, Prediction, PredictionGrid, Region, SeriesJson } from './types';
+import type { LogEntry, Meta, MonthFires, MonthHotspots, Prediction, Region, SeriesJson } from './types';
 
 const cache = new Map<string, Promise<unknown>>();
 
@@ -38,7 +38,6 @@ export const getMonthHotspots = (ym: string) => load<MonthHotspots>(`/data/hotsp
 export const getMonthFires = (ym: string) => load<MonthFires>(`/data/fires/${ym}.json`, true);
 
 export const getPrediction = () => load<Prediction>('/data/prediction/index.json', true);
-export const getPredictionGrid = (ym: string) => load<PredictionGrid>(`/data/prediction/${ym}.json`, true);
 
 /* --- Field log: own API, never cached --- */
 export async function getEntries(): Promise<LogEntry[]> {

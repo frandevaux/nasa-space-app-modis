@@ -14,11 +14,13 @@ interface Props {
   year: number | null;
   years: number[];
   query: string;
+  /** Query for the link to the other view, if it differs from the current one. */
+  otherQuery?: string;
   onRegion: (id: string) => void;
   onYear: (year: number) => void;
 }
 
-export default function Header({ view, regions, region, year, years, query, onRegion, onYear }: Props) {
+export default function Header({ view, regions, region, year, years, query, otherQuery, onRegion, onYear }: Props) {
   const [text, setText] = useState('');
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
@@ -88,8 +90,8 @@ export default function Header({ view, regions, region, year, years, query, onRe
         </select>
       </div>
       <nav className="views" aria-label="Visualización">
-        <Link href={`/?${query}`} aria-current={view === 'map' ? 'page' : undefined}>Mapa</Link>
-        <Link href={`/calendario?${query}`} aria-current={view === 'calendar' ? 'page' : undefined}>Calendario</Link>
+        <Link href={`/?${view === 'map' ? query : otherQuery ?? query}`} aria-current={view === 'map' ? 'page' : undefined}>Mapa</Link>
+        <Link href={`/calendario?${view === 'calendar' ? query : otherQuery ?? query}`} aria-current={view === 'calendar' ? 'page' : undefined}>Calendario</Link>
       </nav>
       <button type="button" className="user" aria-label="Cuenta de usuario (no disponible en el prototipo)" title="Cuentas de usuario: pendiente">
         <span className="user__avatar"><Icon.user /></span>Invitado<Icon.downSmall />

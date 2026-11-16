@@ -5,7 +5,7 @@ Inputs (from the repo):
   data/processed/detections_raw.parquet      raw FIRMS hotspots (MODIS + VIIRS, 2000-11 → 2026-11)
   data/boundaries/ign_provincia.geojson      IGN boundaries
   data/boundaries/ign_departamento.geojson
-  Pipeline outputs (pipeline de prep/, pipeline de preprocesamiento), first match wins:
+  Pipeline outputs (branch prep-firms, PLAN.md §4), first match wins:
     prep/data/processed/{hotspots,incendios,eventos}.parquet   full run
     data/prep/{hotspots,incendios,eventos}.parquet             full run copied here
     data/prep/fuego*.gpkg                                      GeoPackage (e.g. the 2025 smoke run)
@@ -24,14 +24,14 @@ Outputs:
 
 Harmonization (all days):
   - Metric = burning pixel area on the VIIRS scale (see below).
-  - Pipeline days: per-hotspot confidence = confidence of its fire (métrica de confidence).
+  - Pipeline days: per-hotspot confidence = confidence of its fire (PLAN §4.8).
 
 PROVISIONAL rules for days NOT covered by the pipeline:
-  - Vegetation only: type == 0; NRT rows (no type) are kept as inferred (reglas de inferencia, without the 365-day filter).
-  - Metric = burning pixel area (Σ scan·track, km²), not counts (métrica de confidence) — same on pipeline days.
-  - VIIRS scale (escala VIIRS): from 2012-01-20 the VIIRS area is used; before that, MODIS area × k,
+  - Vegetation only: type == 0; NRT rows (no type) are kept as inferred (PLAN T6/T20, without the 365-day filter).
+  - Metric = burning pixel area (Σ scan·track, km²), not counts (PLAN §4.8 item 5) — same on pipeline days.
+  - VIIRS scale (PLAN T8): from 2012-01-20 the VIIRS area is used; before that, MODIS area × k,
     with k = Σ VIIRS area / Σ MODIS area over the overlap period (2012-01-20 → 2025-12-31).
-  - Per-hotspot confidence = p(class) · w_sensor, with the values of métrica de confidence (no fire grouping).
+  - Per-hotspot confidence = p(class) · w_sensor, with the values of PLAN §4.8 (no fire grouping).
 
 Usage:
   pipeline/.venv/bin/python webtool/scripts/build_data.py
@@ -67,7 +67,7 @@ START = pd.Timestamp("2000-11-01")
 VIIRS_START = pd.Timestamp("2012-01-20")
 OVERLAP_END = pd.Timestamp("2025-12-31")
 
-# métrica de confidence
+# PLAN §4.8
 P_CLASS = {"l": 0.15, "n": 0.55, "h": 0.90}
 W_SENSOR = {"MODIS": 0.80, "VIIRS": 1.00}
 
@@ -160,12 +160,12 @@ def load_raw_hotspots(outside: tuple | None) -> pd.DataFrame:
     log(f"  {len(df):,} rows")
     if df.empty:
         return pd.DataFrame(columns=["lat", "lon", "scan", "track", "acq_date", "acq_time", "sensor", "p", "incendio_id", "evento_id"])
-    # Dedup (deduplicación): key (satellite, lat, lon, date, time); archive/SP wins over NRT.
+    # Dedup (PLAN §4.2): key (satellite, lat, lon, date, time); archive/SP wins over NRT.
     df["acq_time"] = df["acq_time"].astype(str).str.zfill(4)
     df = df.sort_values("is_nrt").drop_duplicates(["satellite", "lat", "lon", "acq_date", "acq_time"], keep="first")
     df["acq_date"] = pd.to_datetime(df["acq_date"])
     df["sensor"] = np.where(df["instrument"] == "MODIS", "MODIS", "VIIRS")
-    # Common l/n/h class (clases de confianza, intermediate value)
+    # Common l/n/h class (PLAN §4.4, intermediate value)
     conf_num = pd.to_numeric(df["confidence"], errors="coerce")
     modis_class = np.select([conf_num < 30, conf_num < 80], ["l", "n"], "h")
     cls = np.where(df["sensor"] == "MODIS", modis_class, df["confidence"].str.lower())
@@ -179,7 +179,7 @@ def load_raw_hotspots(outside: tuple | None) -> pd.DataFrame:
 
 def add_pixel_metrics(df: pd.DataFrame) -> pd.DataFrame:
     df["area"] = df["scan"].astype(float) * df["track"].astype(float)  # nominal pixel km²
-    df["r_m"] = np.round(500 * np.sqrt(df["scan"].astype(float) ** 2 + df["track"].astype(float) ** 2)).astype(np.int32)  # half-diagonal (radio de píxel)
+    df["r_m"] = np.round(500 * np.sqrt(df["scan"].astype(float) ** 2 + df["track"].astype(float) ** 2)).astype(np.int32)  # half-diagonal (PLAN T11)
     return df
 
 
@@ -382,7 +382,7 @@ def build_monthly_fires(fires: pd.DataFrame, events: pd.DataFrame, found) -> dic
             "id": short_id(g["incendio_id"]),
             "start": iso_min(start),                                       # UTC
             "d": start.dt.day.astype(int).tolist(),                         # day of month (UTC)
-            "conf": g["confidence"].astype(float).round(1).tolist(),        # métrica de confidence
+            "conf": g["confidence"].astype(float).round(1).tolist(),        # PLAN §4.8
             "nh": g["n_hotspots"].fillna(0).astype(int).tolist(),
             "nM": g["n_hotspots_modis"].fillna(0).astype(int).tolist(),
             "nV": g["n_hotspots_viirs"].fillna(0).astype(int).tolist(),
@@ -425,7 +425,7 @@ def build_monthly_hotspots(df: pd.DataFrame, link: dict | None) -> dict:
             "lat": np.round(g["lat"].to_numpy(), 4).tolist(),
             "lon": np.round(g["lon"].to_numpy(), 4).tolist(),
             "s": (g["sensor"] == "VIIRS").astype(int).tolist(),   # 0 MODIS, 1 VIIRS
-            "p": g["p"].astype(int).tolist(),                     # confidence 0–100 (of its fire, métrica de confidence)
+            "p": g["p"].astype(int).tolist(),                     # confidence 0–100 (of its fire, PLAN §4.8)
             "r": g["r_m"].astype(int).tolist(),                   # radius in m (half-diagonal)
             "d": g["acq_date"].dt.day.astype(int).tolist(),       # day of month
         }
