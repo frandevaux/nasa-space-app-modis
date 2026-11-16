@@ -1,5 +1,7 @@
 # nasa-space-app-modis
 
+*[Read in English](README.en.md)*
+
 > Herramienta web "mente fría" con un calendario armonizado de actividad de fuego a partir de los hotspots de MODIS y VIIRS de NASA FIRMS, junto con una prueba piloto de predicción de hotspots en Córdoba.
 
 ![Vista Mapa de la herramienta web mente fría](images/webapp.png)
